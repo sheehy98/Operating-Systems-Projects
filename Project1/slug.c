@@ -23,9 +23,9 @@ int getSeed(int arg)
     char seedBuffer[MAX_CHAR]; //char array to store seed from seed.text
     int randSeed;              //the seed to be converted to int
     char slugFileNames[4][16] = {"seed_slug_1.txt", "seed_slug_2.txt", "seed_slug_3.txt", "seed_slug_4.txt"};
-    printf("[Slug PID: %d] User entered: %d\n", pid, arg);
-    printf("[Slug PID: %d] Reading from %s\n", pid, slugFileNames[arg - 1]); //-1 because index starts at 0!
-    FILE *fp = fopen(slugFileNames[arg - 1], "r");                           //file pointer, set to read only
+    // printf("[Slug PID: %d] User entered: %d\n", pid, arg);
+    // printf("[Slug PID: %d] Reading from %s\n", pid, slugFileNames[arg - 1]); //-1 because index starts at 0!
+    FILE *fp = fopen(slugFileNames[arg - 1], "r"); //file pointer, set to read only
 
     //check if can't read file
     if (fp != NULL)
