@@ -7,48 +7,47 @@
 
 #define MAX_LINES 512
 
-struct job // node for linked list
-{
-    int id;
-    int length;
-    // other meta data to be added?
-    struct job *next;
-};
+// void insertJob(int id, int length)
+// {
+//     // create link
+//     struct job *link = (struct job *)malloc(sizeof(struct job));
 
-struct job *head = NULL;
-struct job *current = NULL;
+//     // insert data
+//     link->id = id;
+//     link->length = length;
 
-void insertJob(int id, int length)
-{
-    // create link
-    struct job *link = (struct job *)malloc(sizeof(struct job));
+//     // point to previous node
+//     link->next = head;
 
-    // insert data
-    link->id = id;
-    link->length = length;
+//     // point to new node
+//     head = link;
+// }
 
-    // point to previous node
-    link->next = head;
+// void printJobs()
+// {
+//     struct job *ptr = head;
+//     printf("\n[head]=>");
 
-    // point to new node
-    head = link;
-}
-
-void printJobs()
-{
-    struct job *ptr = head;
-    // printf("\n[head]=>");
-
-    while (ptr != NULL)
-    {
-        printf("ID: %d, Length: %d\n", ptr->id, ptr->length);
-        ptr = ptr->next;
-    }
-    printf("NULL\n");
-}
+//     while (ptr != NULL)
+//     {
+//         printf("ID: %d, Length: %d->", ptr->id, ptr->length);
+//         ptr = ptr->next;
+//     }
+//     printf("NULL\n");
+// }
 
 int main(int argc, char **argv)
 {
+    struct job // node for linked list
+    {
+        int id;
+        int length;
+        // other meta data to be added?
+        struct job *next;
+    };
+
+    struct job *head = NULL;
+    struct job *current = NULL;
     int idCounter = 0;            // use this value to iterate backwards later on
     char fileLines[5][MAX_LINES]; // setting a max of 512 lines from input file, don't think it'll exceed
     char directoryFile[15] = "tests/";
@@ -56,6 +55,37 @@ int main(int argc, char **argv)
     char *testFile = argv[2];
     char *timeSlice = argv[3];
     int timeSliceInt = atoi(timeSlice);
+
+    /* Insert job at end of linked list as opposed to at start (first in) */
+    void appendJob(struct job * *head, int id, int length)
+    {
+        /* make new node */
+        struct job *link = (struct job *)malloc(sizeof(struct job));
+
+        struct job *last = *head;
+
+        /* add data */
+        link->id = id;
+        link->length = length;
+
+        /* will be last node */
+        link->next = NULL;
+
+        /* if list empt, new node is head */
+        if (*head == NULL)
+        {
+            *head = link;
+            return;
+        }
+
+        /* otherwise go till last node */
+        while (last->next != NULL)
+            last = last->next;
+
+        /* change last node next */
+        last->next = link;
+        return;
+    }
 
     // if not providing between 3 and 4 arguments, scream!
     if (!(argc >= 3 && argc <= 4))
@@ -81,8 +111,7 @@ int main(int argc, char **argv)
 
         while ((fgets(fileLines[idCounter], MAX_LINES, fp) != NULL))
         {
-            // printf("%d\n", fileLines[idCounter]);
-            insertJob(idCounter, atoi(fileLines[idCounter]));
+            appendJob(&head, idCounter, atoi(fileLines[idCounter]));
             idCounter++;
         }
         // else
@@ -96,17 +125,24 @@ int main(int argc, char **argv)
         return (0);
     }
 
-    printJobs();
+    // printJobs();
 
     // switch case with if else, not working with ints
     if (strcmp(policy, "FIFO") == 0)
     {
-        printf("FIFO\n");
+        struct job *ptr = head;
+        while (ptr != NULL)
+        {
+            printf("Job %d ran for: %d\n", ptr->id, ptr->length);
+            ptr = ptr->next;
+            idCounter--;
+        }
+        // printf("FIFO\n");
     }
 
-    else if (strcmp(policy, "STCF") == 0)
+    else if (strcmp(policy, "SJF") == 0)
     {
-        printf("STCF\n");
+        printf("SJF\n");
     }
 
     else if (strcmp(policy, "RR") == 0)
@@ -121,7 +157,7 @@ int main(int argc, char **argv)
 
     else
     {
-        printf("Enter FIFO STCF or RR as the policy\n");
+        printf("Enter FIFO SJF or RR as the policy\n");
     }
 
     return 0;
