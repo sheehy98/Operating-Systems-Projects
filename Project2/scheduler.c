@@ -7,35 +7,7 @@
 
 #define MAX_LINES 512
 
-// void insertJob(int id, int length)
-// {
-//     // create link
-//     struct job *link = (struct job *)malloc(sizeof(struct job));
-
-//     // insert data
-//     link->id = id;
-//     link->length = length;
-
-//     // point to previous node
-//     link->next = head;
-
-//     // point to new node
-//     head = link;
-// }
-
-// void printJobs()
-// {
-//     struct job *ptr = head;
-//     printf("\n[head]=>");
-
-//     while (ptr != NULL)
-//     {
-//         printf("ID: %d, Length: %d->", ptr->id, ptr->length);
-//         ptr = ptr->next;
-//     }
-//     printf("NULL\n");
-// }
-struct job // node for linked list
+struct job // job linkedlist node
 {
     int id;
     int length;
@@ -45,16 +17,13 @@ struct job // node for linked list
 
 int main(int argc, char **argv)
 {
-
     struct job *head = NULL;
     struct job *current = NULL;
-    int idCounter = 0;            // use this value to iterate backwards later on
     char fileLines[5][MAX_LINES]; // setting a max of 512 lines from input file, don't think it'll exceed
-    // char directoryFile[15] = "tests/";
     char *policy = argv[1];
     char *testFile = argv[2];
     char *timeSlice = argv[3];
-    int timeSliceInt = atoi(timeSlice);
+    int timeSliceInt = atoi(timeSlice); // THIS IS CAUSING A SEG FAULT AHHHH
 
     /* Insert job at end of linked list as opposed to at start (first in) */
     void appendJob(struct job * *head, int id, int length)
@@ -87,51 +56,52 @@ int main(int argc, char **argv)
         return;
     }
 
+    void openFile()
+    {
+        int idCounter = 0; // use this value to iterate backwards later on
+        FILE *fp = fopen(testFile, "r");
+        int curLine = 0;
+
+        // I'm storing data in reverse here, keep that in mind!
+        if (fp != NULL)
+        {
+
+            while ((fgets(fileLines[idCounter], MAX_LINES, fp) != NULL))
+            {
+                appendJob(&head, idCounter, atoi(fileLines[idCounter]));
+                idCounter++;
+            }
+        }
+        else
+        {
+            printf("Could not find specified file. Check your argument and try again.\n");
+            exit(1);
+        }
+    }
+
     // if not providing between 3 and 4 arguments, scream!
     if (!(argc >= 3 && argc <= 4))
     {
-        printf("Please fill out the appropriate amount of arguments!\n");
+        printf("Requires at least 2 arguments: Policy, tests/x.in.\n");
         return 0;
     }
 
-    // time slice is invalid, should be between 0 and 100 realistically
-    if (!(timeSliceInt >= 0 && timeSliceInt < 10000))
+    // // time slice is invalid, should be between 0 and 100 realistically
+    if (!(timeSliceInt >= 0 && timeSliceInt < 100))
     {
-        printf("Time slice value invalid. Choose between 0 and 10000.\n");
+        printf("Time slice value invalid. Choose between 0 and 100.\n");
         return 0;
     }
 
-    // probably dont' need to use that below line
-    // sprintf(directoryFile + strlen(directoryFile), "%s", testFile);
-    FILE *fp = fopen(testFile, "r");
-    int curLine = 0;
-
-    // I'm storing data in reverse here, keep that in mind!
-    if (fp != NULL)
-    {
-
-        while ((fgets(fileLines[idCounter], MAX_LINES, fp) != NULL))
-        {
-            appendJob(&head, idCounter, atoi(fileLines[idCounter]));
-            idCounter++;
-        }
-        // else
-        // {
-        //     printf("file was empty");
-        // }
-    }
-    else
-    {
-        printf("Could not find specified file. Check your argument and try again.\n");
-        return (0);
-    }
+    /* Open le file, fill le array */
+    openFile();
 
     // printJobs();
     printf("Execution trace with %s:\n", policy);
     // switch case with if else, not working with ints
     if (strcmp(policy, "FIFO") == 0)
     {
-
+        int idCounter = 0; // use this value to iterate backwards later on
         struct job *ptr = head;
         while (ptr != NULL)
         {
