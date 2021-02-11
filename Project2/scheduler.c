@@ -35,22 +35,22 @@
 //     }
 //     printf("NULL\n");
 // }
+struct job // node for linked list
+{
+    int id;
+    int length;
+    // other meta data to be added?
+    struct job *next;
+};
 
 int main(int argc, char **argv)
 {
-    struct job // node for linked list
-    {
-        int id;
-        int length;
-        // other meta data to be added?
-        struct job *next;
-    };
 
     struct job *head = NULL;
     struct job *current = NULL;
     int idCounter = 0;            // use this value to iterate backwards later on
     char fileLines[5][MAX_LINES]; // setting a max of 512 lines from input file, don't think it'll exceed
-    char directoryFile[15] = "tests/";
+    // char directoryFile[15] = "tests/";
     char *policy = argv[1];
     char *testFile = argv[2];
     char *timeSlice = argv[3];
@@ -95,14 +95,15 @@ int main(int argc, char **argv)
     }
 
     // time slice is invalid, should be between 0 and 100 realistically
-    if (!(timeSliceInt > 0 && timeSliceInt < 100))
+    if (!(timeSliceInt >= 0 && timeSliceInt < 10000))
     {
-        printf("Time slice value invalid. Choose between 0 and 100.\n");
+        printf("Time slice value invalid. Choose between 0 and 10000.\n");
         return 0;
     }
 
-    sprintf(directoryFile + strlen(directoryFile), "%s", testFile);
-    FILE *fp = fopen(directoryFile, "r");
+    // probably dont' need to use that below line
+    // sprintf(directoryFile + strlen(directoryFile), "%s", testFile);
+    FILE *fp = fopen(testFile, "r");
     int curLine = 0;
 
     // I'm storing data in reverse here, keep that in mind!
@@ -126,10 +127,11 @@ int main(int argc, char **argv)
     }
 
     // printJobs();
-
+    printf("Execution trace with %s:\n", policy);
     // switch case with if else, not working with ints
     if (strcmp(policy, "FIFO") == 0)
     {
+
         struct job *ptr = head;
         while (ptr != NULL)
         {
@@ -137,7 +139,6 @@ int main(int argc, char **argv)
             ptr = ptr->next;
             idCounter--;
         }
-        // printf("FIFO\n");
     }
 
     else if (strcmp(policy, "SJF") == 0)
@@ -159,6 +160,7 @@ int main(int argc, char **argv)
     {
         printf("Enter FIFO SJF or RR as the policy\n");
     }
+    printf("End of execution with %s.\n", policy);
 
     return 0;
     // printf("Hello, please help me schedule!");
