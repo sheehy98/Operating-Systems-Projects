@@ -55,8 +55,25 @@ check_test () {
     local contrunning=$3
     local filetype=$4
 
+
+    if [[ "$filetype" =  "out" ]]; then
+    # the first 11 tests are about the scheduling algorithms
+    if (( $testnum < 12 )); then
+    # tailored to this assignment: only comparing the job execution traces
+    numlines=$(cat $testdir/$testnum.$filetype | wc -l)
+    head -n $numlines tests-out/$testnum.$filetype > tests-out/$testnum.$filetype.tmp # always override the tmp file content
+    returnval=$(diff $testdir/$testnum.$filetype tests-out/$testnum.$filetype.tmp)
+    else
+    # tailored to this assignment: only comparing the job execution traces
+    numlines=$(cat $testdir/$testnum.$filetype | wc -l)
+    tail -n $numlines tests-out/$testnum.$filetype > tests-out/$testnum.$filetype.tmp # always override the tmp file content
+    returnval=$(diff $testdir/$testnum.$filetype tests-out/$testnum.$filetype.tmp)
+    fi
+    else
     # option to use cmp instead?
     returnval=$(diff $testdir/$testnum.$filetype tests-out/$testnum.$filetype)
+    fi
+
     if (( $? == 0 )); then
 	echo 0
     else
@@ -179,11 +196,17 @@ for i; do
     esac
 done
 
+
 # need a test directory; must be named "tests-out"
 if [[ ! -d tests-out ]]; then
     mkdir tests-out
 fi
 
+# run just one test
+if [[ $specific != "" ]]; then
+    run_and_check $testdir $specific $contrunning $verbose 1
+    exit 0
+fi
 
 # run all tests
 (( testnum = 1 ))
