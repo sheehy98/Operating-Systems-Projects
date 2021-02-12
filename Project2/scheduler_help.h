@@ -29,7 +29,11 @@ void printJobs(struct job *head);
 int checkValidInput(int count, char policy[], int timeSlice)
 {
     int argCountValid = (count <= 4 && count >= 3) ? 1 : 0;
-    int policyValid = (strcmp(policy, "FIFO") == 0 || strcmp(policy, "SJF") == 0 || strcmp(policy, "RR") == 0) ? 1 : 0;
+    int policyValid = (strcmp(policy, "FIFO") == 0 ||
+                       strcmp(policy, "SJF") == 0 ||
+                       strcmp(policy, "RR") == 0)
+                          ? 1
+                          : 0;
     int timeSliceValid = (timeSlice >= 0 && timeSlice <= 100) ? 1 : 0;
 
     if ((argCountValid && policyValid && timeSliceValid) == 1)
@@ -89,10 +93,6 @@ void printJobs(struct job *head)
     }
 }
 
-void printJob(struct job **head)
-{
-}
-
 void appendJob(struct job **head, int id, int length)
 {
 
@@ -124,39 +124,39 @@ void appendJob(struct job **head, int id, int length)
     return;
 }
 
-// void removeJob(struct job **head, int key)
-// {
-//     // store curr head node
-//     struct job *temp = *head, *prev;
+void removeJob(struct job **head, int key)
+{
+    // store curr head node
+    struct job *temp = *head, *prev;
 
-//     // if head has key (id) to delete
-//     if (temp != NULL && temp->id == key)
-//     {
-//         *head = temp->next; // head changed
-//         free(temp);         //free the olde ahh head
-//         return;
-//     }
+    // if head has key (id) to delete
+    if (temp != NULL && temp->id == key)
+    {
+        *head = temp->next; // head changed
+        free(temp);         //free the olde ahh head
+        return;
+    }
 
-//     // else search for key to be added
-//     while (temp != NULL && temp->id != key)
-//     {
-//         prev = temp;
-//         temp = temp->next;
-//     }
+    // else search for key to be added
+    while (temp != NULL && temp->id != key)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
 
-//     // if key not in linked list
-//     if (temp == NULL)
-//     {
-//         printf("Could not find ID to delete :(");
-//         return;
-//     }
+    // if key not in linked list
+    if (temp == NULL)
+    {
+        printf("Could not find ID to delete :(");
+        return;
+    }
 
-//     // else unlink
-//     prev->next = temp->next;
+    // else unlink
+    prev->next = temp->next;
 
-//     free(temp);
-//     return;
-// }
+    free(temp);
+    return;
+}
 
 /* Swap helper function for bubble sort algo */
 void swapSJF(struct job *a, struct job *b)
