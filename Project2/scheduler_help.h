@@ -16,15 +16,111 @@ struct job // job linked list struct
     struct job *next; // singly linked list :(
 };
 
+struct completedJob
+{
+    int id;
+    int length;
+    int rTime;
+    int tTime;
+    struct completedJob *next;
+};
+
 // function prototypes
 int openFile(struct job **head, char testFile[]);
 int checkValidInput(int count, char policy[], int timeSlice);
 int getPolicy(char policy[]);
 void appendJob(struct job **head, int id, int length);
+void appendCompletedJob(struct completedJob **head, int id,
+                        int rTime, int tTime, int length);
 void removeJob(struct job **head, int key);
 void swapSJF(struct job *a, struct job *b);
 void bubbleSortSJF(struct job **head);
-void printJobs(struct job *head);
+void printJobs(struct job **head, char policy[]);
+int cjExists(struct completedJob **head, int id);
+void editCJNode(struct completedJob **head, int id, int rTime, int tTime);
+
+void responseTimeRR(struct job **head)
+{
+    struct job *ptr = *head;
+    while (ptr->next != NULL)
+    {
+    }
+}
+
+void editCJNode(struct completedJob **head, int id, int rTime, int tTime)
+{
+    struct completedJob *ptr = *head;
+    while (ptr->id != id)
+    {
+        ptr = ptr->next;
+    }
+
+    ptr->rTime = rTime;
+    ptr->tTime = tTime;
+
+    return;
+}
+
+int cjExists(struct completedJob **head, int id)
+{
+    struct completedJob *ptrCJ = *head;
+    while (ptrCJ != NULL)
+    {
+        if (ptrCJ->id == id)
+        {
+            return 1;
+        }
+        else
+        {
+            ptrCJ = ptrCJ->next;
+        } //
+    }
+    return 0;
+}
+
+void policyAnalysis(struct job **head, char policy[])
+{
+    struct job *ptr = *head;
+    int response = 0;
+    int totResponse = 0;
+    int turnaround = 0;
+    int totTurnaround = 0;
+    float numJobs = 0;
+    float responseAvg = 0;
+    float turnaroundAvg = 0;
+
+    printf("Begin analyzing %s:\n", policy);
+    while (ptr != NULL)
+    {
+        turnaround += ptr->length;
+        totTurnaround += turnaround;
+        // printf("Job %d ran for: %d\n", ptr->id, ptr->length);
+        printf("Job %i -- Response time: %i  Turnaround: %i  Wait: %i\n",
+               ptr->id, response, turnaround, response);
+        totResponse += response;
+        response += ptr->length;
+        ptr = ptr->next;
+        numJobs++;
+    }
+    responseAvg = (float)totResponse / numJobs;
+    turnaroundAvg = (float)totTurnaround / numJobs;
+    // printf("Total Response: %i, Total Turnaround: %i\n", totResponse, totTurnaround);
+    printf("Average -- Response: %.2f  Turnaround %.2f  Wait %.2f\n",
+           responseAvg, turnaroundAvg, responseAvg);
+    printf("End analyzing %s.\n", policy);
+}
+
+void printJobs(struct job **head, char policy[])
+{
+    struct job *ptr = *head;
+    printf("Execution trace with %s:\n", policy);
+    while (ptr != NULL)
+    {
+        printf("Job %d ran for: %d\n", ptr->id, ptr->length);
+        ptr = ptr->next;
+    }
+    printf("End of execution with %s.\n", policy);
+}
 
 int checkValidInput(int count, char policy[], int timeSlice)
 {
@@ -83,14 +179,38 @@ int openFile(struct job **head, char testFile[])
     return 0; // error
 }
 
-void printJobs(struct job *head)
+void appendCompletedJob(struct completedJob **head, int id,
+                        int rTime, int tTime, int length)
 {
-    struct job *ptr = (struct job *)malloc(sizeof(struct job));
-    while (ptr != NULL)
+
+    /* make new node */
+    struct completedJob *link = (struct completedJob *)
+        malloc(sizeof(struct completedJob));
+    struct completedJob *last = *head;
+
+    /* add data */
+    link->id = id;
+    link->rTime = rTime;
+    link->tTime = tTime;
+    link->length = length;
+
+    /* will be last node */
+    link->next = NULL;
+
+    /* if list empt, new node is head */
+    if (*head == NULL)
     {
-        // printf("ID: %i, Length: %i\n", ptr->id, ptr->length);
-        ptr = ptr->next;
+        *head = link;
+        return;
     }
+
+    /* otherwise go till last node */
+    while (last->next != NULL)
+        last = last->next;
+
+    /* change last node next */
+    last->next = link;
+    return;
 }
 
 void appendJob(struct job **head, int id, int length)
@@ -98,7 +218,6 @@ void appendJob(struct job **head, int id, int length)
 
     /* make new node */
     struct job *link = (struct job *)malloc(sizeof(struct job));
-
     struct job *last = *head;
 
     /* add data */
@@ -175,12 +294,11 @@ void swapSJF(struct job *a, struct job *b)
 void bubbleSortSJF(struct job **head)
 {
     int swapped, i;
-    struct job *ptrL;
-    struct job *ptrR;
+    struct job *ptrL = NULL;
+    struct job *ptrR = NULL;
 
     if (head == NULL)
     {
-        printf("FFFFF\n");
         return;
     }
 
