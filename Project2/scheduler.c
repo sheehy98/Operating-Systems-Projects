@@ -53,7 +53,7 @@ int main(int argc, char **argv)
             case (SJF):
             {
                 printf("Execution trace with %s:\n", policy);
-                printJobs(head);
+                // printJobs(head);
                 bubbleSortSJF(&head);
                 struct job *ptr = head;
                 while (ptr != NULL)
@@ -66,6 +66,7 @@ int main(int argc, char **argv)
             }
             case (RR):
             {
+                // should double check time slice isn't 0, would cause infinite loop
                 printf("Execution trace with %s:\n", policy);
                 struct job *ptr = head;
                 while (1)
