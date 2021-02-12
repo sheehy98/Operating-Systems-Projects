@@ -30,7 +30,7 @@ int checkValidInput(int count, char policy[], int timeSlice)
 {
     int argCountValid = (count <= 4 && count >= 3) ? 1 : 0;
     int policyValid = (strcmp(policy, "FIFO") == 0 || strcmp(policy, "SJF") == 0 || strcmp(policy, "RR") == 0) ? 1 : 0;
-    int timeSliceValid = (timeSlice > 0 && timeSlice <= 100) ? 1 : 0;
+    int timeSliceValid = (timeSlice >= 0 && timeSlice <= 100) ? 1 : 0;
 
     if ((argCountValid && policyValid && timeSliceValid) == 1)
     {
@@ -74,9 +74,9 @@ int openFile(struct job **head, char testFile[])
             idCounter++;
         }
         fclose(fp);
-        return 1;
+        return 1; // success
     }
-    return 0;
+    return 0; // error
 }
 
 void printJobs(struct job *head)
@@ -84,7 +84,7 @@ void printJobs(struct job *head)
     struct job *ptr = (struct job *)malloc(sizeof(struct job));
     while (ptr != NULL)
     {
-        printf("ID: %i, Length: %i\n", ptr->id, ptr->length);
+        // printf("ID: %i, Length: %i\n", ptr->id, ptr->length);
         ptr = ptr->next;
     }
 }
@@ -161,7 +161,7 @@ void appendJob(struct job **head, int id, int length)
 /* Swap helper function for bubble sort algo */
 void swapSJF(struct job *a, struct job *b)
 {
-    printf("Swapping ID: %i with ID%i", a->id, b->id);
+    // printf("Swapping ID: %i with ID: %i \n", a->id, b->id);
     int tempId = a->id;
     int tempLength = a->length;
     a->length = b->length;
@@ -180,8 +180,8 @@ void bubbleSortSJF(struct job **head)
 
     if (head == NULL)
     {
+        printf("FFFFF\n");
         return;
-        printf("FFFFF");
     }
 
     do

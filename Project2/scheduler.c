@@ -53,6 +53,7 @@ int main(int argc, char **argv)
             case (SJF):
             {
                 printf("Execution trace with %s:\n", policy);
+                printJobs(head);
                 bubbleSortSJF(&head);
                 struct job *ptr = head;
                 while (ptr != NULL)
