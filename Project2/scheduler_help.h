@@ -59,10 +59,8 @@ int getPolicy(char policy[])
 
 int openFile(struct job **head, char testFile[])
 {
-    /* ok why the hell did it work with [100] but wouldn't with [5]? 
-     * isn't [5] more than enough to hold 2 digit value? I thought max
-     * lines was what we were concerned about? */
-    char fileLines[100][MAX_LINES]; // setting a max of 512 lines from input file, don't think it'll exceed
+    /* row, column, not column row omg */
+    char fileLines[MAX_LINES][5]; // setting a max of 512 lines from input file, don't think it'll exceed
     // char **fileLines = malloc(512);
     int idCounter = 0; // use this value to iterate backwards later on
     FILE *fp = fopen(testFile, "r");
