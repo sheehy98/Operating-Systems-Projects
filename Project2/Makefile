@@ -1,5 +1,4 @@
-scheduler: 
-	gcc scheduler.c -o scheduler scheduler_help.h
+all: scheduler
 
 clean: 
 	rm -f *.o
