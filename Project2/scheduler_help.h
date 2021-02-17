@@ -55,7 +55,6 @@ void editCJNode(struct completedJob **head, int id, int tTime)
         ptr = ptr->next;
     }
 
-    // ptr->rTime = rTime;
     ptr->tTime = tTime;
 
     return;
@@ -73,7 +72,7 @@ int cjExists(struct completedJob **head, int id)
         else
         {
             ptrCJ = ptrCJ->next;
-        } //
+        }
     }
     return 0;
 }
@@ -94,7 +93,6 @@ void policyAnalysis(struct job **head, char policy[])
     {
         turnaround += ptr->length;
         totTurnaround += turnaround;
-        // printf("Job %d ran for: %d\n", ptr->id, ptr->length);
         printf("Job %i -- Response time: %i  Turnaround: %i  Wait: %i\n",
                ptr->id, response, turnaround, response);
         totResponse += response;
@@ -104,9 +102,86 @@ void policyAnalysis(struct job **head, char policy[])
     }
     responseAvg = (float)totResponse / numJobs;
     turnaroundAvg = (float)totTurnaround / numJobs;
-    // printf("Total Response: %i, Total Turnaround: %i\n", totResponse, totTurnaround);
     printf("Average -- Response: %.2f  Turnaround %.2f  Wait %.2f\n",
            responseAvg, turnaroundAvg, responseAvg);
+    printf("End analyzing %s.\n", policy);
+}
+
+void rrPlusPolicyAnalysis(int timeSliceInt, char policy[], struct job **head, struct completedJob **headCJ)
+{
+
+    printf("Execution trace with %s:\n", policy);
+    struct job *ptr = *head;
+
+    int rTime = 0;
+    int tTime = 0;
+    while (1)
+    {
+        int newLength = 0;
+        if (ptr->length > 0)
+        {
+            // if job length is greater than time slice
+            if (ptr->length > timeSliceInt)
+            {
+                printf("Job %i ran for: %i\n", ptr->id, timeSliceInt);
+                newLength = ptr->length - timeSliceInt;
+                tTime += timeSliceInt;
+                appendJob(&ptr, ptr->id, newLength);
+                if (cjExists(headCJ, ptr->id) == 0)
+                {
+                    appendCompletedJob(headCJ, ptr->id, rTime,
+                                       tTime, ptr->length);
+                }
+                else
+                {
+                    struct completedJob *ptrCJ = *headCJ;
+                    editCJNode(headCJ, ptr->id, tTime);
+                }
+                rTime += timeSliceInt;
+            }
+            else
+            {
+                tTime += ptr->length;
+                printf("Job %i ran for: %i\n", ptr->id, ptr->length);
+                if (cjExists(headCJ, ptr->id) == 0)
+                {
+                    appendCompletedJob(headCJ, ptr->id, rTime, tTime, ptr->length);
+                }
+                else
+                {
+                    struct completedJob *ptrCJ = *headCJ;
+                    editCJNode(headCJ, ptr->id, tTime);
+                }
+                rTime += ptr->length;
+            }
+            if ((ptr = ptr->next) == NULL)
+                break;
+        }
+    }
+    printf("End of execution with %s.\n", policy);
+    printf("Begin analyzing %s:\n", policy);
+    struct completedJob *ptrCJ = *headCJ;
+    float numJobs = 0;
+    int totResponse = 0;
+    int totTurnaround = 0;
+    int totWait = 0;
+    float responseAvg = 0;
+    float turnaroundAvg = 0;
+    float waitAvg = 0;
+    while (ptrCJ != NULL)
+    {
+        printf("Job %i -- Response time: %i  Turnaround: %i  Wait: %i\n", ptrCJ->id, ptrCJ->rTime, ptrCJ->tTime, (ptrCJ->tTime - ptrCJ->length));
+        totResponse += ptrCJ->rTime;
+        totTurnaround += ptrCJ->tTime;
+        totWait += (ptrCJ->tTime - ptrCJ->length);
+        ptrCJ = ptrCJ->next;
+        numJobs++;
+    }
+    responseAvg = (float)totResponse / numJobs;
+    turnaroundAvg = (float)totTurnaround / numJobs;
+    waitAvg = (float)totWait / numJobs;
+    printf("Average -- Response: %.2f  Turnaround %.2f  Wait %.2f\n",
+           responseAvg, turnaroundAvg, waitAvg);
     printf("End analyzing %s.\n", policy);
 }
 
@@ -161,8 +236,7 @@ int openFile(struct job **head, char testFile[])
 {
     /* row, column, not column row omg */
     char fileLines[MAX_LINES][5]; // setting a max of 512 lines from input file, don't think it'll exceed
-    // char **fileLines = malloc(512);
-    int idCounter = 0; // use this value to iterate backwards later on
+    int idCounter = 0;            // use this value to iterate backwards later on
     FILE *fp = fopen(testFile, "r");
     int curLine = 0;
     // Storing data FIFO with append job function
@@ -280,7 +354,6 @@ void removeJob(struct job **head, int key)
 /* Swap helper function for bubble sort algo */
 void swapSJF(struct job *a, struct job *b)
 {
-    // printf("Swapping ID: %i with ID: %i \n", a->id, b->id);
     int tempId = a->id;
     int tempLength = a->length;
     a->length = b->length;
