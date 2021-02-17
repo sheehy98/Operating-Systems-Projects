@@ -37,7 +37,7 @@ void swapSJF(struct job *a, struct job *b);
 void bubbleSortSJF(struct job **head);
 void printJobs(struct job **head, char policy[]);
 int cjExists(struct completedJob **head, int id);
-void editCJNode(struct completedJob **head, int id, int rTime, int tTime);
+void editCJNode(struct completedJob **head, int id, int tTime);
 
 void responseTimeRR(struct job **head)
 {
@@ -47,7 +47,7 @@ void responseTimeRR(struct job **head)
     }
 }
 
-void editCJNode(struct completedJob **head, int id, int rTime, int tTime)
+void editCJNode(struct completedJob **head, int id, int tTime)
 {
     struct completedJob *ptr = *head;
     while (ptr->id != id)
@@ -55,7 +55,7 @@ void editCJNode(struct completedJob **head, int id, int rTime, int tTime)
         ptr = ptr->next;
     }
 
-    ptr->rTime = rTime;
+    // ptr->rTime = rTime;
     ptr->tTime = tTime;
 
     return;

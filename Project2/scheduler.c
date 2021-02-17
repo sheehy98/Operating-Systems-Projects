@@ -40,6 +40,7 @@ int main(int argc, char **argv)
                 // should double check time slice isn't 0, would cause infinite loop
                 printf("Execution trace with %s:\n", policy);
                 struct job *ptr = head;
+
                 int rTime = 0;
                 int tTime = 0;
                 while (1)
@@ -50,19 +51,25 @@ int main(int argc, char **argv)
                         // if job length is greater than time slice
                         if (ptr->length > timeSliceInt)
                         {
-                            tTime += ptr->length;
                             printf("Job %i ran for: %i\n", ptr->id, timeSliceInt);
                             newLength = ptr->length - timeSliceInt;
+                            tTime += timeSliceInt;
                             appendJob(&ptr, ptr->id, newLength);
-                            if (!cjExists(&headCJ, ptr->id))
+                            if (cjExists(&headCJ, ptr->id) == 0)
                             {
                                 appendCompletedJob(&headCJ, ptr->id, rTime,
                                                    tTime, ptr->length);
-                                printf("Job with ID %i, rTime %i, wTime %i, length %i added\n",
-                                       ptr->id, rTime, tTime, ptr->length);
+                                // printf("Job with ID %i, rTime %i, wTime %i, length %i added\n",
+                                //        ptr->id, rTime, tTime, ptr->length);
                             }
                             else
                             {
+                                struct completedJob *ptrCJ = headCJ;
+                                // printf("JOB WITH ID: %i ALREADY EXISTS\n", ptr->id);
+                                editCJNode(&headCJ, ptr->id, tTime);
+                                // if job does exist
+                                // edit the turnaround time somehow
+                                // turnaround time = accumulated previous jobs runtime + newLength
                             }
                             rTime += timeSliceInt;
                         }
@@ -70,14 +77,17 @@ int main(int argc, char **argv)
                         {
                             tTime += ptr->length;
                             printf("Job %i ran for: %i\n", ptr->id, ptr->length);
-                            if (!cjExists(&headCJ, ptr->id))
+                            if (cjExists(&headCJ, ptr->id) == 0)
                             {
-                                appendCompletedJob(&headCJ, ptr->id, ptr->length, tTime, ptr->length);
-                                printf("Job with ID %i, rTime %i, wTime %i, length %i added\n",
-                                       ptr->id, rTime, tTime, ptr->length);
+                                appendCompletedJob(&headCJ, ptr->id, rTime, tTime, ptr->length);
+                                // printf("Job with ID %i, rTime %i, wTime %i, length %i added\n",
+                                //        ptr->id, rTime, tTime, ptr->length);
                             }
                             else
                             {
+                                // printf("JOB WITH ID: %i ALREADY EXISTS\n", ptr->id);
+                                struct completedJob *ptrCJ = headCJ;
+                                editCJNode(&headCJ, ptr->id, tTime);
                             }
                             rTime += ptr->length;
                         }
@@ -86,6 +96,30 @@ int main(int argc, char **argv)
                     }
                 }
                 printf("End of execution with %s.\n", policy);
+                printf("Begin analyzing %s:\n", policy);
+                struct completedJob *ptrCJ = headCJ;
+                float numJobs = 0;
+                int totResponse = 0;
+                int totTurnaround = 0;
+                int totWait = 0;
+                float responseAvg = 0;
+                float turnaroundAvg = 0;
+                float waitAvg = 0;
+                while (ptrCJ != NULL)
+                {
+                    printf("Job %i -- Response time: %i  Turnaround: %i  Wait: %i\n", ptrCJ->id, ptrCJ->rTime, ptrCJ->tTime, (ptrCJ->tTime - ptrCJ->length));
+                    totResponse += ptrCJ->rTime;
+                    totTurnaround += ptrCJ->tTime;
+                    totWait += (ptrCJ->tTime - ptrCJ->length);
+                    ptrCJ = ptrCJ->next;
+                    numJobs++;
+                }
+                responseAvg = (float)totResponse / numJobs;
+                turnaroundAvg = (float)totTurnaround / numJobs;
+                waitAvg = (float)totWait / numJobs;
+                printf("Average -- Response: %.2f  Turnaround %.2f  Wait %.2f\n",
+                       responseAvg, turnaroundAvg, waitAvg);
+                printf("End analyzing %s.\n", policy);
                 // policyAnalysis(&head, policy);
                 break;
             }
