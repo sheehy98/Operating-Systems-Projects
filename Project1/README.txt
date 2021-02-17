@@ -39,3 +39,18 @@ to print). Two potential issues in my slugrace code: 1) there is a +.25 bias add
 to my usleep placement. I am unsure if this expected or not, however I simply subtract by .25 when calculating time to 
 compensate, which I hope is okay. 2) My function that prints the currently running children doesn't perfectly match the
 output example in the project description; I'm not sure if this is an issue or not, but it seems to work fine.
+
+Novel workloads:
+
+Workload 1: jobs just need to be less than time slice
+
+Workload 2: first job needs to be much greater than other jobs to facilitate the 10x turnaround time average between
+FIFO and SJF (FIFO will just spit out the first value, SJF will run the shorter ones first)
+
+Workload 3: Workload must be in order from least to greatest with the greatest value being <= time slice
+
+Workload 4: opposite of workload 2.
+
+Workload 5: response time starts at 0, and adds length of previous job, so 3 + 9 = 12 + 3 = 15/3 = 5. Turnaround time
+was a matter of seeing that every +1 increase to third job resulted in a 1/3 increase of avg turnaround time, so added 3
+to 9 and voila.
