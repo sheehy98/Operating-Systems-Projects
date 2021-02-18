@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <string.h> // importing string.h... are we allowed to use this?
-// omfg pointers r confusing lomaoafjosdj
+#include <string.h>
+
 #define MAX_LINES 512
 #define FIFO 1
 #define SJF 2
@@ -25,7 +25,7 @@ struct completedJob
     struct completedJob *next;
 };
 
-// function prototypes
+/* function prototypes */
 int openFile(struct job **head, char testFile[]);
 int checkValidInput(int count, char policy[], int timeSlice);
 int getPolicy(char policy[]);
@@ -39,14 +39,7 @@ void printJobs(struct job **head, char policy[]);
 int cjExists(struct completedJob **head, int id);
 void editCJNode(struct completedJob **head, int id, int tTime);
 
-void responseTimeRR(struct job **head)
-{
-    struct job *ptr = *head;
-    while (ptr->next != NULL)
-    {
-    }
-}
-
+/* find existing node then edit the turnaround time */
 void editCJNode(struct completedJob **head, int id, int tTime)
 {
     struct completedJob *ptr = *head;
@@ -55,11 +48,12 @@ void editCJNode(struct completedJob **head, int id, int tTime)
         ptr = ptr->next;
     }
 
-    ptr->tTime = tTime;
+    ptr->tTime = tTime; // edit with new turnaround time
 
     return;
 }
 
+/* checks if the job exists in linked list */
 int cjExists(struct completedJob **head, int id)
 {
     struct completedJob *ptrCJ = *head;
@@ -77,8 +71,10 @@ int cjExists(struct completedJob **head, int id)
     return 0;
 }
 
+/* Policy analysis for SJF and FIFO */
 void policyAnalysis(struct job **head, char policy[])
 {
+    // variable definitions for pol analysis
     struct job *ptr = *head;
     int response = 0;
     int totResponse = 0;
@@ -92,7 +88,7 @@ void policyAnalysis(struct job **head, char policy[])
     while (ptr != NULL)
     {
         turnaround += ptr->length;
-        totTurnaround += turnaround;
+        totTurnaround += turnaround; // total turnaround = all prev turnarounds
         printf("Job %i -- Response time: %i  Turnaround: %i  Wait: %i\n",
                ptr->id, response, turnaround, response);
         totResponse += response;
@@ -100,50 +96,56 @@ void policyAnalysis(struct job **head, char policy[])
         ptr = ptr->next;
         numJobs++;
     }
-    responseAvg = (float)totResponse / numJobs;
+    responseAvg = (float)totResponse / numJobs; // casting for expected float output
     turnaroundAvg = (float)totTurnaround / numJobs;
-    printf("Average -- Response: %.2f  Turnaround %.2f  Wait %.2f\n",
+    printf("Average -- Response: %.2f  Turnaround %.2f  Wait %.2f\n", // .2f for 2 decimal places
            responseAvg, turnaroundAvg, responseAvg);
     printf("End analyzing %s.\n", policy);
 }
 
+/* round robin implementation and simultaneous policy analysis*/
 void rrPlusPolicyAnalysis(int timeSliceInt, char policy[], struct job **head, struct completedJob **headCJ)
 {
 
     printf("Execution trace with %s:\n", policy);
     struct job *ptr = *head;
 
-    int rTime = 0;
-    int tTime = 0;
+    int rTime = 0; // response time
+    int tTime = 0; // turnaround time
     while (1)
     {
-        int newLength = 0;
+        int newLength = 0; // new length of job after it runs for timeslice
         if (ptr->length > 0)
         {
-            // if job length is greater than time slice
+            /* if job length is greater than time slice
+               subtract from job length, and only run for
+               time slice amount
+            */
             if (ptr->length > timeSliceInt)
             {
                 printf("Job %i ran for: %i\n", ptr->id, timeSliceInt);
                 newLength = ptr->length - timeSliceInt;
                 tTime += timeSliceInt;
                 appendJob(&ptr, ptr->id, newLength);
+                /* if the job does not exist append to 
+                completed job linked list */
                 if (cjExists(headCJ, ptr->id) == 0)
                 {
                     appendCompletedJob(headCJ, ptr->id, rTime,
                                        tTime, ptr->length);
                 }
-                else
+                else // does exist, edit existing job
                 {
                     struct completedJob *ptrCJ = *headCJ;
                     editCJNode(headCJ, ptr->id, tTime);
                 }
                 rTime += timeSliceInt;
             }
-            else
+            else // run for its full job length
             {
                 tTime += ptr->length;
                 printf("Job %i ran for: %i\n", ptr->id, ptr->length);
-                if (cjExists(headCJ, ptr->id) == 0)
+                if (cjExists(headCJ, ptr->id) == 0) // same logic as previous
                 {
                     appendCompletedJob(headCJ, ptr->id, rTime, tTime, ptr->length);
                 }
@@ -154,11 +156,12 @@ void rrPlusPolicyAnalysis(int timeSliceInt, char policy[], struct job **head, st
                 }
                 rTime += ptr->length;
             }
-            if ((ptr = ptr->next) == NULL)
+            if ((ptr = ptr->next) == NULL) // if next node will be null, break out of loop
                 break;
         }
     }
     printf("End of execution with %s.\n", policy);
+    /* begin policy analysis stuff here */
     printf("Begin analyzing %s:\n", policy);
     struct completedJob *ptrCJ = *headCJ;
     float numJobs = 0;
@@ -185,6 +188,7 @@ void rrPlusPolicyAnalysis(int timeSliceInt, char policy[], struct job **head, st
     printf("End analyzing %s.\n", policy);
 }
 
+/* print until no jobs left to print */
 void printJobs(struct job **head, char policy[])
 {
     struct job *ptr = *head;
@@ -197,23 +201,25 @@ void printJobs(struct job **head, char policy[])
     printf("End of execution with %s.\n", policy);
 }
 
+/* several checks to see if input is valid */
 int checkValidInput(int count, char policy[], int timeSlice)
 {
-    int argCountValid = (count <= 4 && count >= 3) ? 1 : 0;
-    int policyValid = (strcmp(policy, "FIFO") == 0 ||
+    int argCountValid = (count <= 4 && count >= 3) ? 1 : 0; // no. arguments correct/expects
+    int policyValid = (strcmp(policy, "FIFO") == 0 ||       // one of the expected policies
                        strcmp(policy, "SJF") == 0 ||
                        strcmp(policy, "RR") == 0)
                           ? 1
                           : 0;
-    int timeSliceValid = (timeSlice >= 0 && timeSlice <= 100) ? 1 : 0;
+    int timeSliceValid = (timeSlice >= 0 && timeSlice <= 100) ? 1 : 0; // realistic timeslice
 
-    if ((argCountValid && policyValid && timeSliceValid) == 1)
+    if ((argCountValid && policyValid && timeSliceValid) == 1) // if all is as expected, return true
     {
         return 1;
     }
     return 0;
 }
 
+/* simple get policy int based on char input */
 int getPolicy(char policy[])
 {
     if (strcmp(policy, "FIFO") == 0)
@@ -244,8 +250,8 @@ int openFile(struct job **head, char testFile[])
     {
         while ((fgets(fileLines[idCounter], MAX_LINES, fp) != NULL))
         {
-            appendJob(head, idCounter, atoi(fileLines[idCounter]));
-            idCounter++;
+            appendJob(head, idCounter, atoi(fileLines[idCounter])); // append job, rather than add to start of list
+            idCounter++;                                            // makes our life easier
         }
         fclose(fp);
         return 1; // success
@@ -253,6 +259,7 @@ int openFile(struct job **head, char testFile[])
     return 0; // error
 }
 
+/* same append function as for job linked list, customized for completed job */
 void appendCompletedJob(struct completedJob **head, int id,
                         int rTime, int tTime, int length)
 {
@@ -287,6 +294,7 @@ void appendCompletedJob(struct completedJob **head, int id,
     return;
 }
 
+/* append job to end of linked list rather than start */
 void appendJob(struct job **head, int id, int length)
 {
 
@@ -317,6 +325,7 @@ void appendJob(struct job **head, int id, int length)
     return;
 }
 
+/* never used this function, but wrote it in case we wanted to remove nodes */
 void removeJob(struct job **head, int key)
 {
     // store curr head node
