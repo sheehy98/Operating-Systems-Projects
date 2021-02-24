@@ -1,9 +1,9 @@
-scheduler: test_goatmalloc.c goatmalloc.h
-	gcc -o test_goatmalloc test_goatmalloc.c 
+goatmalloc: goatmalloc.c goatmalloc.h
+	gcc -o goatmalloc goatmalloc.c 
 
-all: test_goatmalloc.c goatmalloc.h
-	gcc -o test_goatmalloc test_goatmalloc.c 
+# all: goatmalloc.c goatmalloc.h
+# 	gcc -o goatmalloc goatmalloc.c 
 
 clean: 
 	rm -f *.o
-	rm -f scheduler
+	rm -f goatmalloc
