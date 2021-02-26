@@ -99,7 +99,7 @@ void *walloc(size_t size)
     statusno = 0;
     printf("size passed in: %d\n", (int)size);
 
-    // IF uninitialized
+        // IF uninitialized
     if (!_arena_start)
     {
         printf("mem uninitialized\n");
