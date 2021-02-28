@@ -1,5 +1,5 @@
-goatmalloc: goatmalloc.c goatmalloc.h
-	gcc -o goatmalloc goatmalloc.c 
+goatmalloc: goatmalloc.c test_goatmalloc.c
+	gcc -o goatmalloc goatmalloc.c test_goatmalloc.c 
 
 # all: goatmalloc.c goatmalloc.h
 # 	gcc -o goatmalloc goatmalloc.c 

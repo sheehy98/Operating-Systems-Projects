@@ -81,379 +81,379 @@ void test_allocation_basic()
   destroy();
 }
 
-// void test_allocationfree_placement()
-// {
-//   int size = 0;
-//   int page_size = getpagesize();
-//   void *buff, *buff2, *buff3;
-//   node_t *header = NULL;
-
-//   printf(">> Testing basic allocation free placement.\n");
-
-//   // Test: Create two allocatations.
-//   // Free first allocation but leave the second allocation in place.
-//   // Create third allocation an Ensure that the
-//   // third allocation is placed in the first free chunk
-//   init(page_size);
-
-//   size = 32;
-//   buff = walloc(size);
-//   assert(buff != NULL);
-//   memset(buff, 'a', size);
-
-//   header = (node_t *)(buff - sizeof(node_t));
-
-//   //This checks that the header for the first allocation is placed
-//   //at the start of a page boundary. If this check fails, then the
-//   //first header is not placed at the start of the arena.
-//   assert(((unsigned long)header & 0xFFF) == 0);
-
-//   print_header(header);
-
-//   buff2 = walloc(size);
-
-//   wfree(buff);
-
-//   //Next allocation should be in same place as the first allocation
-//   buff3 = walloc(size);
-//   assert(buff3 == buff);
-//   //The characters from the previous memset should also be there
-//   assert(((char *)buff)[0] == 'a' && ((char *)buff)[size - 1] == 'a');
-
-//   destroy();
-// }
-
-// void test_allocation_withsplits()
-// {
-//   int size = 0;
-//   int page_size = getpagesize();
-//   void *buff = NULL, *buff2 = NULL;
-//   node_t *header = NULL, *header2 = NULL;
-
-//   printf(">>Testing allocations with splits.\n");
-
-//   // Test: First allocation causes split. Check that the header is in the
-//   // correct place, has the correct field values, and that chunks were split
-//   // correctly
-//   init(page_size);
-//   buff = walloc(64);
-//   assert(buff != NULL);
-
-//   header = (node_t *)(buff - sizeof(node_t));
-//   print_header(header);
-
-//   assert(header->size == 64);
-//   assert(header->bwd == NULL);
-//   assert(header->is_free == 0);
-//   assert(header->fwd == ((void *)header) + sizeof(node_t) + 64);
-
-//   node_t *next = header->fwd;
-//   print_header(next);
-
-//   assert(next->fwd == NULL);
-//   assert(next->bwd == header);
-//   assert(next->size == page_size - 64 - (sizeof(node_t) * 2));
-//   assert(next->is_free == 1);
-
-//   // Test: Second allocation uses up remaining free space. Check that
-//   // the allocation is in the correct place and has the correct field values.
-//   size = page_size - 64 - (sizeof(node_t) * 2);
-//   buff2 = walloc(size);
-
-//   header2 = (node_t *)(buff2 - sizeof(node_t));
-//   print_header(header2);
-
-//   assert(header2 == next);
-//   assert(header2->size == size);
-//   assert(header2->is_free == 0);
-//   assert(header2->fwd == NULL);
-//   assert(header2->bwd == header);
+void test_allocationfree_placement()
+{
+  int size = 0;
+  int page_size = getpagesize();
+  void *buff, *buff2, *buff3;
+  node_t *header = NULL;
+
+  printf(">> Testing basic allocation free placement.\n");
+
+  // Test: Create two allocatations.
+  // Free first allocation but leave the second allocation in place.
+  // Create third allocation an Ensure that the
+  // third allocation is placed in the first free chunk
+  init(page_size);
+
+  size = 32;
+  buff = walloc(size);
+  assert(buff != NULL);
+  memset(buff, 'a', size);
+
+  header = (node_t *)(buff - sizeof(node_t));
+
+  //This checks that the header for the first allocation is placed
+  //at the start of a page boundary. If this check fails, then the
+  //first header is not placed at the start of the arena.
+  assert(((unsigned long)header & 0xFFF) == 0);
+
+  print_header(header);
+
+  buff2 = walloc(size);
+
+  wfree(buff);
+
+  //Next allocation should be in same place as the first allocation
+  buff3 = walloc(size);
+  assert(buff3 == buff);
+  //The characters from the previous memset should also be there
+  assert(((char *)buff)[0] == 'a' && ((char *)buff)[size - 1] == 'a');
+
+  destroy();
+}
+
+void test_allocation_withsplits()
+{
+  int size = 0;
+  int page_size = getpagesize();
+  void *buff = NULL, *buff2 = NULL;
+  node_t *header = NULL, *header2 = NULL;
+
+  printf(">>Testing allocations with splits.\n");
+
+  // Test: First allocation causes split. Check that the header is in the
+  // correct place, has the correct field values, and that chunks were split
+  // correctly
+  init(page_size);
+  buff = walloc(64);
+  assert(buff != NULL);
+
+  header = (node_t *)(buff - sizeof(node_t));
+  print_header(header);
+
+  assert(header->size == 64);
+  assert(header->bwd == NULL);
+  assert(header->is_free == 0);
+  assert(header->fwd == ((void *)header) + sizeof(node_t) + 64);
+
+  node_t *next = header->fwd;
+  print_header(next);
+
+  assert(next->fwd == NULL);
+  assert(next->bwd == header);
+  assert(next->size == page_size - 64 - (sizeof(node_t) * 2));
+  assert(next->is_free == 1);
+
+  // Test: Second allocation uses up remaining free space. Check that
+  // the allocation is in the correct place and has the correct field values.
+  size = page_size - 64 - (sizeof(node_t) * 2);
+  buff2 = walloc(size);
+
+  header2 = (node_t *)(buff2 - sizeof(node_t));
+  print_header(header2);
+
+  assert(header2 == next);
+  assert(header2->size == size);
+  assert(header2->is_free == 0);
+  assert(header2->fwd == NULL);
+  assert(header2->bwd == header);
 
-//   destroy();
-
-//   // Test: Only split if the process of splitting would leaves
-//   // enough room for another chunk.
-//   init(page_size);
-//   buff = walloc(64);
-//   //This should leave 10 bytes remaining in the arena
-//   size = page_size - 64 - (sizeof(node_t) * 2) - 10;
-//   buff2 = walloc(size);
+  destroy();
+
+  // Test: Only split if the process of splitting would leaves
+  // enough room for another chunk.
+  init(page_size);
+  buff = walloc(64);
+  //This should leave 10 bytes remaining in the arena
+  size = page_size - 64 - (sizeof(node_t) * 2) - 10;
+  buff2 = walloc(size);
 
-//   header2 = (node_t *)(buff2 - sizeof(node_t));
-//   print_header(header2);
+  header2 = (node_t *)(buff2 - sizeof(node_t));
+  print_header(header2);
 
-//   assert(header2->size == size + 10);
-//   assert(header2->fwd == NULL);
+  assert(header2->size == size + 10);
+  assert(header2->fwd == NULL);
 
-//   destroy();
-// }
+  destroy();
+}
 
-// void test_free_basic()
-// {
-//   int size;
-//   int page_size = getpagesize();
-//   void *buff;
-//   node_t *header;
+void test_free_basic()
+{
+  int size;
+  int page_size = getpagesize();
+  void *buff;
+  node_t *header;
 
-//   printf(">>Testing frees without coalescing.\n");
-//   init(page_size);
-//   size = page_size - sizeof(node_t);
-//   buff = walloc(size);
-//   header = (node_t *)(buff - sizeof(node_t));
+  printf(">>Testing frees without coalescing.\n");
+  init(page_size);
+  size = page_size - sizeof(node_t);
+  buff = walloc(size);
+  header = (node_t *)(buff - sizeof(node_t));
 
-//   assert(header->is_free == 0);
-//   wfree(buff);
-//   assert(header->is_free == 1);
-//   assert(header->size == size);
+  assert(header->is_free == 0);
+  wfree(buff);
+  assert(header->is_free == 1);
+  assert(header->size == size);
 
-//   destroy();
-// }
+  destroy();
+}
 
-// void test_free_coalescing_case3()
-// {
-//   int size, size2;
-//   int page_size = getpagesize();
-//   void *buff, *buff2;
-//   node_t *header, *header2;
+void test_free_coalescing_case3()
+{
+  int size, size2;
+  int page_size = getpagesize();
+  void *buff, *buff2;
+  node_t *header, *header2;
 
-//   printf(">>Testing frees with coalescing. Case 2.\n");
+  printf(">>Testing frees with coalescing. Case 2.\n");
 
-//   init(page_size);
+  init(page_size);
 
-//   size = 64;
-//   //Have this allocation fill up the rest of the arena
-//   size2 = page_size - size - sizeof(node_t) * 2;
+  size = 64;
+  //Have this allocation fill up the rest of the arena
+  size2 = page_size - size - sizeof(node_t) * 2;
 
-//   buff = walloc(size);
-//   buff2 = walloc(size2);
+  buff = walloc(size);
+  buff2 = walloc(size2);
 
-//   assert(buff != NULL);
-//   assert(buff2 != NULL);
+  assert(buff != NULL);
+  assert(buff2 != NULL);
 
-//   header = ((void *)buff) - sizeof(node_t);
-//   header2 = ((void *)buff2) - sizeof(node_t);
+  header = ((void *)buff) - sizeof(node_t);
+  header2 = ((void *)buff2) - sizeof(node_t);
 
-//   print_header(header);
-//   print_header(header2);
+  print_header(header);
+  print_header(header2);
 
-//   assert(header->is_free == 0);
-//   assert(header2->is_free == 0);
+  assert(header->is_free == 0);
+  assert(header2->is_free == 0);
 
-//   wfree(buff2);
-//   assert(header2->is_free = 1);
-//   assert(header2->size == size2);
+  wfree(buff2);
+  assert(header2->is_free = 1);
+  assert(header2->size == size2);
 
-//   //this should cause coalescing.
-//   wfree(buff);
+  //this should cause coalescing.
+  wfree(buff);
 
-//   //The coalesced node header should reside at the start of the
-//   //arena (i.e., where header points)
-//   print_header(header);
+  //The coalesced node header should reside at the start of the
+  //arena (i.e., where header points)
+  print_header(header);
 
-//   assert(header->size == page_size - sizeof(node_t));
-//   assert(header->bwd == NULL);
-//   assert(header->fwd == NULL);
+  assert(header->size == page_size - sizeof(node_t));
+  assert(header->bwd == NULL);
+  assert(header->fwd == NULL);
 
-//   destroy();
-// }
+  destroy();
+}
 
-// void test_free_coalescing_case2()
-// {
-//   int size, size2;
-//   int page_size = getpagesize();
-//   void *buff, *buff2;
-//   node_t *header, *header2;
+void test_free_coalescing_case2()
+{
+  int size, size2;
+  int page_size = getpagesize();
+  void *buff, *buff2;
+  node_t *header, *header2;
 
-//   printf(">>Testing frees with coalescing. Case 2.\n");
+  printf(">>Testing frees with coalescing. Case 2.\n");
 
-//   init(page_size);
+  init(page_size);
 
-//   size = 64;
-//   //Have this allocation fill up the rest of the arena
-//   size2 = page_size - size - sizeof(node_t) * 2;
+  size = 64;
+  //Have this allocation fill up the rest of the arena
+  size2 = page_size - size - sizeof(node_t) * 2;
 
-//   buff = walloc(size);
-//   buff2 = walloc(size2);
+  buff = walloc(size);
+  buff2 = walloc(size2);
 
-//   assert(buff != NULL);
-//   assert(buff2 != NULL);
+  assert(buff != NULL);
+  assert(buff2 != NULL);
 
-//   header = ((void *)buff) - sizeof(node_t);
-//   header2 = ((void *)buff2) - sizeof(node_t);
+  header = ((void *)buff) - sizeof(node_t);
+  header2 = ((void *)buff2) - sizeof(node_t);
 
-//   print_header(header);
-//   print_header(header2);
+  print_header(header);
+  print_header(header2);
 
-//   assert(header->is_free == 0);
-//   assert(header2->is_free == 0);
+  assert(header->is_free == 0);
+  assert(header2->is_free == 0);
 
-//   wfree(buff);
-//   assert(header->is_free = 1);
-//   assert(header->size == size);
+  wfree(buff);
+  assert(header->is_free = 1);
+  assert(header->size == size);
 
-//   //this should cause coalescing.
-//   wfree(buff2);
+  //this should cause coalescing.
+  wfree(buff2);
 
-//   //The coalesced node header should reside at the start of the
-//   //arena (i.e., where header points)
-//   print_header(header);
+  //The coalesced node header should reside at the start of the
+  //arena (i.e., where header points)
+  print_header(header);
 
-//   assert(header->size == page_size - sizeof(node_t));
-//   assert(header->bwd == NULL);
-//   assert(header->fwd == NULL);
+  assert(header->size == page_size - sizeof(node_t));
+  assert(header->bwd == NULL);
+  assert(header->fwd == NULL);
 
-//   destroy();
-// }
+  destroy();
+}
 
-// void test_free_coalescing_case1()
-// {
-//   int size, size2, size3;
-//   int page_size = getpagesize();
-//   void *buff, *buff2, *buff3;
-//   node_t *header, *header2, *header3;
+void test_free_coalescing_case1()
+{
+  int size, size2, size3;
+  int page_size = getpagesize();
+  void *buff, *buff2, *buff3;
+  node_t *header, *header2, *header3;
 
-//   printf(">>Testing frees with coalescing. Case 1.\n");
+  printf(">>Testing frees with coalescing. Case 1.\n");
 
-//   init(page_size);
+  init(page_size);
 
-//   size = 64;
-//   size2 = 128;
-//   //Have the third allocation fill up the rest of the arena
-//   size3 = page_size - size - size2 - sizeof(node_t) * 3;
+  size = 64;
+  size2 = 128;
+  //Have the third allocation fill up the rest of the arena
+  size3 = page_size - size - size2 - sizeof(node_t) * 3;
 
-//   //Case 1: Combine prev, current, next
-//   buff = walloc(size);
-//   buff2 = walloc(size2);
-//   buff3 = walloc(size3);
+  //Case 1: Combine prev, current, next
+  buff = walloc(size);
+  buff2 = walloc(size2);
+  buff3 = walloc(size3);
 
-//   assert(buff != NULL);
-//   assert(buff2 != NULL);
-//   assert(buff3 != NULL);
+  assert(buff != NULL);
+  assert(buff2 != NULL);
+  assert(buff3 != NULL);
 
-//   header = ((void *)buff) - sizeof(node_t);
-//   header2 = ((void *)buff2) - sizeof(node_t);
-//   header3 = ((void *)buff3) - sizeof(node_t);
+  header = ((void *)buff) - sizeof(node_t);
+  header2 = ((void *)buff2) - sizeof(node_t);
+  header3 = ((void *)buff3) - sizeof(node_t);
 
-//   print_header(header);
-//   print_header(header2);
-//   print_header(header3);
+  print_header(header);
+  print_header(header2);
+  print_header(header3);
 
-//   assert(header->is_free == 0);
-//   assert(header2->is_free == 0);
-//   assert(header3->is_free == 0);
+  assert(header->is_free == 0);
+  assert(header2->is_free == 0);
+  assert(header3->is_free == 0);
 
-//   wfree(buff);
-//   wfree(buff3);
+  wfree(buff);
+  wfree(buff3);
 
-//   assert(header->is_free = 1);
-//   assert(header3->is_free = 1);
+  assert(header->is_free = 1);
+  assert(header3->is_free = 1);
 
-//   assert(header->size == size);
-//   assert(header3->size == size3);
+  assert(header->size == size);
+  assert(header3->size == size3);
 
-//   //this should cause coalescing.
-//   wfree(buff2);
+  //this should cause coalescing.
+  wfree(buff2);
 
-//   //The coalesced node header should reside at the start of the
-//   //arena (i.e., where header points)
-//   print_header(header);
+  //The coalesced node header should reside at the start of the
+  //arena (i.e., where header points)
+  print_header(header);
 
-//   assert(header->size == page_size - sizeof(node_t));
-//   assert(header->bwd == NULL);
-//   assert(header->fwd == NULL);
+  assert(header->size == page_size - sizeof(node_t));
+  assert(header->bwd == NULL);
+  assert(header->fwd == NULL);
 
-//   destroy();
-// }
+  destroy();
+}
 
-// void test_free_coalescing_chains_fwd()
-// {
-//   int size;
-//   int page_size = getpagesize();
-//   void *buff, *buff2, *buff3, *buff4;
+void test_free_coalescing_chains_fwd()
+{
+  int size;
+  int page_size = getpagesize();
+  void *buff, *buff2, *buff3, *buff4;
 
-//   printf(">>Testing frees with coalescing chaining\n");
+  printf(">>Testing frees with coalescing chaining\n");
 
-//   init(page_size);
+  init(page_size);
 
-//   size = 64;
+  size = 64;
 
-//   buff = walloc(size);
-//   buff2 = walloc(size);
-//   buff3 = walloc(size);
-//   buff4 = walloc(size);
+  buff = walloc(size);
+  buff2 = walloc(size);
+  buff3 = walloc(size);
+  buff4 = walloc(size);
 
-//   assert(buff != NULL);
-//   assert(buff2 != NULL);
-//   assert(buff3 != NULL);
-//   assert(buff4 != NULL);
+  assert(buff != NULL);
+  assert(buff2 != NULL);
+  assert(buff3 != NULL);
+  assert(buff4 != NULL);
 
-//   node_t *header = ((void *)buff) - sizeof(node_t);
+  node_t *header = ((void *)buff) - sizeof(node_t);
 
-//   wfree(buff);
-//   wfree(buff2);
-//   wfree(buff3);
-//   wfree(buff4);
+  wfree(buff);
+  wfree(buff2);
+  wfree(buff3);
+  wfree(buff4);
 
-//   print_header(header);
+  print_header(header);
 
-//   //check to make sure the above seq. ends with
-//   //a single free node.
-//   assert(header->size == page_size - sizeof(node_t));
-//   assert(header->is_free == 1);
-//   assert(header->bwd == NULL);
-//   assert(header->fwd == NULL);
+  //check to make sure the above seq. ends with
+  //a single free node.
+  assert(header->size == page_size - sizeof(node_t));
+  assert(header->is_free == 1);
+  assert(header->bwd == NULL);
+  assert(header->fwd == NULL);
 
-//   destroy();
-// }
+  destroy();
+}
 
-// void test_free_coalescing_chains_bwd()
-// {
-//   int size;
-//   int page_size = getpagesize();
-//   void *buff, *buff2, *buff3, *buff4;
+void test_free_coalescing_chains_bwd()
+{
+  int size;
+  int page_size = getpagesize();
+  void *buff, *buff2, *buff3, *buff4;
 
-//   printf(">>Testing frees with coalescing chaining\n");
+  printf(">>Testing frees with coalescing chaining\n");
 
-//   init(page_size);
+  init(page_size);
 
-//   size = 64;
+  size = 64;
 
-//   buff = walloc(size);
-//   buff2 = walloc(size);
-//   buff3 = walloc(size);
-//   buff4 = walloc(size);
+  buff = walloc(size);
+  buff2 = walloc(size);
+  buff3 = walloc(size);
+  buff4 = walloc(size);
 
-//   assert(buff != NULL);
-//   assert(buff2 != NULL);
-//   assert(buff3 != NULL);
-//   assert(buff4 != NULL);
+  assert(buff != NULL);
+  assert(buff2 != NULL);
+  assert(buff3 != NULL);
+  assert(buff4 != NULL);
 
-//   node_t *header = ((void *)buff) - sizeof(node_t);
+  node_t *header = ((void *)buff) - sizeof(node_t);
 
-//   wfree(buff4);
-//   wfree(buff3);
-//   wfree(buff2);
-//   wfree(buff);
+  wfree(buff4);
+  wfree(buff3);
+  wfree(buff2);
+  wfree(buff);
 
-//   print_header(header);
+  print_header(header);
 
-//   //check to make sure the above seq. ends with
-//   //a single free node.
-//   assert(header->size == page_size - sizeof(node_t));
-//   assert(header->is_free == 1);
-//   assert(header->bwd == NULL);
-//   assert(header->fwd == NULL);
+  //check to make sure the above seq. ends with
+  //a single free node.
+  assert(header->size == page_size - sizeof(node_t));
+  assert(header->is_free == 1);
+  assert(header->bwd == NULL);
+  assert(header->fwd == NULL);
 
-//   destroy();
-// }
+  destroy();
+}
 
 int main()
 {
   test_init_destroy();
   test_allocation_basic();
-  //test_free_basic();
-  //test_allocation_withsplits();
-  //test_allocationfree_placement();
+  test_free_basic();
+  test_allocation_withsplits();
+  test_allocationfree_placement();
   // test_free_coalescing_case1();
   //test_free_coalescing_case2();
   //test_free_coalescing_case3();

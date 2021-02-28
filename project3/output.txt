@@ -1,0 +1,34 @@
+Initializing arena:
+...requested size 4096 bytes
+...pagesize is 4096 bytes
+...adjusting size with page boundaries
+...adjusted size is 4096 bytes
+...mapping arena with mmap()
+...arena starts at 0x7fdd77bbf000
+...arena ends at 0x7fdd77bc0000
+...initializing header for initial free chunk
+...header size is 32 bytes
+size passed in: 32
+Set new size
+Set new is free
+Set new fwd
+Set new bwd
+Header->size: 32
+Header->fwd: 0x7fdd77bbf040
+Header->bwd: (nil)
+Header->is_free: 0
+size passed in: 32
+Going to next node (fwd)
+Set new size
+Set new is free
+Set new fwd
+Set new bwd
+Freeing allocated memory:
+...supplied pointer 0x7fdd77bbf020
+...being careful with my pointer arithmetic and void pointer casting
+...accessing chunk header at 0x7fdd77bbf000
+...chunk of size 32
+size passed in: 32
+Destroying Arena:
+...unmapping arena with munmap()
+All tests passed!
