@@ -21,13 +21,6 @@ int init(size_t size)
   size_t pageSize = getpagesize();
   printf("...requested size %.00f bytes\n", (double)size); // casting to double to convert -1 to expected output
 
-  // if ((int)size < 0 || (int)size > MAX_ARENA_SIZE) // CHANGED THIS TO MATCH REQUIREMENTS
-  // {
-  //   printf("...error: requested size larger than MAX_ARENA_SIZE (%d)\n", MAX_ARENA_SIZE);
-  //   statusno = ERR_BAD_ARGUMENTS;
-  //   return statusno;
-  // }
-
   if ((double)size > MAX_ARENA_SIZE) // casting to double to convert -1 to expected output
   {
     printf("...error: requested size larger than MAX_ARENA_SIZE (%d)\n", MAX_ARENA_SIZE);
