@@ -19,9 +19,16 @@ int init(size_t size)
   _arena_start = 0;
   statusno = 0;
   size_t pageSize = getpagesize();
-  printf("...requested size %d bytes\n", (signed int)size);
+  printf("...requested size %.00f bytes\n", (double)size); // casting to double to convert -1 to expected output
 
-  if ((int)size < 0 || (int)size > MAX_ARENA_SIZE) // CHANGED THIS TO MATCH REQUIREMENTS
+  // if ((int)size < 0 || (int)size > MAX_ARENA_SIZE) // CHANGED THIS TO MATCH REQUIREMENTS
+  // {
+  //   printf("...error: requested size larger than MAX_ARENA_SIZE (%d)\n", MAX_ARENA_SIZE);
+  //   statusno = ERR_BAD_ARGUMENTS;
+  //   return statusno;
+  // }
+
+  if ((double)size > MAX_ARENA_SIZE) // casting to double to convert -1 to expected output
   {
     printf("...error: requested size larger than MAX_ARENA_SIZE (%d)\n", MAX_ARENA_SIZE);
     statusno = ERR_BAD_ARGUMENTS;
@@ -46,11 +53,11 @@ int init(size_t size)
 
   printf("...initializing header for initial free chunk\n");
 
-  node_t *node = _arena_start;
-  node->size = adjustedSize - sizeof(node_t);
-  node->is_free = 1;
-  node->fwd = NULL;
-  node->bwd = NULL;
+  node_t *header = _arena_start;
+  header->size = adjustedSize - sizeof(node_t);
+  header->is_free = 1;
+  header->fwd = NULL;
+  header->bwd = NULL;
 
   printf("...header size is %i bytes\n", (int)sizeof(node_t));
   return (int)adjustedSize;
