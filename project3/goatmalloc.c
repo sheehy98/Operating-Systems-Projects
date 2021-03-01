@@ -1,9 +1,6 @@
-#include <assert.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <string.h>
 #include <sys/mman.h>
-#include <time.h>
 #include <unistd.h>
 #include "goatmalloc.h"
 
