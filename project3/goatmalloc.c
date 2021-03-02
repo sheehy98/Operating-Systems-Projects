@@ -146,6 +146,7 @@ void *walloc(size_t size)
 
 void wfree(void *ptr)
 {
+  int frees = 0;
   printf("Freeing allocated memory:\n");
   printf("...supplied pointer %p\n", ptr);
   printf("...being careful with my pointer arithmetic and void pointer casting\n");
@@ -161,6 +162,7 @@ void wfree(void *ptr)
   printf("...checking if coalescing is needed\n");
   // implement coalsecing here
   if (header->fwd != NULL && header->fwd->is_free == 1){
+    frees = 3;
     header->size = header->size + header->fwd->size + sizeof(struct __node_t);
     header->fwd = header->fwd->fwd;
     if (header->fwd != NULL){
@@ -168,14 +170,19 @@ void wfree(void *ptr)
     }
   }
   if (header->bwd != NULL && header->bwd->is_free == 1){
-    printf("bwds\n");
+    frees = (frees == 3) ? 1: 2;
     header->bwd->size = header->size + header->bwd->size + sizeof(struct __node_t);
     header->bwd->fwd = header->fwd;
     if (header->fwd != NULL){
       header->fwd->bwd = header->bwd;
     }
-    printf("bwde\n");
   }
+  if (frees == 1)
+    printf("...col. case 1: previous, current, and next chunks all free.\n");
+  else if (frees == 2)
+    printf("...col. case 2: previous and current chunks free.\n");
+  else if (frees == 3)
+    printf("...col. case 3: current and next chunks free.\n");
   else
     printf("...coalescing not needed.\n");
   return;
