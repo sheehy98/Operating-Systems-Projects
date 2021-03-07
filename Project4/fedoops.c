@@ -23,72 +23,29 @@ void printPackages(struct package **head)
 
     while (ptr != NULL)
     {
-        printf("Package #%d with no. instructs %d \n", ptr->packageNum, ptr->totInstructions);
-        printf("Instructions array = \n");
-        printf("[ ");
-        for (int i = 0; i < ptr->totInstructions; i++)
+        printf("Package #%d with no. instructs %d \n", ptr->packageNum, ptr->instructionCount);
+        printf("\tInstructions array = ");
+        printf("[");
+        for (int i = 0; i < ptr->instructionCount; i++)
         {
-            printf("\t%d", ptr->custInstructions[i]);
+            if (i)
+                printf(", ");
+            printf("%d", ptr->custInstructions[i]);
         }
-        printf(" ]\n");
+        printf("]\n");
         ptr = ptr->nextPackage;
     }
 }
 
 void assignPackages(int packageCount, struct package **head)
 {
-    struct package *link = (struct package *)malloc(sizeof(struct package));
-    struct package *last = *head;
-    // struct package *temp = NULL;
 
-    int totInstructions = 0;
+    int instructionCount = 0;
 
-    // add data block
     for (int i = 0; i < packageCount; i++)
     {
-        totInstructions = (rand() % 4) + 1;
-        printf("total number of instructs: %d\n", totInstructions);
-
-        link->packageNum = i + 1;
-        link->totInstructions = totInstructions;
-        link->ready = 1;
-        link->currStation = 0;
-
-        while (j < totInstructions)
-        {
-            int flag = 0; // flag for duplicate value
-            int instruction = (rand() % 4) + 1;
-
-            for (int k = 0; k < j; k++)
-            {
-                if (instruction == link->custInstructions[k])
-                {
-                    flag = 1;
-                    break;
-                }
-            }
-
-            if (flag != 1)
-            {
-                link->custInstructions[j] = instruction;
-                j++;
-            }
-        }
-
-        // link->nextPackage = NULL;
-
-        if (*head == NULL)
-        {
-            *head = link;
-            // return;
-        }
-
-        // link = link->nextPackage;
-
-        // while (last->nextPackage != NULL)
-        //     last = last->nextPackage;
-
-        // last->nextPackage = link;
+        instructionCount = (rand() % 4) + 1;
+        appendPackage(head, i + 1, instructionCount);
     }
 
     return;

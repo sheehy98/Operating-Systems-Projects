@@ -81,7 +81,7 @@ void appendPackage(struct package **head, int packageNum, int instructionCount)
     /* will be last node */
     link->nextPackage = NULL;
 
-    if (*head = NULL)
+    if (*head == NULL)
     {
         *head = link;
         return;
