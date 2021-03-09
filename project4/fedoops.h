@@ -5,20 +5,24 @@
 #define FALSE 0
 #define TRUE 1
 
-#define BLUE 1
-#define RED 2
-#define GREEN 3
-#define YELLOW 4
+#define BLUE 0
+#define RED 1
+#define GREEN 2
+#define YELLOW 3
 
 // the jobs, also stations
-#define WEIGHT 1
-#define BARCODE 2
-#define XRAY 3
-#define JOSTLE 4
+#define WEIGHT 0
+#define BARCODE 1
+#define XRAY 2
+#define JOSTLE 3
 
 // package limits
-#define UPPER 50
-#define LOWER 5
+#define UPPER 100
+#define LOWER 40
+
+// num workers
+#define NUM_TEAMS 4
+#define NUM_WORKERS 10
 
 typedef struct package
 {
@@ -32,12 +36,18 @@ typedef struct package
 
 typedef struct worker
 {
+    int workerId;
     int team;                  // the team
     int isFree;                // is the worker ready to accept a package
-    struct package *package;   // the package the worker is working on
+    struct package *package;   // the package the worker is working
     struct worker *nextWorker; // the next worker in queue
-    struct worker *prevWorker; // the previous worker in queue
+    // struct worker *prevWorker; // the previous worker in queue
 } worker;
+
+typedef struct station
+{
+    int isFree;
+} station;
 
 void generateJobs(struct package **node, int instructionCount)
 {
@@ -66,31 +76,58 @@ void generateJobs(struct package **node, int instructionCount)
     }
 }
 
-void appendPackage(struct package **head, int packageNum, int instructionCount)
+void appendWorker(struct worker **head, int workerId, int team)
 {
-    struct package *link = (struct package *)malloc(sizeof(struct package));
-    struct package *last = *head;
+    worker *new = (worker *)malloc(sizeof(worker));
+    worker *last = *head;
 
     /* add data */
-    link->packageNum = packageNum;
-    link->instructionCount = instructionCount;
-    link->ready = 1;
-    link->currStation = 0;
-    generateJobs(&link, instructionCount);
+    new->workerId = workerId + 1;
+    new->team = team;
+    new->package = (package *)malloc(sizeof(package));
+    new->isFree = 1;
 
     /* will be last node */
-    link->nextPackage = NULL;
+    new->nextWorker = NULL;
 
     if (*head == NULL)
     {
-        *head = link;
+        *head = new;
+        return;
+    }
+
+    while (last->nextWorker != NULL)
+        last = last->nextWorker;
+
+    last->nextWorker = new;
+    return;
+}
+
+void appendPackage(struct package **head, int packageNum, int instructionCount)
+{
+    struct package *new = (struct package *)malloc(sizeof(struct package));
+    struct package *last = *head;
+
+    /* add data */
+    new->packageNum = packageNum;
+    new->instructionCount = instructionCount;
+    new->ready = 1;
+    new->currStation = 0;
+    generateJobs(&new, instructionCount);
+
+    /* will be last node */
+    new->nextPackage = NULL;
+
+    if (*head == NULL)
+    {
+        *head = new;
         return;
     }
 
     while (last->nextPackage != NULL)
         last = last->nextPackage;
 
-    last->nextPackage = link;
+    last->nextPackage = new;
     return;
 }
 

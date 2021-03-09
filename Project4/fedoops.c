@@ -17,6 +17,20 @@ Create simulator for FedOops:
 
 */
 
+// stations
+struct station stations[4];
+package *pileHead = NULL; // pile of pending packages
+
+void createStations()
+{
+    for (int i = 0; i < 4; i++)
+    {
+        stations[i].isFree = 1;
+    }
+
+    return;
+}
+
 void printPackages(struct package **head)
 {
     struct package *ptr = *head;
@@ -37,7 +51,7 @@ void printPackages(struct package **head)
     }
 }
 
-void assignPackages(int packageCount, struct package **head)
+void createPackages(int packageCount, struct package **head)
 {
 
     int instructionCount = 0;
@@ -51,23 +65,70 @@ void assignPackages(int packageCount, struct package **head)
     return;
 }
 
+void createWorkers(worker **head, int i)
+{
+    for (int j = 0; j < NUM_WORKERS; j++)
+    {
+        appendWorker(head, j, i);
+    }
+}
+
+void printWorkers(worker **head)
+{
+    worker *ptr = *head;
+
+    while (ptr != NULL)
+    {
+        printf("Worker #%d on team %d \n", ptr->workerId, ptr->team);
+        ptr = ptr->nextWorker;
+    }
+}
+
+void *slaveAway(void *arg)
+{
+    worker *w = ((worker *)arg);
+
+    printf("Worker is on team # %d\n", w->team);
+
+    return NULL;
+}
+
 int main()
 {
-    struct package *pileHead = NULL; // pile of pending packages
-    int packageCount = 0;
+    worker *blueWorker = NULL;
+    worker *redWorker = NULL;
+    worker *greenWorker = NULL;
+    worker *yellowWorker = NULL;
+
+    // int packageCount = 0;
     int randSeed = getSeed();
     printf("Random seed is: %d\n", randSeed);
-
+    printf("Seeding the randomizer...\n");
     srand(randSeed); // seed the randomizer
 
     // number of packageCount, randomly generated
-    // packageCount = rand() % (UPPER - LOWER + 1) + LOWER;
-    packageCount = 5;
+    int packageCount = rand() % (UPPER - LOWER + 1) + LOWER;
     printf("Total number of packages to be processed is: %d\n", packageCount);
 
-    assignPackages(packageCount, &pileHead);
+    // initialize everything
+    createPackages(packageCount, &pileHead);
+    createStations();
+    createWorkers(&blueWorker, BLUE);
+    createWorkers(&redWorker, RED);
+    createWorkers(&greenWorker, GREEN);
+    createWorkers(&yellowWorker, YELLOW);
 
-    printPackages(&pileHead);
+    pthread_t blueThread, redThread, greenThread, yellowThread;
+
+    pthread_create(&blueThread, NULL, slaveAway, blueWorker);
+    pthread_create(&redThread, NULL, slaveAway, redWorker);
+    pthread_create(&greenThread, NULL, slaveAway, greenWorker);
+    pthread_create(&yellowThread, NULL, slaveAway, yellowWorker);
+
+    pthread_join(blueThread, NULL);
+    pthread_join(redThread, NULL);
+    pthread_join(greenThread, NULL);
+    pthread_join(yellowThread, NULL);
 
     return 0;
 }
