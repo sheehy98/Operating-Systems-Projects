@@ -48,6 +48,7 @@ typedef struct workerNode
 typedef struct station
 {
     int isFree;
+    char *stationName;
 } station;
 
 void generateJobs(struct package **node, int instructionCount)
