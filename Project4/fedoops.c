@@ -6,20 +6,10 @@
 #include <pthread.h>
 #include "fedoops.h"
 
-/*
-Create simulator for FedOops:
-    1) create pile (queue) of pending packages (PPP)
-        - each has random set of instructions associated
-    2) when worker grabs package, read and follow associated instructions in order
-        - 1 to four actions, no action being repeated
-    3) syncrhonize workers (each is a thread), stations and packages
-    ** print winning team at end (whoever processes most packages)
-
-*/
-
 // stations
 struct station stations[4];
-package *pileHead = NULL; // pile of pending packages
+int intStations[4] = {0, 0, 0, 0}; // wouldn't it be easier to do it this way?
+package *pileHead = NULL;          // pile of pending packages
 
 void createStations()
 {
@@ -84,16 +74,28 @@ void printWorkers(workerNode **head)
     }
 }
 
+// if randomly generated no. of packages is > 40, we need to figure out
+// how to loop back in and finish the packages
 void *slaveAway(void *arg)
 {
     workerNode *workerHead = ((workerNode *)arg);
-    workerNode *ptr = workerHead;
+    workerNode *worker = workerHead;
+    package *workerPackage = NULL; // just to prevent ptr->package->whatever
 
-    // while (ptr != NULL)
-    // {
-    printf("Worker %d is on team # %d\n", workerHead->workerId, workerHead->team);
-    // ptr = ptr->nextWorker;
-    // }
+    int workerId = worker->workerId;
+    int workerTeam = worker->team;
+
+    // grab package
+    if (pileHead->ready && worker->isFree)
+    {
+        pileHead->ready = 0;
+        worker->isFree = 0;
+        worker->package = pileHead;
+        workerPackage = worker->package;
+        pileHead = pileHead->nextPackage; // pile goes to next package for another worker to grab
+        printf("Worker %d from team %d has grabbed package %d\n", workerId, workerTeam, workerPackage->packageNum);
+    }
+
     return NULL;
 }
 
@@ -122,17 +124,19 @@ int main()
 
     pthread_t *workerThreads = (pthread_t *)malloc(NUM_WORKERS * NUM_TEAMS * sizeof(pthread_t));
 
-    int spawnIndex = 0;
+    // spawn threads (40 threads, 4 teams 10 workers each team)
+    int teamIndex = 0;
     for (int i = 0; i < NUM_TEAMS; i++)
     {
         for (int j = 0; j < NUM_WORKERS; j++)
         {
-            pthread_create(&workerThreads[spawnIndex], NULL, slaveAway, workersHead[i]);
+            pthread_create(&workerThreads[teamIndex * j], NULL, slaveAway, workersHead[i]);
             workersHead[i] = workersHead[i]->nextWorker;
-            spawnIndex++;
         }
+        teamIndex++;
     }
 
+    // join threads
     int joinIndex = 0;
     for (int i = 0; i < NUM_TEAMS; i++)
     {
@@ -144,6 +148,8 @@ int main()
     }
 
     printf("joined\n");
+
+    free(workerThreads);
 
     return 0;
 }

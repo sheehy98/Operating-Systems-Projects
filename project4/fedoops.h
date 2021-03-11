@@ -100,6 +100,7 @@ void appendWorker(struct workerNode **head, int workerId, int team)
         last = last->nextWorker;
 
     last->nextWorker = new;
+
     return;
 }
 
