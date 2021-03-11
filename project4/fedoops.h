@@ -38,6 +38,7 @@ typedef struct workerNode
 {
     int workerId;
     int team;                      // the team
+    char *teamName;                // the team name
     int isFree;                    // is the worker ready to accept a package
     struct package *package;       // the package the worker is working
     struct workerNode *nextWorker; // the next worker in queue
@@ -84,6 +85,10 @@ void appendWorker(struct workerNode **head, int workerId, int team)
     /* add data */
     new->workerId = workerId + 1;
     new->team = team;
+    new->teamName =
+        team == 0 ? "Blue" : team == 1 ? "Red"
+                         : team == 2   ? "Green"
+                                       : "Yellow";
     new->package = (package *)malloc(sizeof(package));
     new->isFree = 1;
 

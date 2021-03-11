@@ -11,6 +11,10 @@ struct station stations[4];
 int intStations[4] = {0, 0, 0, 0}; // wouldn't it be easier to do it this way?
 package *pileHead = NULL;          // pile of pending packages
 
+// locks/mutexes
+
+pthread_mutex_t grabMtx = PTHREAD_MUTEX_INITIALIZER;
+
 void createStations()
 {
     for (int i = 0; i < 4; i++)
@@ -74,6 +78,30 @@ void printWorkers(workerNode **head)
     }
 }
 
+/* deprecated */
+void printGrabbed(workerNode *head)
+{
+    int team = head->team;
+    int workerId = head->workerId;
+    int packageNum = head->package->packageNum;
+
+    switch (team)
+    {
+    case (0):
+        printf("Worker #%d from Team Blue has grabbed package #%d\n", workerId, packageNum);
+        break;
+    case (1):
+        printf("Worker #%d from Team Red has grabbed package #%d\n", workerId, packageNum);
+        break;
+    case (2):
+        printf("Worker #%d from Team Green has grabbed package #%d\n", workerId, packageNum);
+        break;
+    case (3):
+        printf("Worker #%d from Team Yellow has grabbed package #%d\n", workerId, packageNum);
+        break;
+    }
+}
+
 // if randomly generated no. of packages is > 40, we need to figure out
 // how to loop back in and finish the packages
 void *slaveAway(void *arg)
@@ -81,20 +109,31 @@ void *slaveAway(void *arg)
     workerNode *workerHead = ((workerNode *)arg);
     workerNode *worker = workerHead;
     package *workerPackage = NULL; // just to prevent ptr->package->whatever
+    int isPackageGrabbed = 0;      // flag to check if package is grabbed
 
     int workerId = worker->workerId;
     int workerTeam = worker->team;
+    char *teamName = worker->teamName;
 
     // grab package
+    pthread_mutex_lock(&grabMtx); // grabbing a package should be protected
     if (pileHead->ready && worker->isFree)
     {
         pileHead->ready = 0;
         worker->isFree = 0;
-        worker->package = pileHead;
-        workerPackage = worker->package;
+        worker->package = pileHead;      // store package into worker to work on
+        workerPackage = worker->package; // store reference to package in workerPackage
+        isPackageGrabbed = 1;
         pileHead = pileHead->nextPackage; // pile goes to next package for another worker to grab
-        printf("Worker %d from team %d has grabbed package %d\n", workerId, workerTeam, workerPackage->packageNum);
+        printf("Worker %s #%d has grabbed package %d\n", teamName, workerId, workerPackage->packageNum);
     }
+
+    if (isPackageGrabbed)
+    {
+        printf("Worker %s #%d is starting to work on package %d\n", teamName, workerId, workerPackage->packageNum);
+        sleep(1);
+    }
+    pthread_mutex_unlock(&grabMtx);
 
     return NULL;
 }
