@@ -34,15 +34,15 @@ typedef struct package
     struct package *nextPackage; // next package in queue
 } package;
 
-typedef struct worker
+typedef struct workerNode
 {
     int workerId;
-    int team;                  // the team
-    int isFree;                // is the worker ready to accept a package
-    struct package *package;   // the package the worker is working
-    struct worker *nextWorker; // the next worker in queue
+    int team;                      // the team
+    int isFree;                    // is the worker ready to accept a package
+    struct package *package;       // the package the worker is working
+    struct workerNode *nextWorker; // the next worker in queue
     // struct worker *prevWorker; // the previous worker in queue
-} worker;
+} workerNode;
 
 typedef struct station
 {
@@ -76,10 +76,10 @@ void generateJobs(struct package **node, int instructionCount)
     }
 }
 
-void appendWorker(struct worker **head, int workerId, int team)
+void appendWorker(struct workerNode **head, int workerId, int team)
 {
-    worker *new = (worker *)malloc(sizeof(worker));
-    worker *last = *head;
+    workerNode *new = (workerNode *)malloc(sizeof(workerNode));
+    workerNode *last = *head;
 
     /* add data */
     new->workerId = workerId + 1;

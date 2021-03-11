@@ -65,7 +65,7 @@ void createPackages(int packageCount, struct package **head)
     return;
 }
 
-void createWorkers(worker **head, int i)
+void createWorkers(workerNode **head, int i)
 {
     for (int j = 0; j < NUM_WORKERS; j++)
     {
@@ -73,9 +73,9 @@ void createWorkers(worker **head, int i)
     }
 }
 
-void printWorkers(worker **head)
+void printWorkers(workerNode **head)
 {
-    worker *ptr = *head;
+    workerNode *ptr = *head;
 
     while (ptr != NULL)
     {
@@ -86,19 +86,20 @@ void printWorkers(worker **head)
 
 void *slaveAway(void *arg)
 {
-    worker *w = ((worker *)arg);
+    workerNode *workerHead = ((workerNode *)arg);
+    workerNode *ptr = workerHead;
 
-    printf("Worker is on team # %d\n", w->team);
-
+    // while (ptr != NULL)
+    // {
+    printf("Worker %d is on team # %d\n", workerHead->workerId, workerHead->team);
+    // ptr = ptr->nextWorker;
+    // }
     return NULL;
 }
 
 int main()
 {
-    worker *blueWorker = NULL;
-    worker *redWorker = NULL;
-    worker *greenWorker = NULL;
-    worker *yellowWorker = NULL;
+    workerNode *workersHead[4] = {NULL, NULL, NULL, NULL};
 
     // int packageCount = 0;
     int randSeed = getSeed();
@@ -113,22 +114,36 @@ int main()
     // initialize everything
     createPackages(packageCount, &pileHead);
     createStations();
-    createWorkers(&blueWorker, BLUE);
-    createWorkers(&redWorker, RED);
-    createWorkers(&greenWorker, GREEN);
-    createWorkers(&yellowWorker, YELLOW);
 
-    pthread_t blueThread, redThread, greenThread, yellowThread;
+    for (int i = 0; i < NUM_TEAMS; i++)
+    {
+        createWorkers(&workersHead[i], i);
+    }
 
-    pthread_create(&blueThread, NULL, slaveAway, blueWorker);
-    pthread_create(&redThread, NULL, slaveAway, redWorker);
-    pthread_create(&greenThread, NULL, slaveAway, greenWorker);
-    pthread_create(&yellowThread, NULL, slaveAway, yellowWorker);
+    pthread_t *workerThreads = (pthread_t *)malloc(NUM_WORKERS * NUM_TEAMS * sizeof(pthread_t));
 
-    pthread_join(blueThread, NULL);
-    pthread_join(redThread, NULL);
-    pthread_join(greenThread, NULL);
-    pthread_join(yellowThread, NULL);
+    int spawnIndex = 0;
+    for (int i = 0; i < NUM_TEAMS; i++)
+    {
+        for (int j = 0; j < NUM_WORKERS; j++)
+        {
+            pthread_create(&workerThreads[spawnIndex], NULL, slaveAway, workersHead[i]);
+            workersHead[i] = workersHead[i]->nextWorker;
+            spawnIndex++;
+        }
+    }
+
+    int joinIndex = 0;
+    for (int i = 0; i < NUM_TEAMS; i++)
+    {
+        for (int j = 0; j < NUM_WORKERS; j++)
+        {
+            pthread_join(workerThreads[joinIndex], NULL);
+            joinIndex++;
+        }
+    }
+
+    printf("joined\n");
 
     return 0;
 }
