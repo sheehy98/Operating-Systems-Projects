@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #define MAX_CHAR 255
 
 #define FALSE 0
@@ -17,8 +18,8 @@
 #define JOSTLE 3
 
 // package limits
-#define UPPER 100
-#define LOWER 40
+#define UPPER 80
+#define LOWER 80
 
 // num workers
 #define NUM_TEAMS 4
@@ -28,6 +29,7 @@ typedef struct package
 {
     int packageNum;
     int instructionCount;
+    int fragile;
     int custInstructions[4];     // array of jobs to be completed for the package
     int currStation;             // the current station the package is on
     int ready;                   // bool, ready to go to next station or not
@@ -42,7 +44,6 @@ typedef struct workerNode
     int isFree;                    // is the worker ready to accept a package
     struct package *package;       // the package the worker is working
     struct workerNode *nextWorker; // the next worker in queue
-    // struct worker *prevWorker; // the previous worker in queue
 } workerNode;
 
 void appendWorker(struct workerNode **head, int workerId, int team);
@@ -55,13 +56,26 @@ typedef struct station
     char *stationName;
 } station;
 
+void createStations(struct station *stations)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        stations[i].isFree = 1;
+        stations[i].stationName = i == WEIGHT ? "Weight" : i == BARCODE ? "Barcode"
+                                                       : i == XRAY      ? "X-ray"
+                                                                        : "Jostle";
+    }
+
+    return;
+}
+
 void printPackages(struct package **head)
 {
     struct package *ptr = *head;
 
     while (ptr != NULL)
     {
-        printf("Package #%d with no. instructs %d \n", ptr->packageNum, ptr->instructionCount);
+        printf("Package #%d, Fragile = %d,  with no. instructs %d \n", ptr->packageNum, ptr->fragile, ptr->instructionCount);
         printf("\tInstructions array = ");
         printf("[");
         for (int i = 0; i < ptr->instructionCount; i++)
@@ -176,6 +190,7 @@ void appendPackage(struct package **head, int packageNum, int instructionCount)
     new->packageNum = packageNum;
     new->instructionCount = instructionCount;
     new->ready = 1;
+    new->fragile = rand() % 2;
     new->currStation = 0;
     generateJobs(&new, instructionCount);
 

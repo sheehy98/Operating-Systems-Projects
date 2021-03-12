@@ -4,37 +4,53 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <string.h>
 #include "fedoops.h"
+
+// CAN ONLY HAVE ONE WORKER PER TEAM AT A TIME
 
 // stations
 struct station stations[4];
-int intStations[4] = {0, 0, 0, 0}; // wouldn't it be easier to do it this way?
-package *pileHead = NULL;          // pile of pending packages
+package *pileHead = NULL; // pile of pending packages
 
-int pkgCmplt = 0;
+//
+int teamBusy[4] = {0, 0, 0, 0};
+
+// tracking packages completed
+int packagesCompleted = 0;
+int bluePackages = 0;
+int redPackages = 0;
+int greenPackages = 0;
+int yellowPackages = 0;
 
 // locks/mutexes
+pthread_mutex_t grabMtx = PTHREAD_MUTEX_INITIALIZER;    // mutex for grabbing packages
+pthread_mutex_t stationMtx = PTHREAD_MUTEX_INITIALIZER; // mutex for gettin onna station
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;         // conditional :)
 
-pthread_mutex_t grabMtx = PTHREAD_MUTEX_INITIALIZER;     // mutex for grabbing packages
-pthread_mutex_t stationMtx = PTHREAD_MUTEX_INITIALIZER;  // mutex for gettin onna station
-pthread_mutex_t conveyorMtx = PTHREAD_MUTEX_INITIALIZER; // mutex for gettin onna conveyor
-pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
-
-void createStations()
+void incrementPackages(int teamNum)
 {
-    for (int i = 0; i < 4; i++)
+    packagesCompleted++;
+
+    switch (teamNum)
     {
-        stations[i].isFree = 1;
-        stations[i].stationName = i == WEIGHT ? "Weight" : i == BARCODE ? "Barcode"
-                                                       : i == XRAY      ? "X-ray"
-                                                                        : "Jostle";
+    case 0:
+        bluePackages++;
+        break;
+    case 1:
+        redPackages++;
+        break;
+    case 2:
+        greenPackages++;
+        break;
+    case 3:
+        yellowPackages++;
+        break;
     }
 
     return;
 }
 
-// if randomly generated no. of packages is > 40, we need to figure out
-// how to loop back in and finish the packages
 void *slaveAway(void *arg)
 {
     workerNode *workerHead = ((workerNode *)arg);
@@ -52,8 +68,17 @@ void *slaveAway(void *arg)
     {
         // grab package
         pthread_mutex_lock(&grabMtx); // grabbing a package should be protected
+        if (teamBusy[workerTeam])
+        {
+
+            printf("BUSY:  Team %s already has a worker working. Worker %s #%d waiting\n",
+                   teamName, teamName, workerId);
+            pthread_cond_wait(&cond, &grabMtx);
+        }
+
         if (pileHead != NULL)
         {
+            teamBusy[workerTeam] = 1;
             pileHead->ready = 0;
             worker->isFree = 0;
             worker->package = pileHead;      // store package into worker to work on
@@ -78,9 +103,10 @@ void *slaveAway(void *arg)
         for (int i = 0; i < workerPackage->instructionCount; i++)
         {
             currStation = stations + (workerPackage->custInstructions[i] - 1);
-            printf("MOVE:  Worker %s #%d is moving Package #%d to %s\n",
+            printf("MOVE:  Worker %s #%d is moving Package #%d to Station %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);
 
+            /* below is the conveyor system */
             int stationFreeFlag = 1;
             while (1)
             {
@@ -105,6 +131,12 @@ void *slaveAway(void *arg)
             printf("WORK:  Worker %s #%d working on Package #%d at Station %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);
 
+            if (workerPackage->fragile == 1, strcmp(currStation->stationName, "Jostle") == 0)
+            {
+                printf("VLNT:  Package #%d is fragile! Worker %s #%d is shaking the sh*t out of it\n",
+                       workerPackage->packageNum, teamName, workerId);
+            }
+
             usleep(1000); //Doing the work of a station
 
             printf("DONE:  Worker %s #%d is finished working on Package #%d at Station %s\n",
@@ -115,11 +147,12 @@ void *slaveAway(void *arg)
             pthread_cond_signal(&cond);
             pthread_mutex_unlock(&stationMtx);
         }
-        pkgCmplt++;
+
+        teamBusy[workerTeam] = 0;
+        incrementPackages(workerTeam);
         printf("CMLT:  Worker %s #%d is finished working on Package #%d \n",
                teamName, workerId, workerPackage->packageNum);
     }
-
     return NULL;
 }
 
@@ -142,7 +175,7 @@ int main()
 
     // initialize everything
     createPackages(packageCount, &pileHead);
-    createStations();
+    createStations(stations);
 
     for (int i = 0; i < NUM_TEAMS; i++)
     {
@@ -177,11 +210,14 @@ int main()
         }
     }
 
-    printf("Packages requested %d, packages completed %d \n", packageCount, pkgCmplt);
+    printf("----------------------------------------------------------------\n");
+    printf("Packages requested: %d\tPackages completed: %d \n", packageCount, packagesCompleted);
+    printf("Blue Processed: %d\tRed Processed: %d\tGreen Processed: %d\tYellow Processed: %d\n",
+           bluePackages, redPackages, greenPackages, yellowPackages);
 
     printf("Well done peasants. Shift is over :)\n");
 
-    // free(workerThreads);
+    free(workerThreads);
 
     return 0;
 }
