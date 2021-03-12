@@ -59,7 +59,8 @@ void *slaveAway(void *arg)
             worker->package = pileHead;      // store package into worker to work on
             workerPackage = worker->package; // store reference to package in workerPackage
             isPackageGrabbed = 1;
-            printf("GRAB:  Worker %s #%d grabbed package %d\n", teamName, workerId, workerPackage->packageNum);
+            printf("GRAB:  Worker %s #%d grabbed package %d\n",
+                   teamName, workerId, workerPackage->packageNum);
             pileHead = pileHead->nextPackage; // pile goes to next package for another worker to grab
         }
         else
@@ -79,12 +80,13 @@ void *slaveAway(void *arg)
             currStation = stations + (workerPackage->custInstructions[i] - 1);
             printf("MOVE:  Worker %s #%d is moving Package #%d to %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);
-            int sOpen = 1;
+
+            int stationFreeFlag = 1;
             while (1)
             {
                 pthread_mutex_lock(&stationMtx);
-                sOpen = currStation->isFree;
-                if (sOpen)
+                stationFreeFlag = currStation->isFree;
+                if (stationFreeFlag)
                 {
                     currStation->isFree = 0;
                     pthread_mutex_unlock(&stationMtx);
@@ -99,19 +101,19 @@ void *slaveAway(void *arg)
                 }
             }
 
+            pthread_mutex_lock(&stationMtx);
             printf("WORK:  Worker %s #%d working on Package #%d at Station %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);
 
-            pthread_mutex_lock(&stationMtx);
             usleep(1000); //Doing the work of a station
-            pthread_mutex_unlock(&stationMtx);
 
             printf("DONE:  Worker %s #%d is finished working on Package #%d at Station %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);
             printf("FREE:  Station %s is now free\n", currStation->stationName);
             currStation->isFree = 1;
 
-            pthread_cond_signal(&cond) == -1;
+            pthread_cond_signal(&cond);
+            pthread_mutex_unlock(&stationMtx);
         }
         pkgCmplt++;
         printf("CMLT:  Worker %s #%d is finished working on Package #%d \n",
@@ -179,7 +181,7 @@ int main()
 
     printf("Well done peasants. Shift is over :)\n");
 
-    free(workerThreads);
+    // free(workerThreads);
 
     return 0;
 }
