@@ -45,11 +45,68 @@ typedef struct workerNode
     // struct worker *prevWorker; // the previous worker in queue
 } workerNode;
 
+void appendWorker(struct workerNode **head, int workerId, int team);
+void appendPackage(struct package **head, int packageNum, int instructionCount);
+void createPackages(int packageCount, struct package **head);
+
 typedef struct station
 {
     int isFree;
     char *stationName;
 } station;
+
+void printPackages(struct package **head)
+{
+    struct package *ptr = *head;
+
+    while (ptr != NULL)
+    {
+        printf("Package #%d with no. instructs %d \n", ptr->packageNum, ptr->instructionCount);
+        printf("\tInstructions array = ");
+        printf("[");
+        for (int i = 0; i < ptr->instructionCount; i++)
+        {
+            if (i)
+                printf(", ");
+            printf("%d", ptr->custInstructions[i]);
+        }
+        printf("]\n");
+        ptr = ptr->nextPackage;
+    }
+}
+
+void createPackages(int packageCount, struct package **head)
+{
+
+    int instructionCount = 0;
+
+    for (int i = 0; i < packageCount; i++)
+    {
+        instructionCount = (rand() % 4) + 1;
+        appendPackage(head, i + 1, instructionCount);
+    }
+
+    return;
+}
+
+void createWorkers(workerNode **head, int i)
+{
+    for (int j = 0; j < NUM_WORKERS; j++)
+    {
+        appendWorker(head, j, i);
+    }
+}
+
+void printWorkers(workerNode **head)
+{
+    workerNode *ptr = *head;
+
+    while (ptr != NULL)
+    {
+        printf("Worker #%d on team %d \n", ptr->workerId, ptr->team);
+        ptr = ptr->nextWorker;
+    }
+}
 
 void generateJobs(struct package **node, int instructionCount)
 {
