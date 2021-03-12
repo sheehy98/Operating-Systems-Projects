@@ -1,9 +1,9 @@
-scheduler: scheduler.c scheduler_help.h
-	gcc -o scheduler scheduler.c 
+fedoops: fedoops.c fedoops.h
+	gcc -pthread -o fedoops fedoops.c 
 
-all: scheduler.c scheduler_help.h
-	gcc -o scheduler scheduler.c 
+all: fedoops.c fedoops.h
+	gcc -pthread -o fedoops fedoops.c
 
 clean: 
 	rm -f *.o
-	rm -f scheduler
+	rm -f fedoops

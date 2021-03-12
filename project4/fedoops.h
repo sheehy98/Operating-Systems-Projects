@@ -44,6 +44,7 @@ typedef struct workerNode
     int isFree;                    // is the worker ready to accept a package
     struct package *package;       // the package the worker is working
     struct workerNode *nextWorker; // the next worker in queue
+    // struct workerNode *lastWorker;
 } workerNode;
 
 void appendWorker(struct workerNode **head, int workerId, int team);
@@ -105,7 +106,7 @@ void createPackages(int packageCount, struct package **head)
 
 void createWorkers(workerNode **head, int i)
 {
-    for (int j = 0; j < NUM_WORKERS; j++)
+    for (int j = 0; j < NUM_WORKERS + 1; j++)
     {
         appendWorker(head, j, i);
     }
@@ -117,7 +118,7 @@ void printWorkers(workerNode **head)
 
     while (ptr != NULL)
     {
-        printf("Worker #%d on team %d \n", ptr->workerId, ptr->team);
+        printf("Worker #%d on team %d, FREE = %d\n", ptr->workerId, ptr->team, ptr->isFree);
         ptr = ptr->nextWorker;
     }
 }
@@ -162,7 +163,7 @@ void appendWorker(struct workerNode **head, int workerId, int team)
                          : team == 2   ? "Green"
                                        : "Yellow";
     new->package = (package *)malloc(sizeof(package));
-    new->isFree = 1;
+    new->isFree = workerId == 0 ? 1 : 0;
 
     /* will be last node */
     new->nextWorker = NULL;
@@ -176,7 +177,14 @@ void appendWorker(struct workerNode **head, int workerId, int team)
     while (last->nextWorker != NULL)
         last = last->nextWorker;
 
-    last->nextWorker = new;
+    if (workerId == (NUM_WORKERS))
+    {
+        last->nextWorker = *head;
+    }
+    else
+    {
+        last->nextWorker = new;
+    }
 
     return;
 }
