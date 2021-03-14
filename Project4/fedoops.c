@@ -7,7 +7,7 @@
 #include <string.h>
 #include "fedoops.h"
 
-// CAN ONLY HAVE ONE WORKER PER TEAM AT A TIME
+//
 
 // stations
 struct station stations[4];
@@ -139,6 +139,8 @@ void *slaveAway(void *arg)
                 stationFreeFlag = currStation->isFree;
                 if (stationFreeFlag)
                 {
+                    usleep(1000); // conveyor takes time // make this random
+
                     currStation->isFree = 0;
                     pthread_mutex_unlock(&stationMtx);
                     break;
@@ -162,7 +164,7 @@ void *slaveAway(void *arg)
                        workerPackage->packageNum, teamName, workerId);
             }
 
-            usleep(1000); //Doing the work of a station
+            usleep(1000); //Doing the work of a station //make this random
             // sleep(1);
             printf("DONE:  Worker %s #%d is finished working on Package #%d at Station %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);

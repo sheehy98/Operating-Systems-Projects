@@ -1,0 +1,132 @@
+Random seed is: 64782
+Seeding the randomizer...
+PRFM:  Juggler #1 at Position Zero performing for 6501 milliseconds
+There are currently 1 performers on stage
+[	0	1	1	1	]
+
+PRFM:  Juggler #2 at Position One performing for 7586 milliseconds
+There are currently 2 performers on stage
+[	0	0	1	1	]
+
+PRFM:  Juggler #3 at Position Two performing for 2941 milliseconds
+There are currently 3 performers on stage
+[	0	0	0	1	]
+
+PRFM:  Juggler #4 at Position Three performing for 3272 milliseconds
+There are currently 4 performers on stage
+[	0	0	0	0	]
+
+DONE:  Juggler #3 is done performing at Position Two 
+There are currently 3 performers on stage
+[	0	0	1	0	]
+
+PRFM:  Juggler #5 at Position Two performing for 8979 milliseconds
+There are currently 4 performers on stage
+[	0	0	0	0	]
+
+DONE:  Juggler #4 is done performing at Position Three 
+There are currently 3 performers on stage
+[	0	0	0	1	]
+
+PRFM:  Juggler #6 at Position Three performing for 5182 milliseconds
+There are currently 4 performers on stage
+[	0	0	0	0	]
+
+DONE:  Juggler #1 is done performing at Position Zero 
+There are currently 3 performers on stage
+[	1	0	0	0	]
+
+DONE:  Juggler #2 is done performing at Position One 
+There are currently 2 performers on stage
+[	1	1	0	0	]
+
+DONE:  Juggler #6 is done performing at Position Three 
+There are currently 1 performers on stage
+[	1	1	0	1	]
+
+PRFM:  Juggler #7 at Position Zero performing for 4458 milliseconds
+There are currently 2 performers on stage
+[	0	1	0	1	]
+
+PRFM:  Juggler #8 at Position One performing for 3222 milliseconds
+There are currently 3 performers on stage
+[	0	0	0	1	]
+
+DONE:  Juggler #5 is done performing at Position Two 
+There are currently 2 performers on stage
+[	0	0	1	1	]
+
+DONE:  Juggler #7 is done performing at Position Zero 
+There are currently 1 performers on stage
+[	1	0	1	1	]
+
+DONE:  Juggler #8 is done performing at Position One 
+There are currently 0 performers on stage
+[	1	1	1	1	]
+
+Random seed is: 64782
+Seeding the randomizer...
+PRFM:  Juggler #1 at Position Zero performing for 6501 milliseconds
+There are currently 1 performers on stage
+[	0	1	1	1	]
+
+PRFM:  Juggler #2 at Position One performing for 7586 milliseconds
+There are currently 2 performers on stage
+[	0	0	1	1	]
+
+PRFM:  Juggler #3 at Position Two performing for 2941 milliseconds
+There are currently 3 performers on stage
+[	0	0	0	1	]
+
+PRFM:  Juggler #4 at Position Three performing for 3272 milliseconds
+There are currently 4 performers on stage
+[	0	0	0	0	]
+
+DONE:  Juggler #3 is done performing at Position Two 
+There are currently 3 performers on stage
+[	0	0	1	0	]
+
+PRFM:  Juggler #5 at Position Two performing for 8979 milliseconds
+There are currently 4 performers on stage
+[	0	0	0	0	]
+
+DONE:  Juggler #4 is done performing at Position Three 
+There are currently 3 performers on stage
+[	0	0	0	1	]
+
+PRFM:  Juggler #6 at Position Three performing for 5182 milliseconds
+There are currently 4 performers on stage
+[	0	0	0	0	]
+
+DONE:  Juggler #1 is done performing at Position Zero 
+There are currently 3 performers on stage
+[	1	0	0	0	]
+
+PRFM:  Juggler #7 at Position Zero performing for 4458 milliseconds
+There are currently 4 performers on stage
+[	0	0	0	0	]
+
+DONE:  Juggler #2 is done performing at Position One 
+There are currently 3 performers on stage
+[	0	1	0	0	]
+
+PRFM:  Juggler #8 at Position One performing for 3222 milliseconds
+There are currently 4 performers on stage
+[	0	0	0	0	]
+
+DONE:  Juggler #6 is done performing at Position Three 
+There are currently 3 performers on stage
+[	0	0	0	1	]
+
+DONE:  Juggler #8 is done performing at Position One 
+There are currently 2 performers on stage
+[	0	1	0	1	]
+
+DONE:  Juggler #7 is done performing at Position Zero 
+There are currently 1 performers on stage
+[	1	1	0	1	]
+
+DONE:  Juggler #5 is done performing at Position Two 
+There are currently 0 performers on stage
+[	1	1	1	1	]
+
