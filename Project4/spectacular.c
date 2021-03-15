@@ -103,6 +103,10 @@ void printPerformers(int performerType)
     }
 }
 
+void perform()
+{
+}
+
 void *performerFunction(void *arg)
 {
     struct performer *currPeformer = ((struct performer *)arg);

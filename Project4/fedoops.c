@@ -66,18 +66,10 @@ void *slaveAway(void *arg)
 
     while (1)
     {
-        // grab package
-
         while (1)
         {
-            // printf("CHCK:  Worker %s #%d in while loop\n", teamName, workerId);
-
             if (pileHead == NULL)
             {
-                // printf("Packages completed: %d \n", packagesCompleted);
-                // printf("HEAD NODE IS EMPTY\n");
-                // printf("NUM PACKAGES CMPLTD: %d\n", packagesCompleted);
-                // return NULL;
                 break;
             }
             pthread_mutex_lock(&grabMtx); // grabbing a package should be protected
@@ -111,9 +103,6 @@ void *slaveAway(void *arg)
         }
         else
         {
-            // printf("HEAD NODE IS EMPTY\n");
-            // printf("NUM PACKAGES CMPLTD: %d\n", packagesCompleted);
-            // printf("BYE!:  Worker %s #%d exited. bYE!\n", teamName, workerId);
             pthread_cond_signal(&busyCond);
             pthread_mutex_unlock(&grabMtx);
             return NULL;
@@ -139,7 +128,7 @@ void *slaveAway(void *arg)
                 stationFreeFlag = currStation->isFree;
                 if (stationFreeFlag)
                 {
-                    usleep(1000); // conveyor takes time // make this random
+                    usleep(rand() % (10000 - 1000 + 1) + 1000); // Conveyor belt - takes random time
 
                     currStation->isFree = 0;
                     pthread_mutex_unlock(&stationMtx);
@@ -164,7 +153,7 @@ void *slaveAway(void *arg)
                        workerPackage->packageNum, teamName, workerId);
             }
 
-            usleep(1000); //Doing the work of a station //make this random
+            usleep(rand() % (10000 - 1000 + 1) + 1000); // Work on package - random time
             // sleep(1);
             printf("DONE:  Worker %s #%d is finished working on Package #%d at Station %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);
@@ -227,10 +216,10 @@ int main()
     {
         for (int j = 0; j < NUM_WORKERS; j++)
         {
-            pthread_create(&workerThreads[teamIndex * j], NULL, slaveAway, workersHead[i]);
+            pthread_create(&workerThreads[teamIndex], NULL, slaveAway, workersHead[i]);
             workersHead[i] = workersHead[i]->nextWorker;
+            teamIndex++;
         }
-        teamIndex++;
     }
 
     // join threads
