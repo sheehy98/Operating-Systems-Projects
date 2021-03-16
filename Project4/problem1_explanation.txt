@@ -1,1 +1,12 @@
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Problem 1 - Mago Sheehy & Hamayel Qureshi~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Problem 1 - Mago Sheehy & Hamayel Qureshi ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Our solution entails four semaphores: stageSem, leaveStageSem, enterSem, and printSem. 
+
+The primary semaphores being used to ensure fairness and protection of critical sections are stageSem and enterSem. 
+
+stageSem allows four performers to be active at a time (it is initialized to 4). Each time a performer becomes active,
+we have a call to sem_wait(&stageSem). The semaphore is 'posted' when the performer is done performing. 
+
+For each active performer attempting to enter the stage, if they are the same type as the performers on stage, they are 
+allowed to enter the stage (unless it is a soloist, which requires an empty stage), otherwise, . When a performer finishes performing,
+a new performer is added to the set of active performers  
