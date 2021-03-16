@@ -1,132 +1,337 @@
-Random seed is: 64782
+RUN NUMBER 1:
+
+Random seed is: 12345
 Seeding the randomizer...
-PRFM:  Juggler #1 at Position Zero performing for 6501 milliseconds
+---------------------------------------------------------------
+Welcome to teh summer spectacular. take ur seats. bye
+---------------------------------------------------------------
+
+PRFM:  JGLR #7 at Position Zero performing for 1437 milliseconds
 There are currently 1 performers on stage
-[	0	1	1	1	]
+[ JGLR #07 ________ ________ ________ ]
 
-PRFM:  Juggler #2 at Position One performing for 7586 milliseconds
+PRFM:  JGLR #8 at Position One performing for 2465 milliseconds
 There are currently 2 performers on stage
-[	0	0	1	1	]
+[ JGLR #07 JGLR #08 ________ ________ ]
 
-PRFM:  Juggler #3 at Position Two performing for 2941 milliseconds
+PRFM:  JGLR #6 at Position Two performing for 6426 milliseconds
 There are currently 3 performers on stage
-[	0	0	0	1	]
+[ JGLR #07 JGLR #08 JGLR #06 ________ ]
 
-PRFM:  Juggler #4 at Position Three performing for 3272 milliseconds
-There are currently 4 performers on stage
-[	0	0	0	0	]
-
-DONE:  Juggler #3 is done performing at Position Two 
-There are currently 3 performers on stage
-[	0	0	1	0	]
-
-PRFM:  Juggler #5 at Position Two performing for 8979 milliseconds
-There are currently 4 performers on stage
-[	0	0	0	0	]
-
-DONE:  Juggler #4 is done performing at Position Three 
-There are currently 3 performers on stage
-[	0	0	0	1	]
-
-PRFM:  Juggler #6 at Position Three performing for 5182 milliseconds
-There are currently 4 performers on stage
-[	0	0	0	0	]
-
-DONE:  Juggler #1 is done performing at Position Zero 
-There are currently 3 performers on stage
-[	1	0	0	0	]
-
-DONE:  Juggler #2 is done performing at Position One 
+PRFM:  JGLR #5 at Position Zero performing for 8145 milliseconds
 There are currently 2 performers on stage
-[	1	1	0	0	]
+[ JGLR #05 ________ JGLR #06 ________ ]
 
-DONE:  Juggler #6 is done performing at Position Three 
+PRFM:  FDAN #4 at Position Zero performing for 1508 milliseconds
 There are currently 1 performers on stage
-[	1	1	0	1	]
+[ FDAN #04 ________ ________ ________ ]
 
-PRFM:  Juggler #7 at Position Zero performing for 4458 milliseconds
+PRFM:  FDAN #3 at Position One performing for 1368 milliseconds
 There are currently 2 performers on stage
-[	0	1	0	1	]
+[ FDAN #04 FDAN #03 ________ ________ ]
 
-PRFM:  Juggler #8 at Position One performing for 3222 milliseconds
+PRFM:  FDAN #1 at Position Two performing for 6643 milliseconds
 There are currently 3 performers on stage
-[	0	0	0	1	]
+[ FDAN #04 FDAN #03 FDAN #01 ________ ]
 
-DONE:  Juggler #5 is done performing at Position Two 
-There are currently 2 performers on stage
-[	0	0	1	1	]
+PRFM:  FDAN #2 at Position Three performing for 2985 milliseconds
+There are currently 4 performers on stage
+[ FDAN #04 FDAN #03 FDAN #01 FDAN #02 ]
 
-DONE:  Juggler #7 is done performing at Position Zero 
+PRFM:  FDAN #5 at Position Zero performing for 9936 milliseconds
+There are currently 3 performers on stage
+[ FDAN #05 ________ FDAN #01 FDAN #02 ]
+
+PRFM:  FDAN #6 at Position One performing for 7092 milliseconds
+There are currently 3 performers on stage
+[ FDAN #05 FDAN #06 ________ FDAN #02 ]
+
+PRFM:  FDAN #7 at Position Zero performing for 8845 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 ________ FDAN #02 ]
+
+PRFM:  FDAN #8 at Position Two performing for 4315 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 FDAN #08 ________ ]
+
+PRFM:  FDAN #9 at Position Two performing for 1922 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 FDAN #09 ________ ]
+
+PRFM:  FDAN #11 at Position Zero performing for 4720 milliseconds
 There are currently 1 performers on stage
-[	1	0	1	1	]
+[ FDAN #11 ________ ________ ________ ]
 
-DONE:  Juggler #8 is done performing at Position One 
-There are currently 0 performers on stage
-[	1	1	1	1	]
+PRFM:  FDAN #10 at Position One performing for 3281 milliseconds
+There are currently 2 performers on stage
+[ FDAN #11 FDAN #10 ________ ________ ]
 
-Random seed is: 64782
+PRFM:  FDAN #12 at Position Zero performing for 6053 milliseconds
+There are currently 1 performers on stage
+[ FDAN #12 ________ ________ ________ ]
+
+PRFM:  FDAN #13 at Position One performing for 2779 milliseconds
+There are currently 2 performers on stage
+[ FDAN #12 FDAN #13 ________ ________ ]
+
+PRFM:  FDAN #14 at Position Zero performing for 5119 milliseconds
+There are currently 1 performers on stage
+[ FDAN #14 ________ ________ ________ ]
+
+PRFM:  FDAN #15 at Position One performing for 6390 milliseconds
+There are currently 2 performers on stage
+[ FDAN #14 FDAN #15 ________ ________ ]
+
+PRFM:  SOLO #2 at Position Zero performing for 7716 milliseconds
+There are currently 1 performers on stage
+[ SOLO #02 ________ ________ ________ ]
+
+PRFM:  JGLR #2 at Position Zero performing for 3874 milliseconds
+There are currently 1 performers on stage
+[ JGLR #02 ________ ________ ________ ]
+
+PRFM:  SOLO #1 at Position Zero performing for 7709 milliseconds
+There are currently 1 performers on stage
+[ SOLO #01 ________ ________ ________ ]
+
+PRFM:  JGLR #4 at Position Zero performing for 6059 milliseconds
+There are currently 1 performers on stage
+[ JGLR #04 ________ ________ ________ ]
+
+PRFM:  JGLR #1 at Position One performing for 8450 milliseconds
+There are currently 2 performers on stage
+[ JGLR #04 JGLR #01 ________ ________ ]
+
+PRFM:  JGLR #3 at Position Two performing for 1419 milliseconds
+There are currently 3 performers on stage
+[ JGLR #04 JGLR #01 JGLR #03 ________ ]
+
+---------------------------------------------------------------
+woohoo its over yay
+---------------------------------------------------------------
+
+
+RUN NUMBER 2:
+
+Random seed is: 12345
 Seeding the randomizer...
-PRFM:  Juggler #1 at Position Zero performing for 6501 milliseconds
+---------------------------------------------------------------
+Welcome to teh summer spectacular. take ur seats. bye
+---------------------------------------------------------------
+
+PRFM:  JGLR #7 at Position Zero performing for 1437 milliseconds
 There are currently 1 performers on stage
-[	0	1	1	1	]
+[ JGLR #07 ________ ________ ________ ]
 
-PRFM:  Juggler #2 at Position One performing for 7586 milliseconds
+PRFM:  JGLR #8 at Position One performing for 2465 milliseconds
 There are currently 2 performers on stage
-[	0	0	1	1	]
+[ JGLR #07 JGLR #08 ________ ________ ]
 
-PRFM:  Juggler #3 at Position Two performing for 2941 milliseconds
+PRFM:  JGLR #6 at Position Two performing for 6426 milliseconds
 There are currently 3 performers on stage
-[	0	0	0	1	]
+[ JGLR #07 JGLR #08 JGLR #06 ________ ]
 
-PRFM:  Juggler #4 at Position Three performing for 3272 milliseconds
-There are currently 4 performers on stage
-[	0	0	0	0	]
-
-DONE:  Juggler #3 is done performing at Position Two 
-There are currently 3 performers on stage
-[	0	0	1	0	]
-
-PRFM:  Juggler #5 at Position Two performing for 8979 milliseconds
-There are currently 4 performers on stage
-[	0	0	0	0	]
-
-DONE:  Juggler #4 is done performing at Position Three 
-There are currently 3 performers on stage
-[	0	0	0	1	]
-
-PRFM:  Juggler #6 at Position Three performing for 5182 milliseconds
-There are currently 4 performers on stage
-[	0	0	0	0	]
-
-DONE:  Juggler #1 is done performing at Position Zero 
-There are currently 3 performers on stage
-[	1	0	0	0	]
-
-PRFM:  Juggler #7 at Position Zero performing for 4458 milliseconds
-There are currently 4 performers on stage
-[	0	0	0	0	]
-
-DONE:  Juggler #2 is done performing at Position One 
-There are currently 3 performers on stage
-[	0	1	0	0	]
-
-PRFM:  Juggler #8 at Position One performing for 3222 milliseconds
-There are currently 4 performers on stage
-[	0	0	0	0	]
-
-DONE:  Juggler #6 is done performing at Position Three 
-There are currently 3 performers on stage
-[	0	0	0	1	]
-
-DONE:  Juggler #8 is done performing at Position One 
+PRFM:  JGLR #5 at Position Zero performing for 8145 milliseconds
 There are currently 2 performers on stage
-[	0	1	0	1	]
+[ JGLR #05 ________ JGLR #06 ________ ]
 
-DONE:  Juggler #7 is done performing at Position Zero 
+PRFM:  FDAN #4 at Position Zero performing for 1508 milliseconds
 There are currently 1 performers on stage
-[	1	1	0	1	]
+[ FDAN #04 ________ ________ ________ ]
 
-DONE:  Juggler #5 is done performing at Position Two 
-There are currently 0 performers on stage
-[	1	1	1	1	]
+PRFM:  FDAN #3 at Position One performing for 1368 milliseconds
+There are currently 2 performers on stage
+[ FDAN #04 FDAN #03 ________ ________ ]
 
+PRFM:  FDAN #1 at Position Two performing for 6643 milliseconds
+There are currently 3 performers on stage
+[ FDAN #04 FDAN #03 FDAN #01 ________ ]
+
+PRFM:  FDAN #2 at Position Three performing for 2985 milliseconds
+There are currently 4 performers on stage
+[ FDAN #04 FDAN #03 FDAN #01 FDAN #02 ]
+
+PRFM:  FDAN #5 at Position Zero performing for 9936 milliseconds
+There are currently 3 performers on stage
+[ FDAN #05 ________ FDAN #01 FDAN #02 ]
+
+PRFM:  FDAN #6 at Position One performing for 7092 milliseconds
+There are currently 3 performers on stage
+[ FDAN #05 FDAN #06 ________ FDAN #02 ]
+
+PRFM:  FDAN #7 at Position Zero performing for 8845 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 ________ FDAN #02 ]
+
+PRFM:  FDAN #8 at Position Two performing for 4315 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 FDAN #08 ________ ]
+
+PRFM:  FDAN #9 at Position Two performing for 1922 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 FDAN #09 ________ ]
+
+PRFM:  FDAN #11 at Position Zero performing for 4720 milliseconds
+There are currently 1 performers on stage
+[ FDAN #11 ________ ________ ________ ]
+
+PRFM:  FDAN #10 at Position One performing for 3281 milliseconds
+There are currently 2 performers on stage
+[ FDAN #11 FDAN #10 ________ ________ ]
+
+PRFM:  FDAN #12 at Position Zero performing for 6053 milliseconds
+There are currently 1 performers on stage
+[ FDAN #12 ________ ________ ________ ]
+
+PRFM:  FDAN #13 at Position One performing for 2779 milliseconds
+There are currently 2 performers on stage
+[ FDAN #12 FDAN #13 ________ ________ ]
+
+PRFM:  FDAN #14 at Position Zero performing for 5119 milliseconds
+There are currently 1 performers on stage
+[ FDAN #14 ________ ________ ________ ]
+
+PRFM:  FDAN #15 at Position One performing for 6390 milliseconds
+There are currently 2 performers on stage
+[ FDAN #14 FDAN #15 ________ ________ ]
+
+PRFM:  SOLO #2 at Position Zero performing for 7716 milliseconds
+There are currently 1 performers on stage
+[ SOLO #02 ________ ________ ________ ]
+
+PRFM:  JGLR #2 at Position Zero performing for 3874 milliseconds
+There are currently 1 performers on stage
+[ JGLR #02 ________ ________ ________ ]
+
+PRFM:  SOLO #1 at Position Zero performing for 7709 milliseconds
+There are currently 1 performers on stage
+[ SOLO #01 ________ ________ ________ ]
+
+PRFM:  JGLR #4 at Position Zero performing for 6059 milliseconds
+There are currently 1 performers on stage
+[ JGLR #04 ________ ________ ________ ]
+
+PRFM:  JGLR #1 at Position One performing for 8450 milliseconds
+There are currently 2 performers on stage
+[ JGLR #04 JGLR #01 ________ ________ ]
+
+PRFM:  JGLR #3 at Position Two performing for 1419 milliseconds
+There are currently 3 performers on stage
+[ JGLR #04 JGLR #01 JGLR #03 ________ ]
+
+---------------------------------------------------------------
+woohoo its over yay
+---------------------------------------------------------------
+
+
+RUN NUMBER 3:
+
+Random seed is: 12345
+Seeding the randomizer...
+---------------------------------------------------------------
+Welcome to teh summer spectacular. take ur seats. bye
+---------------------------------------------------------------
+
+PRFM:  JGLR #7 at Position Zero performing for 1437 milliseconds
+There are currently 1 performers on stage
+[ JGLR #07 ________ ________ ________ ]
+
+PRFM:  JGLR #8 at Position One performing for 2465 milliseconds
+There are currently 2 performers on stage
+[ JGLR #07 JGLR #08 ________ ________ ]
+
+PRFM:  JGLR #6 at Position Two performing for 6426 milliseconds
+There are currently 3 performers on stage
+[ JGLR #07 JGLR #08 JGLR #06 ________ ]
+
+PRFM:  JGLR #5 at Position Zero performing for 8145 milliseconds
+There are currently 2 performers on stage
+[ JGLR #05 ________ JGLR #06 ________ ]
+
+PRFM:  FDAN #4 at Position Zero performing for 1508 milliseconds
+There are currently 1 performers on stage
+[ FDAN #04 ________ ________ ________ ]
+
+PRFM:  FDAN #3 at Position One performing for 1368 milliseconds
+There are currently 2 performers on stage
+[ FDAN #04 FDAN #03 ________ ________ ]
+
+PRFM:  FDAN #1 at Position Two performing for 6643 milliseconds
+There are currently 3 performers on stage
+[ FDAN #04 FDAN #03 FDAN #01 ________ ]
+
+PRFM:  FDAN #2 at Position Three performing for 2985 milliseconds
+There are currently 4 performers on stage
+[ FDAN #04 FDAN #03 FDAN #01 FDAN #02 ]
+
+PRFM:  FDAN #5 at Position Zero performing for 9936 milliseconds
+There are currently 3 performers on stage
+[ FDAN #05 ________ FDAN #01 FDAN #02 ]
+
+PRFM:  FDAN #6 at Position One performing for 7092 milliseconds
+There are currently 3 performers on stage
+[ FDAN #05 FDAN #06 ________ FDAN #02 ]
+
+PRFM:  FDAN #7 at Position Zero performing for 8845 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 ________ FDAN #02 ]
+
+PRFM:  FDAN #8 at Position Two performing for 4315 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 FDAN #08 ________ ]
+
+PRFM:  FDAN #9 at Position Two performing for 1922 milliseconds
+There are currently 3 performers on stage
+[ FDAN #07 FDAN #06 FDAN #09 ________ ]
+
+PRFM:  FDAN #11 at Position Zero performing for 4720 milliseconds
+There are currently 1 performers on stage
+[ FDAN #11 ________ ________ ________ ]
+
+PRFM:  FDAN #10 at Position One performing for 3281 milliseconds
+There are currently 2 performers on stage
+[ FDAN #11 FDAN #10 ________ ________ ]
+
+PRFM:  FDAN #12 at Position Zero performing for 6053 milliseconds
+There are currently 1 performers on stage
+[ FDAN #12 ________ ________ ________ ]
+
+PRFM:  FDAN #13 at Position One performing for 2779 milliseconds
+There are currently 2 performers on stage
+[ FDAN #12 FDAN #13 ________ ________ ]
+
+PRFM:  FDAN #14 at Position Zero performing for 5119 milliseconds
+There are currently 1 performers on stage
+[ FDAN #14 ________ ________ ________ ]
+
+PRFM:  FDAN #15 at Position One performing for 6390 milliseconds
+There are currently 2 performers on stage
+[ FDAN #14 FDAN #15 ________ ________ ]
+
+PRFM:  SOLO #2 at Position Zero performing for 7716 milliseconds
+There are currently 1 performers on stage
+[ SOLO #02 ________ ________ ________ ]
+
+PRFM:  JGLR #2 at Position Zero performing for 3874 milliseconds
+There are currently 1 performers on stage
+[ JGLR #02 ________ ________ ________ ]
+
+PRFM:  SOLO #1 at Position Zero performing for 7709 milliseconds
+There are currently 1 performers on stage
+[ SOLO #01 ________ ________ ________ ]
+
+PRFM:  JGLR #4 at Position Zero performing for 6059 milliseconds
+There are currently 1 performers on stage
+[ JGLR #04 ________ ________ ________ ]
+
+PRFM:  JGLR #1 at Position One performing for 8450 milliseconds
+There are currently 2 performers on stage
+[ JGLR #04 JGLR #01 ________ ________ ]
+
+PRFM:  JGLR #3 at Position Two performing for 1419 milliseconds
+There are currently 3 performers on stage
+[ JGLR #04 JGLR #01 JGLR #03 ________ ]
+
+---------------------------------------------------------------
+woohoo its over yay
+---------------------------------------------------------------
