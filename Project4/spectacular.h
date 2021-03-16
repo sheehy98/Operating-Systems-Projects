@@ -29,7 +29,7 @@ struct stagePosition
 {
     char *positionName;
     int isFree;
-    char *currPerformer;
+    struct performer *currPerformer;
 } stagePosition;
 
 struct stage
