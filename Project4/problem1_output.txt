@@ -6,105 +6,105 @@ Seeding the randomizer...
 Welcome to teh summer spectacular. take ur seats. bye
 ---------------------------------------------------------------
 
-PRFM:  JGLR #7 at Position Zero performing for 1437 milliseconds
-There are currently 1 performers on stage
-[ JGLR #07 ________ ________ ________ ]
+[ JGLR #07 ________ ________ ________ ] JGLR #07 joined at Position Zero, performing for 1437 milliseconds
 
-PRFM:  JGLR #8 at Position One performing for 2465 milliseconds
-There are currently 2 performers on stage
-[ JGLR #07 JGLR #08 ________ ________ ]
+[ JGLR #07 JGLR #08 ________ ________ ] JGLR #08 joined at Position One, performing for 2465 milliseconds
 
-PRFM:  JGLR #6 at Position Two performing for 6426 milliseconds
-There are currently 3 performers on stage
-[ JGLR #07 JGLR #08 JGLR #06 ________ ]
+[ JGLR #07 JGLR #08 JGLR #06 ________ ] JGLR #06 joined at Position Two, performing for 6426 milliseconds
 
-PRFM:  JGLR #5 at Position Zero performing for 8145 milliseconds
-There are currently 2 performers on stage
-[ JGLR #05 ________ JGLR #06 ________ ]
+DONE:  JGLR #06 is done performing at Position Two 
 
-PRFM:  FDAN #4 at Position Zero performing for 1508 milliseconds
-There are currently 1 performers on stage
-[ FDAN #04 ________ ________ ________ ]
+DONE:  JGLR #08 is done performing at Position One 
 
-PRFM:  FDAN #3 at Position One performing for 1368 milliseconds
-There are currently 2 performers on stage
-[ FDAN #04 FDAN #03 ________ ________ ]
+DONE:  JGLR #07 is done performing at Position Zero 
 
-PRFM:  FDAN #1 at Position Two performing for 6643 milliseconds
-There are currently 3 performers on stage
-[ FDAN #04 FDAN #03 FDAN #01 ________ ]
+[ JGLR #05 ________ ________ ________ ] JGLR #05 joined at Position Zero, performing for 2985 milliseconds
 
-PRFM:  FDAN #2 at Position Three performing for 2985 milliseconds
-There are currently 4 performers on stage
-[ FDAN #04 FDAN #03 FDAN #01 FDAN #02 ]
+DONE:  JGLR #05 is done performing at Position Zero 
 
-PRFM:  FDAN #5 at Position Zero performing for 9936 milliseconds
-There are currently 3 performers on stage
-[ FDAN #05 ________ FDAN #01 FDAN #02 ]
+[ FDAN #04 ________ ________ ________ ] FDAN #04 joined at Position Zero, performing for 1508 milliseconds
 
-PRFM:  FDAN #6 at Position One performing for 7092 milliseconds
-There are currently 3 performers on stage
-[ FDAN #05 FDAN #06 ________ FDAN #02 ]
+[ FDAN #04 FDAN #02 ________ ________ ] FDAN #02 joined at Position One, performing for 8145 milliseconds
 
-PRFM:  FDAN #7 at Position Zero performing for 8845 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 ________ FDAN #02 ]
+[ FDAN #04 FDAN #02 FDAN #03 ________ ] FDAN #03 joined at Position Two, performing for 1368 milliseconds
 
-PRFM:  FDAN #8 at Position Two performing for 4315 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 FDAN #08 ________ ]
+[ FDAN #04 FDAN #02 FDAN #03 FDAN #01 ] FDAN #01 joined at Position Three, performing for 6643 milliseconds
 
-PRFM:  FDAN #9 at Position Two performing for 1922 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 FDAN #09 ________ ]
+DONE:  FDAN #04 is done performing at Position Zero 
 
-PRFM:  FDAN #11 at Position Zero performing for 4720 milliseconds
-There are currently 1 performers on stage
-[ FDAN #11 ________ ________ ________ ]
+DONE:  FDAN #03 is done performing at Position Two 
 
-PRFM:  FDAN #10 at Position One performing for 3281 milliseconds
-There are currently 2 performers on stage
-[ FDAN #11 FDAN #10 ________ ________ ]
+DONE:  FDAN #02 is done performing at Position One 
 
-PRFM:  FDAN #12 at Position Zero performing for 6053 milliseconds
-There are currently 1 performers on stage
-[ FDAN #12 ________ ________ ________ ]
+[ FDAN #05 ________ ________ FDAN #01 ] FDAN #05 joined at Position Zero, performing for 6059 milliseconds
 
-PRFM:  FDAN #13 at Position One performing for 2779 milliseconds
-There are currently 2 performers on stage
-[ FDAN #12 FDAN #13 ________ ________ ]
+[ FDAN #05 FDAN #06 ________ FDAN #01 ] FDAN #06 joined at Position One, performing for 7092 milliseconds
 
-PRFM:  FDAN #14 at Position Zero performing for 5119 milliseconds
-There are currently 1 performers on stage
-[ FDAN #14 ________ ________ ________ ]
+DONE:  FDAN #05 is done performing at Position Zero 
 
-PRFM:  FDAN #15 at Position One performing for 6390 milliseconds
-There are currently 2 performers on stage
-[ FDAN #14 FDAN #15 ________ ________ ]
+[ FDAN #07 FDAN #06 ________ FDAN #01 ] FDAN #07 joined at Position Zero, performing for 8845 milliseconds
 
-PRFM:  SOLO #2 at Position Zero performing for 7716 milliseconds
-There are currently 1 performers on stage
-[ SOLO #02 ________ ________ ________ ]
+DONE:  FDAN #01 is done performing at Position Three 
 
-PRFM:  JGLR #2 at Position Zero performing for 3874 milliseconds
-There are currently 1 performers on stage
-[ JGLR #02 ________ ________ ________ ]
+[ FDAN #07 FDAN #06 FDAN #08 ________ ] FDAN #08 joined at Position Two, performing for 4315 milliseconds
 
-PRFM:  SOLO #1 at Position Zero performing for 7709 milliseconds
-There are currently 1 performers on stage
-[ SOLO #01 ________ ________ ________ ]
+DONE:  FDAN #06 is done performing at Position One 
 
-PRFM:  JGLR #4 at Position Zero performing for 6059 milliseconds
-There are currently 1 performers on stage
-[ JGLR #04 ________ ________ ________ ]
+[ FDAN #07 FDAN #09 FDAN #08 ________ ] FDAN #09 joined at Position One, performing for 1922 milliseconds
 
-PRFM:  JGLR #1 at Position One performing for 8450 milliseconds
-There are currently 2 performers on stage
-[ JGLR #04 JGLR #01 ________ ________ ]
+DONE:  FDAN #09 is done performing at Position One 
 
-PRFM:  JGLR #3 at Position Two performing for 1419 milliseconds
-There are currently 3 performers on stage
-[ JGLR #04 JGLR #01 JGLR #03 ________ ]
+DONE:  FDAN #08 is done performing at Position Two 
+
+DONE:  FDAN #07 is done performing at Position Zero 
+
+[ FDAN #11 ________ ________ ________ ] FDAN #11 joined at Position Zero, performing for 1419 milliseconds
+
+[ FDAN #11 FDAN #10 ________ ________ ] FDAN #10 joined at Position One, performing for 4720 milliseconds
+
+DONE:  FDAN #11 is done performing at Position Zero 
+
+[ FDAN #12 FDAN #10 ________ ________ ] FDAN #12 joined at Position Zero, performing for 6053 milliseconds
+
+DONE:  FDAN #10 is done performing at Position One 
+
+[ FDAN #12 FDAN #13 ________ ________ ] FDAN #13 joined at Position One, performing for 2779 milliseconds
+
+DONE:  FDAN #13 is done performing at Position One 
+
+DONE:  FDAN #12 is done performing at Position Zero 
+
+[ JGLR #04 ________ ________ ________ ] JGLR #04 joined at Position Zero, performing for 9936 milliseconds
+
+[ JGLR #04 JGLR #03 ________ ________ ] JGLR #03 joined at Position One, performing for 3281 milliseconds
+
+DONE:  JGLR #03 is done performing at Position One 
+
+DONE:  JGLR #04 is done performing at Position Zero 
+
+[ SOLO #02 ________ ________ ________ ] SOLO #02 joined at Position Zero, performing for 7716 milliseconds
+
+DONE:  SOLO #02 is done performing at Position Zero 
+
+[ FDAN #15 ________ ________ ________ ] FDAN #15 joined at Position Zero, performing for 6390 milliseconds
+
+[ FDAN #15 FDAN #14 ________ ________ ] FDAN #14 joined at Position One, performing for 5119 milliseconds
+
+DONE:  FDAN #15 is done performing at Position Zero 
+
+DONE:  FDAN #14 is done performing at Position One 
+
+[ JGLR #01 ________ ________ ________ ] JGLR #01 joined at Position Zero, performing for 8450 milliseconds
+
+[ JGLR #01 JGLR #02 ________ ________ ] JGLR #02 joined at Position One, performing for 3874 milliseconds
+
+DONE:  JGLR #02 is done performing at Position One 
+
+DONE:  JGLR #01 is done performing at Position Zero 
+
+[ SOLO #01 ________ ________ ________ ] SOLO #01 joined at Position Zero, performing for 7709 milliseconds
+
+DONE:  SOLO #01 is done performing at Position Zero 
 
 ---------------------------------------------------------------
 woohoo its over yay
@@ -113,111 +113,111 @@ woohoo its over yay
 
 RUN NUMBER 2:
 
-Random seed is: 12345
+Random seed is: 2336236
 Seeding the randomizer...
 ---------------------------------------------------------------
 Welcome to teh summer spectacular. take ur seats. bye
 ---------------------------------------------------------------
 
-PRFM:  JGLR #7 at Position Zero performing for 1437 milliseconds
-There are currently 1 performers on stage
-[ JGLR #07 ________ ________ ________ ]
+[ JGLR #07 ________ ________ ________ ] JGLR #07 joined at Position Zero, performing for 2712 milliseconds
 
-PRFM:  JGLR #8 at Position One performing for 2465 milliseconds
-There are currently 2 performers on stage
-[ JGLR #07 JGLR #08 ________ ________ ]
+[ JGLR #07 JGLR #08 ________ ________ ] JGLR #08 joined at Position One, performing for 1689 milliseconds
 
-PRFM:  JGLR #6 at Position Two performing for 6426 milliseconds
-There are currently 3 performers on stage
-[ JGLR #07 JGLR #08 JGLR #06 ________ ]
+DONE:  JGLR #08 is done performing at Position One 
 
-PRFM:  JGLR #5 at Position Zero performing for 8145 milliseconds
-There are currently 2 performers on stage
-[ JGLR #05 ________ JGLR #06 ________ ]
+DONE:  JGLR #07 is done performing at Position Zero 
 
-PRFM:  FDAN #4 at Position Zero performing for 1508 milliseconds
-There are currently 1 performers on stage
-[ FDAN #04 ________ ________ ________ ]
+[ JGLR #06 ________ ________ ________ ] JGLR #06 joined at Position Zero, performing for 6523 milliseconds
 
-PRFM:  FDAN #3 at Position One performing for 1368 milliseconds
-There are currently 2 performers on stage
-[ FDAN #04 FDAN #03 ________ ________ ]
+DONE:  JGLR #06 is done performing at Position Zero 
 
-PRFM:  FDAN #1 at Position Two performing for 6643 milliseconds
-There are currently 3 performers on stage
-[ FDAN #04 FDAN #03 FDAN #01 ________ ]
+[ FDAN #04 ________ ________ ________ ] FDAN #04 joined at Position Zero, performing for 8245 milliseconds
 
-PRFM:  FDAN #2 at Position Three performing for 2985 milliseconds
-There are currently 4 performers on stage
-[ FDAN #04 FDAN #03 FDAN #01 FDAN #02 ]
+[ FDAN #04 FDAN #01 ________ ________ ] FDAN #01 joined at Position One, performing for 1895 milliseconds
 
-PRFM:  FDAN #5 at Position Zero performing for 9936 milliseconds
-There are currently 3 performers on stage
-[ FDAN #05 ________ FDAN #01 FDAN #02 ]
+[ FDAN #04 FDAN #01 FDAN #03 ________ ] FDAN #03 joined at Position Two, performing for 6295 milliseconds
 
-PRFM:  FDAN #6 at Position One performing for 7092 milliseconds
-There are currently 3 performers on stage
-[ FDAN #05 FDAN #06 ________ FDAN #02 ]
+[ FDAN #04 FDAN #01 FDAN #03 FDAN #02 ] FDAN #02 joined at Position Three, performing for 7865 milliseconds
 
-PRFM:  FDAN #7 at Position Zero performing for 8845 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 ________ FDAN #02 ]
+DONE:  FDAN #01 is done performing at Position One 
 
-PRFM:  FDAN #8 at Position Two performing for 4315 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 FDAN #08 ________ ]
+DONE:  FDAN #03 is done performing at Position Two 
 
-PRFM:  FDAN #9 at Position Two performing for 1922 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 FDAN #09 ________ ]
+DONE:  FDAN #04 is done performing at Position Zero 
 
-PRFM:  FDAN #11 at Position Zero performing for 4720 milliseconds
-There are currently 1 performers on stage
-[ FDAN #11 ________ ________ ________ ]
+[ FDAN #05 ________ ________ FDAN #02 ] FDAN #05 joined at Position Zero, performing for 9792 milliseconds
 
-PRFM:  FDAN #10 at Position One performing for 3281 milliseconds
-There are currently 2 performers on stage
-[ FDAN #11 FDAN #10 ________ ________ ]
+[ FDAN #05 FDAN #06 ________ FDAN #02 ] FDAN #06 joined at Position One, performing for 5737 milliseconds
 
-PRFM:  FDAN #12 at Position Zero performing for 6053 milliseconds
-There are currently 1 performers on stage
-[ FDAN #12 ________ ________ ________ ]
+DONE:  FDAN #05 is done performing at Position Zero 
 
-PRFM:  FDAN #13 at Position One performing for 2779 milliseconds
-There are currently 2 performers on stage
-[ FDAN #12 FDAN #13 ________ ________ ]
+[ FDAN #07 FDAN #06 ________ FDAN #02 ] FDAN #07 joined at Position Zero, performing for 7950 milliseconds
 
-PRFM:  FDAN #14 at Position Zero performing for 5119 milliseconds
-There are currently 1 performers on stage
-[ FDAN #14 ________ ________ ________ ]
+DONE:  FDAN #02 is done performing at Position Three 
 
-PRFM:  FDAN #15 at Position One performing for 6390 milliseconds
-There are currently 2 performers on stage
-[ FDAN #14 FDAN #15 ________ ________ ]
+[ FDAN #07 FDAN #06 FDAN #08 ________ ] FDAN #08 joined at Position Two, performing for 5161 milliseconds
 
-PRFM:  SOLO #2 at Position Zero performing for 7716 milliseconds
-There are currently 1 performers on stage
-[ SOLO #02 ________ ________ ________ ]
+DONE:  FDAN #08 is done performing at Position Two 
 
-PRFM:  JGLR #2 at Position Zero performing for 3874 milliseconds
-There are currently 1 performers on stage
-[ JGLR #02 ________ ________ ________ ]
+DONE:  FDAN #06 is done performing at Position One 
 
-PRFM:  SOLO #1 at Position Zero performing for 7709 milliseconds
-There are currently 1 performers on stage
-[ SOLO #01 ________ ________ ________ ]
+DONE:  FDAN #07 is done performing at Position Zero 
 
-PRFM:  JGLR #4 at Position Zero performing for 6059 milliseconds
-There are currently 1 performers on stage
-[ JGLR #04 ________ ________ ________ ]
+[ JGLR #05 ________ ________ ________ ] JGLR #05 joined at Position Zero, performing for 8633 milliseconds
 
-PRFM:  JGLR #1 at Position One performing for 8450 milliseconds
-There are currently 2 performers on stage
-[ JGLR #04 JGLR #01 ________ ________ ]
+[ JGLR #05 JGLR #04 ________ ________ ] JGLR #04 joined at Position One, performing for 3339 milliseconds
 
-PRFM:  JGLR #3 at Position Two performing for 1419 milliseconds
-There are currently 3 performers on stage
-[ JGLR #04 JGLR #01 JGLR #03 ________ ]
+DONE:  JGLR #04 is done performing at Position One 
+
+DONE:  JGLR #05 is done performing at Position Zero 
+
+[ FDAN #10 ________ ________ ________ ] FDAN #10 joined at Position Zero, performing for 8407 milliseconds
+
+[ FDAN #10 FDAN #12 ________ ________ ] FDAN #12 joined at Position One, performing for 2725 milliseconds
+
+[ FDAN #10 FDAN #12 FDAN #09 ________ ] FDAN #09 joined at Position Two, performing for 7847 milliseconds
+
+[ FDAN #10 FDAN #12 FDAN #09 FDAN #11 ] FDAN #11 joined at Position Three, performing for 4685 milliseconds
+
+DONE:  FDAN #12 is done performing at Position One 
+
+DONE:  FDAN #09 is done performing at Position Two 
+
+DONE:  FDAN #10 is done performing at Position Zero 
+
+[ FDAN #13 ________ ________ FDAN #11 ] FDAN #13 joined at Position Zero, performing for 7939 milliseconds
+
+[ FDAN #13 FDAN #14 ________ FDAN #11 ] FDAN #14 joined at Position One, performing for 2708 milliseconds
+
+[ FDAN #13 FDAN #14 FDAN #15 FDAN #11 ] FDAN #15 joined at Position Two, performing for 8986 milliseconds
+
+DONE:  FDAN #11 is done performing at Position Three 
+
+DONE:  FDAN #14 is done performing at Position One 
+
+DONE:  FDAN #13 is done performing at Position Zero 
+
+DONE:  FDAN #15 is done performing at Position Two 
+
+[ SOLO #01 ________ ________ ________ ] SOLO #01 joined at Position Zero, performing for 4623 milliseconds
+
+DONE:  SOLO #01 is done performing at Position Zero 
+
+[ JGLR #03 ________ ________ ________ ] JGLR #03 joined at Position Zero, performing for 9527 milliseconds
+
+[ JGLR #03 JGLR #01 ________ ________ ] JGLR #01 joined at Position One, performing for 5989 milliseconds
+
+[ JGLR #03 JGLR #01 JGLR #02 ________ ] JGLR #02 joined at Position Two, performing for 2804 milliseconds
+
+DONE:  JGLR #02 is done performing at Position Two 
+
+DONE:  JGLR #01 is done performing at Position One 
+
+DONE:  JGLR #03 is done performing at Position Zero 
+
+[ SOLO #02 ________ ________ ________ ] SOLO #02 joined at Position Zero, performing for 2546 milliseconds
+
+DONE:  SOLO #02 is done performing at Position Zero 
 
 ---------------------------------------------------------------
 woohoo its over yay
@@ -226,111 +226,111 @@ woohoo its over yay
 
 RUN NUMBER 3:
 
-Random seed is: 12345
+Random seed is: 378909
 Seeding the randomizer...
 ---------------------------------------------------------------
 Welcome to teh summer spectacular. take ur seats. bye
 ---------------------------------------------------------------
 
-PRFM:  JGLR #7 at Position Zero performing for 1437 milliseconds
-There are currently 1 performers on stage
-[ JGLR #07 ________ ________ ________ ]
+[ JGLR #07 ________ ________ ________ ] JGLR #07 joined at Position Zero, performing for 1427 milliseconds
 
-PRFM:  JGLR #8 at Position One performing for 2465 milliseconds
-There are currently 2 performers on stage
-[ JGLR #07 JGLR #08 ________ ________ ]
+[ JGLR #07 JGLR #08 ________ ________ ] JGLR #08 joined at Position One, performing for 1697 milliseconds
 
-PRFM:  JGLR #6 at Position Two performing for 6426 milliseconds
-There are currently 3 performers on stage
-[ JGLR #07 JGLR #08 JGLR #06 ________ ]
+DONE:  JGLR #07 is done performing at Position Zero 
 
-PRFM:  JGLR #5 at Position Zero performing for 8145 milliseconds
-There are currently 2 performers on stage
-[ JGLR #05 ________ JGLR #06 ________ ]
+DONE:  JGLR #08 is done performing at Position One 
 
-PRFM:  FDAN #4 at Position Zero performing for 1508 milliseconds
-There are currently 1 performers on stage
-[ FDAN #04 ________ ________ ________ ]
+[ JGLR #06 ________ ________ ________ ] JGLR #06 joined at Position Zero, performing for 2683 milliseconds
 
-PRFM:  FDAN #3 at Position One performing for 1368 milliseconds
-There are currently 2 performers on stage
-[ FDAN #04 FDAN #03 ________ ________ ]
+DONE:  JGLR #06 is done performing at Position Zero 
 
-PRFM:  FDAN #1 at Position Two performing for 6643 milliseconds
-There are currently 3 performers on stage
-[ FDAN #04 FDAN #03 FDAN #01 ________ ]
+[ FDAN #04 ________ ________ ________ ] FDAN #04 joined at Position Zero, performing for 8325 milliseconds
 
-PRFM:  FDAN #2 at Position Three performing for 2985 milliseconds
-There are currently 4 performers on stage
-[ FDAN #04 FDAN #03 FDAN #01 FDAN #02 ]
+[ FDAN #04 FDAN #03 ________ ________ ] FDAN #03 joined at Position One, performing for 6151 milliseconds
 
-PRFM:  FDAN #5 at Position Zero performing for 9936 milliseconds
-There are currently 3 performers on stage
-[ FDAN #05 ________ FDAN #01 FDAN #02 ]
+[ FDAN #04 FDAN #03 FDAN #01 ________ ] FDAN #01 joined at Position Two, performing for 2828 milliseconds
 
-PRFM:  FDAN #6 at Position One performing for 7092 milliseconds
-There are currently 3 performers on stage
-[ FDAN #05 FDAN #06 ________ FDAN #02 ]
+[ FDAN #04 FDAN #03 FDAN #01 FDAN #02 ] FDAN #02 joined at Position Three, performing for 9201 milliseconds
 
-PRFM:  FDAN #7 at Position Zero performing for 8845 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 ________ FDAN #02 ]
+DONE:  FDAN #03 is done performing at Position One 
 
-PRFM:  FDAN #8 at Position Two performing for 4315 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 FDAN #08 ________ ]
+DONE:  FDAN #04 is done performing at Position Zero 
 
-PRFM:  FDAN #9 at Position Two performing for 1922 milliseconds
-There are currently 3 performers on stage
-[ FDAN #07 FDAN #06 FDAN #09 ________ ]
+DONE:  FDAN #01 is done performing at Position Two 
 
-PRFM:  FDAN #11 at Position Zero performing for 4720 milliseconds
-There are currently 1 performers on stage
-[ FDAN #11 ________ ________ ________ ]
+DONE:  FDAN #02 is done performing at Position Three 
 
-PRFM:  FDAN #10 at Position One performing for 3281 milliseconds
-There are currently 2 performers on stage
-[ FDAN #11 FDAN #10 ________ ________ ]
+[ FDAN #05 ________ ________ ________ ] FDAN #05 joined at Position Zero, performing for 8605 milliseconds
 
-PRFM:  FDAN #12 at Position Zero performing for 6053 milliseconds
-There are currently 1 performers on stage
-[ FDAN #12 ________ ________ ________ ]
+[ FDAN #05 FDAN #06 ________ ________ ] FDAN #06 joined at Position One, performing for 7901 milliseconds
 
-PRFM:  FDAN #13 at Position One performing for 2779 milliseconds
-There are currently 2 performers on stage
-[ FDAN #12 FDAN #13 ________ ________ ]
+[ FDAN #05 FDAN #06 FDAN #07 ________ ] FDAN #07 joined at Position Two, performing for 4806 milliseconds
 
-PRFM:  FDAN #14 at Position Zero performing for 5119 milliseconds
-There are currently 1 performers on stage
-[ FDAN #14 ________ ________ ________ ]
+DONE:  FDAN #07 is done performing at Position Two 
 
-PRFM:  FDAN #15 at Position One performing for 6390 milliseconds
-There are currently 2 performers on stage
-[ FDAN #14 FDAN #15 ________ ________ ]
+DONE:  FDAN #06 is done performing at Position One 
 
-PRFM:  SOLO #2 at Position Zero performing for 7716 milliseconds
-There are currently 1 performers on stage
-[ SOLO #02 ________ ________ ________ ]
+[ FDAN #05 FDAN #08 ________ ________ ] FDAN #08 joined at Position One, performing for 2082 milliseconds
 
-PRFM:  JGLR #2 at Position Zero performing for 3874 milliseconds
-There are currently 1 performers on stage
-[ JGLR #02 ________ ________ ________ ]
+DONE:  FDAN #05 is done performing at Position Zero 
 
-PRFM:  SOLO #1 at Position Zero performing for 7709 milliseconds
-There are currently 1 performers on stage
-[ SOLO #01 ________ ________ ________ ]
+[ FDAN #09 FDAN #08 ________ ________ ] FDAN #09 joined at Position Zero, performing for 2396 milliseconds
 
-PRFM:  JGLR #4 at Position Zero performing for 6059 milliseconds
-There are currently 1 performers on stage
-[ JGLR #04 ________ ________ ________ ]
+DONE:  FDAN #08 is done performing at Position One 
 
-PRFM:  JGLR #1 at Position One performing for 8450 milliseconds
-There are currently 2 performers on stage
-[ JGLR #04 JGLR #01 ________ ________ ]
+DONE:  FDAN #09 is done performing at Position Zero 
 
-PRFM:  JGLR #3 at Position Two performing for 1419 milliseconds
-There are currently 3 performers on stage
-[ JGLR #04 JGLR #01 JGLR #03 ________ ]
+[ JGLR #05 ________ ________ ________ ] JGLR #05 joined at Position Zero, performing for 9536 milliseconds
+
+[ JGLR #05 JGLR #04 ________ ________ ] JGLR #04 joined at Position One, performing for 6055 milliseconds
+
+DONE:  JGLR #04 is done performing at Position One 
+
+DONE:  JGLR #05 is done performing at Position Zero 
+
+[ FDAN #13 ________ ________ ________ ] FDAN #13 joined at Position Zero, performing for 2491 milliseconds
+
+[ FDAN #13 FDAN #11 ________ ________ ] FDAN #11 joined at Position One, performing for 7897 milliseconds
+
+[ FDAN #13 FDAN #11 FDAN #12 ________ ] FDAN #12 joined at Position Two, performing for 2179 milliseconds
+
+[ FDAN #13 FDAN #11 FDAN #12 FDAN #10 ] FDAN #10 joined at Position Three, performing for 8224 milliseconds
+
+DONE:  FDAN #13 is done performing at Position Zero 
+
+DONE:  FDAN #11 is done performing at Position One 
+
+[ FDAN #14 ________ FDAN #12 FDAN #10 ] FDAN #14 joined at Position Zero, performing for 8244 milliseconds
+
+DONE:  FDAN #14 is done performing at Position Zero 
+
+[ FDAN #15 ________ FDAN #12 FDAN #10 ] FDAN #15 joined at Position Zero, performing for 2114 milliseconds
+
+DONE:  FDAN #12 is done performing at Position Two 
+
+DONE:  FDAN #15 is done performing at Position Zero 
+
+DONE:  FDAN #10 is done performing at Position Three 
+
+[ SOLO #02 ________ ________ ________ ] SOLO #02 joined at Position Zero, performing for 6192 milliseconds
+
+DONE:  SOLO #02 is done performing at Position Zero 
+
+[ JGLR #01 ________ ________ ________ ] JGLR #01 joined at Position Zero, performing for 3982 milliseconds
+
+DONE:  JGLR #01 is done performing at Position Zero 
+
+[ JGLR #03 ________ ________ ________ ] JGLR #03 joined at Position Zero, performing for 6665 milliseconds
+
+[ JGLR #03 JGLR #02 ________ ________ ] JGLR #02 joined at Position One, performing for 2301 milliseconds
+
+DONE:  JGLR #02 is done performing at Position One 
+
+DONE:  JGLR #03 is done performing at Position Zero 
+
+[ SOLO #01 ________ ________ ________ ] SOLO #01 joined at Position Zero, performing for 5628 milliseconds
+
+DONE:  SOLO #01 is done performing at Position Zero 
 
 ---------------------------------------------------------------
 woohoo its over yay
