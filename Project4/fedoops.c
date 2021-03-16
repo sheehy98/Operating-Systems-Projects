@@ -7,14 +7,11 @@
 #include <string.h>
 #include "fedoops.h"
 
-//
+// CAN ONLY HAVE ONE WORKER PER TEAM AT A TIME
 
 // stations
 struct station stations[4];
 package *pileHead = NULL; // pile of pending packages
-
-//
-int teamBusy[4] = {0, 0, 0, 0};
 
 // tracking packages completed
 int packagesCompleted = 0;
@@ -26,6 +23,8 @@ int yellowPackages = 0;
 // locks/mutexes
 pthread_mutex_t grabMtx = PTHREAD_MUTEX_INITIALIZER;    // mutex for grabbing packages
 pthread_mutex_t stationMtx = PTHREAD_MUTEX_INITIALIZER; // mutex for gettin onna station
+pthread_mutex_t stationDoneMtx = PTHREAD_MUTEX_INITIALIZER; // mutex for gettin onna station
+pthread_mutex_t doneMtx = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER;         // conditional :)
 pthread_cond_t busyCond = PTHREAD_COND_INITIALIZER;
 
@@ -57,7 +56,6 @@ void *slaveAway(void *arg)
     workerNode *worker = ((workerNode *)arg);
     package *workerPackage = NULL; // just to prevent ptr->package->whatever
     station *currStation = NULL;
-    int isPackageGrabbed = 0; // flag to check if package is grabbed
     int workerWaiting = 0;
 
     int workerId = worker->workerId;
@@ -66,47 +64,36 @@ void *slaveAway(void *arg)
 
     while (1)
     {
-        while (1)
-        {
-            if (pileHead == NULL)
-            {
-                break;
-            }
-            pthread_mutex_lock(&grabMtx); // grabbing a package should be protected
-            if (worker->isFree)
-            {
-                pthread_mutex_unlock(&grabMtx);
-                break;
-            }
-            else
-            {
-                printf("BUSY:  Currently not Worker %s #%d's turn\n",
-                       teamName, workerId);
-                pthread_cond_wait(&busyCond, &grabMtx);
-                pthread_mutex_unlock(&grabMtx);
-                break;
-            }
-        }
-
-        pthread_mutex_lock(&grabMtx); // grabbing a package should be protected
-        if (pileHead != NULL)
-        {
-            teamBusy[workerTeam] = 1;
-            pileHead->ready = 0;
-            worker->isFree = 0;
-            worker->package = pileHead;      // store package into worker to work on
-            workerPackage = worker->package; // store reference to package in workerPackage
-            isPackageGrabbed = 1;
-            printf("GRAB:  Worker %s #%d grabbed package %d\n",
-                   teamName, workerId, workerPackage->packageNum);
-            pileHead = pileHead->nextPackage; // pile goes to next package for another worker to grab
-        }
-        else
-        {
-            pthread_cond_signal(&busyCond);
-            pthread_mutex_unlock(&grabMtx);
-            return NULL;
-        }
+      while (1) {
+		
+	if (pileHead == NULL)
+	  {
+	    return NULL;
+	  }
+	
+	pthread_mutex_lock(&grabMtx);
+	// grabbing a package should be protected
+	if (worker->isFree)
+	  {
+	    break;
+	  }
+	else
+	  {
+	    printf("BUSY:  Currently not Worker %s #%d's turn\n",
+		   teamName, workerId);
+	    pthread_cond_wait(&busyCond, &grabMtx);
+	    pthread_mutex_unlock(&grabMtx);
+	  }
+      }
+	
+	pileHead->ready = 0;
+	worker->isFree = 0;
+	worker->package = pileHead;      // store package into worker to work on
+	workerPackage = worker->package; // store reference to package in workerPackage
+	printf("GRAB:  Worker %s #%d grabbed package %d\n",
+	       teamName, workerId, workerPackage->packageNum);
+	pileHead = pileHead->nextPackage; // pile goes to next package for another worker to grab
+        
         pthread_mutex_unlock(&grabMtx);
 
         printf("STRT:  Worker %s #%d is starting to work on package %d\n",
@@ -128,11 +115,10 @@ void *slaveAway(void *arg)
                 stationFreeFlag = currStation->isFree;
                 if (stationFreeFlag)
                 {
-                    usleep(rand() % (10000 - 1000 + 1) + 1000); // Conveyor belt - takes random time
-
-                    currStation->isFree = 0;
-                    pthread_mutex_unlock(&stationMtx);
-                    break;
+		  usleep(rand() % (10000 - 1000 + 1) + 1000); // Conveyor belt - takes random time
+		  currStation->isFree = 0;
+		  pthread_mutex_unlock(&stationMtx);
+		  break;
                 }
                 else
                 {
@@ -140,42 +126,35 @@ void *slaveAway(void *arg)
                            currStation->stationName, teamName, workerId, workerPackage->packageNum);
                     pthread_cond_wait(&cond, &stationMtx);
                     pthread_mutex_unlock(&stationMtx);
-                    break;
                 }
             }
 
             printf("WORK:  Worker %s #%d working on Package #%d at Station %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);
-
             if (workerPackage->fragile == 1, strcmp(currStation->stationName, "Jostle") == 0)
             {
                 printf("VLNT:  Package #%d is fragile! Worker %s #%d is shaking the sh*t out of it\n",
                        workerPackage->packageNum, teamName, workerId);
             }
 
-            usleep(rand() % (10000 - 1000 + 1) + 1000); // Work on package - random time
-            // sleep(1);
+	    usleep(rand() % (10000 - 1000 + 1) + 1000); // Work on package - random time
+	    
+	    pthread_mutex_lock(&stationDoneMtx);
             printf("DONE:  Worker %s #%d is finished working on Package #%d at Station %s\n",
                    teamName, workerId, workerPackage->packageNum, currStation->stationName);
             printf("FREE:  Station %s is now free\n", currStation->stationName);
-
-            pthread_mutex_lock(&stationMtx);
             currStation->isFree = 1;
-            pthread_cond_signal(&cond);
-            pthread_mutex_unlock(&stationMtx);
+            pthread_cond_broadcast(&cond);
+            pthread_mutex_unlock(&stationDoneMtx);
         }
-        pthread_mutex_lock(&grabMtx); // grabbing a package should be protected
-        teamBusy[workerTeam] = 0;
-        worker->isFree = 0;
+        pthread_mutex_lock(&doneMtx);
         worker->nextWorker->isFree = 1;
         incrementPackages(workerTeam);
         printf("CMLT:  Worker %s #%d is finished working on Package #%d \n",
                teamName, workerId, workerPackage->packageNum);
-        pthread_cond_signal(&busyCond);
-        pthread_mutex_unlock(&grabMtx); // grabbing a package should be protected
+        pthread_cond_broadcast(&busyCond);
+        pthread_mutex_unlock(&doneMtx); // grabbing a package should be protected
     }
-
-    return NULL;
 }
 
 int main()
