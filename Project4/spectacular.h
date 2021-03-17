@@ -20,24 +20,25 @@
 
 struct performer
 {
-    char *typeName;
-    int id;
-    int performType;
+    char *typeName;  // "FDAN"/"JGLR"/"SOLO"
+    int id;          // simple iterator id
+    int performType; // type of performer but number
 } performer;
 
 struct stagePosition
 {
-    char *positionName;
-    int isFree;
-    struct performer *currPerformer;
+    char *positionName;              // Pos 0/1/2/3
+    int isFree;                      // is the curr pos free
+    struct performer *currPerformer; // store the current performer at the stage position
 } stagePosition;
 
 struct stage
 {
-    int onStageTotal;
-    struct stagePosition stagePositions[4];
+    int onStageTotal;                       // how many performers are on stage?
+    struct stagePosition stagePositions[4]; // array of stage positions (4 stage positions on a stage)
 } stage;
 
+/* get the seed from text file */
 int getSeed()
 {
     char seedBuffer[MAX_CHAR];         // char array to store seed from seed.text
@@ -65,3 +66,29 @@ int getSeed()
         exit(1);
     }
 }
+
+/* deprecated function to check if performers were correctly created */
+// void printPerformers(int performerType)
+// {
+//     switch (performerType)
+//     {
+//     case 0:
+//         for (int i = 0; i < JUGGLER_TOT; i++)
+//         {
+//             printf("%s #%d %d\n", jugglers[i].typeName, jugglers[i].id, jugglers[i].performType);
+//         }
+//         break;
+//     case 1:
+//         for (int i = 0; i < FLAMENCO_TOT; i++)
+//         {
+//             printf("%s #%d %d\n", flamencos[i].typeName, flamencos[i].id, flamencos[i].performType);
+//         }
+//         break;
+//     case 2:
+//         for (int i = 0; i < SOLOISTS_TOT; i++)
+//         {
+//             printf("%s #%d %d\n", soloists[i].typeName, soloists[i].id, soloists[i].performType);
+//         }
+//         break;
+//     }
+// }

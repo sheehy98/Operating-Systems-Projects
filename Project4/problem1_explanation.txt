@@ -1,12 +1,42 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Problem 1 - Mago Sheehy & Hamayel Qureshi ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Our solution entails four semaphores: stageSem, leaveStageSem, enterSem, and printSem. 
+Our solution for Problem 1 uses SEMAPHORES.
 
-The primary semaphores being used to ensure fairness and protection of critical sections are stageSem and enterSem. 
+An explanation of how we met each of the 5 criteria from problem 1 is below:
 
-stageSem allows four performers to be active at a time (it is initialized to 4). Each time a performer becomes active,
-we have a call to sem_wait(&stageSem). The semaphore is 'posted' when the performer is done performing. 
+1 - Performance Safety:
 
-For each active performer attempting to enter the stage, if they are the same type as the performers on stage, they are 
-allowed to enter the stage (unless it is a soloist, which requires an empty stage), otherwise, . When a performer finishes performing,
-a new performer is added to the set of active performers  
+No two types of performers can be on stage at once. We achieve this by using the semaphores named "orderSem", "emptySem", and 
+"lock", lock being a pointer to either fdancerLock or jugglerLock. If there is a certain type of performer already on stage,
+orderSem prevents another type from joining the stage. "emptySem" ensures that soloists only join the stage if the stage is
+empty. We do this by 'waiting' the emptySem if there is even a single performer of a certain type on stage. As soon as the 
+stage is empty, we 'post' the emptySem, giving the soloists a chance to join the stage. This leads to soloists often joining
+one after the other, but this is expected and within the constraints of performance safety and starvation.
+
+2 - Maximum Parallelism:
+
+This is done by making the 'perform' function a non-atomic instruction, such that multiple performers (of the same type) can
+perform at a time, and while one or more performer is performing, others of the same type can attempt to join or leave the 
+stage. We ensured that parallelism did not cause errors by implementing a 'stageLock' semaphore which makes the process of 
+'joining' the stage atomic, so that two or more performers don't attempt to join the exact same stage position at the same time.
+Basically make THAT particular section of the perform section atomic.
+
+3 - Fair Performance Opportunities:
+
+orderSem also applies an order on the performers attempting to enter so as no to cause starvation of other performers. Even while
+performers of a certain type are performing, performers of other types can line up to perform to take the first chance they can get
+to perform on stage. This prevents threads/performers from being starved while also allowing performers of the same type to get on 
+stage if possible. Our program is not 100% fair all the time to ensure a decent amount of concurrency. A fair compromise.
+
+4 - Performance Time Variability and Bounds:
+
+This is simply handled by the rand() function, which is first seeded by the seed.txt file. The upper bound of performance time is 
+.1 seconds, and the lower bound of performance time is .01 seconds. The calculation is simply done as follows:
+rand() % (1000000 - 100000 + 1) + 100000 where the numbers are in microseconds (as we use the usleep() function to simulate 
+performance time)
+
+5 - Pre-performance Napping:
+
+orderSem and stageSem do not at any point cause 'busy' waiting. If a performer wishes to join and is unable to join because the stage
+is either full or has the wrong performer types on it, the semaporhes are 'waited' meaning the thread will relinquish control of the
+cpu until the semaphores are posted.

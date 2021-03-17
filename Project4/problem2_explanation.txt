@@ -1,5 +1,38 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Problem 2 - Mago Sheehy & Hamayel Qureshi ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For problem 2 we used locks/mutexes. 
+For problem 2 we used MUTEXES. 
 
-A situation where a deadlock MIGHT occur is if all of the stations are filled
+Our program completely avoids deadlocks. However, if we were to strictly follow only the steps outlined in the project description,
+avoiding deadlock would be extremely unlikely. The deadlock in that situation would be caused when each worker is waiting on a 
+station that is currently occupied. This could happen even with only two workers active at a time (as opposed to the four required).
+
+Our program avoids this situation by introducing a mechanism where whenever a worker is finished working at a station, they pick up
+their package immediately to allow other workers to move their package to the station (even if the worker has not moved the package
+across a conveyor belt to the next station yet).
+
+Judging by our outputs, our program also makes a decent compromise between fairness and concurrency, achieving both to a high degree.
+Over a few runs, each team's number of processed packages averages out to 20. A single run will also have almost all team's processing
+20 packages each. We also do not enforce an order on when each team and its workers can grab a package.
+
+In our solution, we implemented three locks:
+
+grabMtx: makes grabbing a package from the pile of pending packages an atomic (mutually exclusive) process such that no two (or more) 
+workers can grab the same package
+
+stationMtx: makes using the conveyor belt system atomic (mutually exclusive). Only ONE package may be on the conveyor belt to another 
+station at a time, as defined in the project specifications. It also ensures no two workers are working on the same station
+
+doneMtx: makes incrementing the global package totals (processed by each team, and in total) + fairness metrics atomic.
+
+We also implemented a conditional variable and an array of conditional variables:
+
+readyCond: a worker waits on this condition when a station they wish to process their package at is not free for use (i.e. another 
+package is on it). It is broadcasted when any worker is done processing a package at any station. This ensures that any thread/worker
+has a chance to grab a station without enforcing an order on placing packages on stations. It also prevents busy waiting.
+
+teamCond: an array of conditional variables corresponding to each of the teams (blue, red, green, yellow).
+
+busyCond: busyCond is a pointer to the array teamCond indexed by the team's number representation (i.e. blue = 0, etc). A worker waits on 
+busyCond when it is not their turn to grab a package (because a worker from their team is already processing a package - the project 
+specifications mention only one worker per team must be active at a time). It is broadcasted when a member of a particular team has 
+completed a package so another team member may grab a package. This also prevents busy waiting.

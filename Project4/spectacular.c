@@ -8,16 +8,21 @@
 #include <string.h>
 #include "spectacular.h"
 
+/* semaphores used in program, some are used as pseudo-locks and are named as such */
 sem_t stageSem, printSem, stageLock, fdancerLock, jugglerLock, emptySem, orderSem;
 
+/* array of structs for each of the performer types */
 struct performer jugglers[JUGGLER_TOT] = {NULL};
 struct performer flamencos[FLAMENCO_TOT] = {NULL};
 struct performer soloists[SOLOISTS_TOT] = {NULL};
 
+/* the stage that the performers are performing on, has four positions */
 struct stage performanceStage;
 
+/* total number of dancers or jugglers on stage at a given moment */
 int totalfDancers, totalJugglers;
 
+/* creates the stage with each of the positions on stage, sets free flag to 1 */
 void createStage()
 {
     performanceStage.onStageTotal = 0;
@@ -32,6 +37,7 @@ void createStage()
     }
 }
 
+/* prints which performers are currently on stage - bonus points plz */
 void printStage()
 {
     printf("[ ");
@@ -51,6 +57,7 @@ void printStage()
     printf("] ");
 }
 
+/* creates the performers */
 void createPerformers()
 {
     for (int i = 0; i < JUGGLER_TOT; i++)
@@ -75,42 +82,19 @@ void createPerformers()
     }
 }
 
-/* deprecated function to check if performers were correctly created */
-void printPerformers(int performerType)
-{
-    switch (performerType)
-    {
-    case 0:
-        for (int i = 0; i < JUGGLER_TOT; i++)
-        {
-            printf("%s #%d %d\n", jugglers[i].typeName, jugglers[i].id, jugglers[i].performType);
-        }
-        break;
-    case 1:
-        for (int i = 0; i < FLAMENCO_TOT; i++)
-        {
-            printf("%s #%d %d\n", flamencos[i].typeName, flamencos[i].id, flamencos[i].performType);
-        }
-        break;
-    case 2:
-        for (int i = 0; i < SOLOISTS_TOT; i++)
-        {
-            printf("%s #%d %d\n", soloists[i].typeName, soloists[i].id, soloists[i].performType);
-        }
-        break;
-    }
-}
-
+/* helper function for performerFunction */
 void perform(struct performer *currPerformer)
 {
-    char *positionName;
-    int stageIndex;
-    int performerId = currPerformer->id;
-    char *performerTypeName = currPerformer->typeName;
-    int randPerformDuration = rand() % (1000000 - 100000 + 1) + 100000; // performance duration btw 1ms to 10ms
+    char *positionName;                                                 // stores the name of the current position on stage (Position Zero etc.)
+    int stageIndex;                                                     // numerical representation of the position on stage
+    int performerId = currPerformer->id;                                // the performer's id
+    char *performerTypeName = currPerformer->typeName;                  // the performer's type as a string ("Juggler" etc.)
+    int randPerformDuration = rand() % (1000000 - 100000 + 1) + 100000; // the duration of the performance, between .1 and .01 seconds
 
-    sem_wait(&stageSem);
-    sem_wait(&stageLock);
+    sem_wait(&stageSem);  // only allows four performers on stage at a time
+    sem_wait(&stageLock); // stage lock makes sure each performer joining the stage is atomic
+    /* puts performer in the first available stage position. because we
+       use stageSem, there will always be one available stage position*/
     for (int i = 0; i < 4; i++)
     {
         if (performanceStage.stagePositions[i].isFree)
@@ -124,10 +108,10 @@ void perform(struct performer *currPerformer)
             break;
         }
     }
-    sem_post(&stageLock);
+    sem_post(&stageLock); // allows next performer to get on stage
 
     /* after the performer joins the stage, it prints its position on the stage and performs for a random duration */
-    sem_wait(&printSem);
+    sem_wait(&printSem); // prevents prints from being interrupted
     printf("JOIN: ");
     printStage();
     printf("| ");
@@ -137,11 +121,12 @@ void perform(struct performer *currPerformer)
 
     usleep(randPerformDuration); // performer performing for a random duration
 
+    /* below lines simulate performer leaving the stage */
     performanceStage.stagePositions[stageIndex].isFree = 1;
     performanceStage.stagePositions[stageIndex].currPerformer = NULL;
     performanceStage.onStageTotal--;
 
-    sem_wait(&printSem);
+    sem_wait(&printSem); // prevents prints from being interrupted
     printf("DONE: ");
     printStage();
     printf("| ");
@@ -154,34 +139,37 @@ void perform(struct performer *currPerformer)
 
 void *performerFunction(void *arg)
 {
-    struct performer *currPerformer = ((struct performer *)arg);
-    int performerTypeInt = currPerformer->performType;
+    struct performer *currPerformer = ((struct performer *)arg); // cast arg to performer struct
+    int performerTypeInt = currPerformer->performType;           // the performer's type in integer (0 = juggler, etc)
 
-    sem_t *lock = performerTypeInt == 0 ? &jugglerLock : &fdancerLock;
+    sem_t *lock = performerTypeInt == 0 ? &jugglerLock : &fdancerLock; // sets pointer to pseudo-lock semaphore corresponding
+                                                                       // to the given performer type
 
+    // below is the jugglers and dancers case, they have identical logic (thus within the same if scope)
     if (performerTypeInt < 2)
     {
-        sem_wait(&orderSem);
-        sem_wait(lock);
-        int *totalPerformers = performerTypeInt == 0 ? &totalfDancers : &totalJugglers;
-        (*totalPerformers)++;
-        if (*totalPerformers == 1)
+        sem_wait(&orderSem);                                                            // applies an order on the performers attempting to enter so as no to cause starvation of other performers
+        sem_wait(lock);                                                                 // "locks" the total performers (either total dancers or jugglers) to keep the iteration atomic
+        int *totalPerformers = performerTypeInt == 0 ? &totalfDancers : &totalJugglers; // pointer to either total dancers or jugglers
+        (*totalPerformers)++;                                                           // iterate performers
+        if (*totalPerformers == 1)                                                      // if at any point there is one performer on stage of a certain type, set emptySem to wait
         {
             sem_wait(&emptySem);
         }
-        sem_post(&orderSem);
-        sem_post(lock);
+        sem_post(&orderSem); // order has been kept, no body is starving
+        sem_post(lock);      // atomic instruction is over
 
-        perform(currPerformer);
+        perform(currPerformer); // the performer can now perform
 
-        sem_wait(lock);
+        sem_wait(lock); // lock the atomic instruction of decrementing the total performer count
         (*totalPerformers)--;
-        if (!*totalPerformers)
+        if (!*totalPerformers) // if at any point the number of total performers of a certain type = 0, post emptySem to give the soloists a chance to perform
         {
             sem_post(&emptySem);
         }
-        sem_post(lock);
+        sem_post(lock); // atomic instruction is over
     }
+    // below is the soloist case, it only checks if the stage is empty before performing
     else
     {
         sem_wait(&emptySem);
@@ -210,11 +198,12 @@ void joinThreads(pthread_t *threads, int PERFORMER_TOTAL)
 
 int main()
 {
-    int randSeed = getSeed();
+    int randSeed = getSeed(); // get the seed from seed.txt
     printf("Random seed is: %d\n", randSeed);
     printf("Seeding the randomizer...\n");
     srand(randSeed); // seed the randomizer
 
+    /* initializing semaphores */
     sem_init(&stageSem, 0, 4);
     sem_init(&printSem, 0, 1);
     sem_init(&stageLock, 0, 1);
@@ -233,18 +222,20 @@ int main()
 
     sleep(1);
 
-    // pthread_t jugglerThreads[JUGGLER_TOT], flamenco[]
+    /* initialize the threads, provide them enough memory (based on total number of each performer type) */
     pthread_t *jugglerThreads = (pthread_t *)malloc(JUGGLER_TOT * sizeof(pthread_t));
     pthread_t *flamencoThreads = (pthread_t *)malloc(FLAMENCO_TOT * sizeof(pthread_t));
     pthread_t *soloistThreads = (pthread_t *)malloc(SOLOISTS_TOT * sizeof(pthread_t));
 
-    createStage();
-    createPerformers();
+    createStage();      // init stage
+    createPerformers(); // init performers
 
+    /* spawn threads */
     createThreads(jugglerThreads, JUGGLER_TOT, jugglers);
     createThreads(flamencoThreads, FLAMENCO_TOT, flamencos);
     createThreads(soloistThreads, SOLOISTS_TOT, soloists);
 
+    /* join threads */
     joinThreads(jugglerThreads, JUGGLER_TOT);
     joinThreads(flamencoThreads, FLAMENCO_TOT);
     joinThreads(soloistThreads, SOLOISTS_TOT);
@@ -253,9 +244,11 @@ int main()
     printf("woohoo its over yay\n");
     printf("---------------------------------------------------------------\n");
 
+    /* free memory */
     free(jugglerThreads);
     free(flamencoThreads);
     free(soloistThreads);
 
+    /* finis */
     return 0;
 }
