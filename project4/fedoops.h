@@ -47,17 +47,18 @@ typedef struct workerNode
     // struct workerNode *lastWorker;
 } workerNode;
 
+typedef struct station
+{
+  int isFree; // if the station is currently being worked at
+  char *stationName; // the station's name, useful for console printouts
+} station;
+
 void appendWorker(struct workerNode **head, int workerId, int team);
 void appendPackage(struct package **head, int packageNum, int instructionCount);
 void createPackages(int packageCount, struct package **head);
 
-typedef struct station
-{
-    int isFree;
-    char *stationName;
-} station;
-
-void createStations(struct station *stations)
+// initializes the stations
+void createStations(struct station *stations) 
 {
     for (int i = 0; i < 4; i++)
     {
@@ -70,6 +71,7 @@ void createStations(struct station *stations)
     return;
 }
 
+//deprecated
 void printPackages(struct package **head)
 {
     struct package *ptr = *head;
@@ -90,20 +92,22 @@ void printPackages(struct package **head)
     }
 }
 
+// initializes the list of packages
 void createPackages(int packageCount, struct package **head)
 {
 
-    int instructionCount = 0;
+    int instructionCount = 1;
 
     for (int i = 0; i < packageCount; i++)
     {
-        instructionCount = (rand() % 4) + 1;
-        appendPackage(head, i + 1, instructionCount);
+      instructionCount = (rand() % 4) + 1;
+      appendPackage(head, i + 1, instructionCount);
     }
 
     return;
 }
 
+// initilizes a team of workers
 void createWorkers(workerNode **head, int i)
 {
     for (int j = 0; j < NUM_WORKERS + 1; j++)
@@ -112,6 +116,7 @@ void createWorkers(workerNode **head, int i)
     }
 }
 
+// deprecated
 void printWorkers(workerNode **head)
 {
     workerNode *ptr = *head;
@@ -123,6 +128,7 @@ void printWorkers(workerNode **head)
     }
 }
 
+// creates the random list of instructions for a given package
 void generateJobs(struct package **node, int instructionCount)
 {
     int j = 0;
@@ -150,6 +156,7 @@ void generateJobs(struct package **node, int instructionCount)
     }
 }
 
+// adds a worker to a worker queue
 void appendWorker(struct workerNode **head, int workerId, int team)
 {
     workerNode *new = (workerNode *)malloc(sizeof(workerNode));
@@ -189,6 +196,7 @@ void appendWorker(struct workerNode **head, int workerId, int team)
     return;
 }
 
+// adds a package to the PPP
 void appendPackage(struct package **head, int packageNum, int instructionCount)
 {
     struct package *new = (struct package *)malloc(sizeof(struct package));
@@ -218,6 +226,7 @@ void appendPackage(struct package **head, int packageNum, int instructionCount)
     return;
 }
 
+// grabs the seed from seed.txt
 int getSeed()
 {
     char seedBuffer[MAX_CHAR];         // char array to store seed from seed.text
@@ -245,3 +254,4 @@ int getSeed()
         exit(1);
     }
 }
+
