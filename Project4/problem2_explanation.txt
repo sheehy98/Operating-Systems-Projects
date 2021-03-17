@@ -1,0 +1,5 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Problem 2 - Mago Sheehy & Hamayel Qureshi ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For problem 2 we used locks/mutexes. 
+
+A situation where a deadlock MIGHT occur is if all of the stations are filled
