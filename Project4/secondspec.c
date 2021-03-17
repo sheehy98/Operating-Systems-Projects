@@ -118,7 +118,7 @@ void *performerFunction(void *arg)
     int performerTypeInt = currPerformer->performType;
     int performerId = currPerformer->id;
     char *positionName;
-    int randPerformDuration = rand() % (10000 - 1000 + 1) + 1000; // performance duration btw 1ms to 10ms
+    int randPerformDuration = rand() % (1000000 - 100000 + 1) + 100000; // performance duration btw 1ms to 10ms
     int stageIndex = 0;
     int isCorrect = 0;
 
@@ -155,6 +155,7 @@ void *performerFunction(void *arg)
         }
         sem_post(&stageLock);
 
+printf("JOIN: ");
         printStage();
 
         if (performerId < 10)
@@ -170,7 +171,8 @@ void *performerFunction(void *arg)
 
         // sem_post(&enterSem);
 
-        usleep(randPerformDuration * 100);
+        usleep(randPerformDuration );
+        // sleep(randPerformDuration);
 
         // sem_wait(&leaveStageSem);
 
@@ -180,17 +182,19 @@ void *performerFunction(void *arg)
 
         // sem_wait(&printSem);
 
-        // if (performerId < 10)
-        // {
+printf("DONE: ");
+printStage();
 
-        //     printf("DONE:  %s #0%d is done performing at %s \n\n",
-        //            performerTypeName, performerId, positionName);
-        // }
-        // else
-        // {
-        //     printf("DONE:  %s #%d is done performing at %s \n\n",
-        //            performerTypeName, performerId, positionName);
-        // }
+        if (performerId < 10)
+        {
+            printf("%s #0%d is done performing at %s \n\n",
+                   performerTypeName, performerId, positionName);
+        }
+        else
+        {
+            printf("%s #%d is done performing at %s \n\n",
+                   performerTypeName, performerId, positionName);
+        }
         sem_post(&stageSem);
         sem_wait(lock);
         (*totalPerformers)--;
@@ -221,6 +225,8 @@ void *performerFunction(void *arg)
         }
         sem_post(&stageLock);
 
+        printf("JOIN: ");
+
         printStage();
 
         if (performerId < 10)
@@ -245,18 +251,18 @@ void *performerFunction(void *arg)
         performanceStage.onStageTotal--;
 
         // sem_wait(&printSem);
+printf("DONE: ");
+        if (performerId < 10)
+        {
 
-        // if (performerId < 10)
-        // {
-
-        //     printf("DONE:  %s #0%d is done performing at %s \n\n",
-        //            performerTypeName, performerId, positionName);
-        // }
-        // else
-        // {
-        //     printf("DONE:  %s #%d is done performing at %s \n\n",
-        //            performerTypeName, performerId, positionName);
-        // }
+            printf( "%s #0%d is done performing at %s \n\n",
+                   performerTypeName, performerId, positionName);
+        }
+        else
+        {
+            printf("%s #%d is done performing at %s \n\n",
+                   performerTypeName, performerId, positionName);
+        }
         sem_post(&stageSem);
         sem_post(&emptySem);
     }
@@ -312,6 +318,14 @@ int main()
     printf("Welcome to teh summer spectacular. take ur seats. bye\n");
     printf("---------------------------------------------------------------\n\n");
 
+    printf("Stage positions are as follows:\n");
+    printf("JorL: [ __POS0__ __POS1__ __POS2__ __POS3__ ]\n\n");
+    printf("---------------------------------------------------------------\n\n");
+
+    sleep(1);
+
+
+
     // pthread_t jugglerThreads[JUGGLER_TOT], flamenco[]
     pthread_t *jugglerThreads = (pthread_t *)malloc(JUGGLER_TOT * sizeof(pthread_t));
     pthread_t *flamencoThreads = (pthread_t *)malloc(FLAMENCO_TOT * sizeof(pthread_t));
@@ -321,16 +335,26 @@ int main()
     createPerformers();
 
     createThreads(jugglerThreads, JUGGLER_TOT, jugglers);
-    createThreads(soloistThreads, SOLOISTS_TOT, soloists);
+    pthread_create(&soloistThreads[0], NULL, performerFunction, &soloists[0]);
     createThreads(flamencoThreads, FLAMENCO_TOT, flamencos);
+    pthread_create(&soloistThreads[1], NULL, performerFunction, &soloists[1]);
+
+    // createThreads(soloistThreads, SOLOISTS_TOT, soloists);
 
     joinThreads(jugglerThreads, JUGGLER_TOT);
-    joinThreads(soloistThreads, SOLOISTS_TOT);
+    pthread_join(soloistThreads[0], NULL);
     joinThreads(flamencoThreads, FLAMENCO_TOT);
+    pthread_join(soloistThreads[1], NULL);
+
+    // joinThreads(soloistThreads, SOLOISTS_TOT);
 
     printf("---------------------------------------------------------------\n");
     printf("woohoo its over yay\n");
     printf("---------------------------------------------------------------\n");
+
+    free(jugglerThreads);
+    free(flamencoThreads);
+    free(soloistThreads);
 
     return 0;
 }
