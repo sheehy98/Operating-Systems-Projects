@@ -55,7 +55,7 @@ int getSeed()
         }
         else
         {
-            printf("Seed file is empty! Exiting...\n");
+            printf("Seed file is empty! Exiting...\n"); //hjhh
             exit(1);
         }
     }
