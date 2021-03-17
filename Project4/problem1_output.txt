@@ -1,336 +1,350 @@
-RUN NUMBER 1:
+~~~~~~~RUN NUMBER 1~~~~~~~~
 
 Random seed is: 12345
 Seeding the randomizer...
 ---------------------------------------------------------------
-Welcome to teh summer spectacular. take ur seats. bye
+Welcome one and all to the summer spectacular. Skrrrrrrrrrrtttt
 ---------------------------------------------------------------
 
-[ JGLR #07 ________ ________ ________ ] JGLR #07 joined at Position Zero, performing for 1437 milliseconds
+Stage positions are as follows:
+JorL: [ __POS0__ __POS1__ __POS2__ __POS3__ ]
 
-[ JGLR #07 JGLR #08 ________ ________ ] JGLR #08 joined at Position One, performing for 2465 milliseconds
+---------------------------------------------------------------
 
-[ JGLR #07 JGLR #08 JGLR #06 ________ ] JGLR #06 joined at Position Two, performing for 6426 milliseconds
+JOIN: [ JGLR #07 ________ ________ ________ ] | JGLR #07 joined at Position Zero, performing for 700574 microseconds
 
-DONE:  JGLR #06 is done performing at Position Two 
+JOIN: [ JGLR #07 JGLR #08 ________ ________ ] | JGLR #08 joined at Position One, performing for 699868 microseconds
 
-DONE:  JGLR #08 is done performing at Position One 
+DONE: [ JGLR #07 ________ ________ ________ ] | JGLR #08 is done performing at Position One 
 
-DONE:  JGLR #07 is done performing at Position Zero 
+DONE: [ ________ ________ ________ ________ ] | JGLR #07 is done performing at Position Zero 
 
-[ JGLR #05 ________ ________ ________ ] JGLR #05 joined at Position Zero, performing for 2985 milliseconds
+JOIN: [ FDAN #01 ________ ________ ________ ] | FDAN #01 joined at Position Zero, performing for 567776 microseconds
 
-DONE:  JGLR #05 is done performing at Position Zero 
+JOIN: [ FDAN #01 FDAN #02 ________ ________ ] | FDAN #02 joined at Position One, performing for 227745 microseconds
 
-[ FDAN #04 ________ ________ ________ ] FDAN #04 joined at Position Zero, performing for 1508 milliseconds
+JOIN: [ FDAN #01 FDAN #02 FDAN #03 ________ ] | FDAN #03 joined at Position Two, performing for 805774 microseconds
 
-[ FDAN #04 FDAN #02 ________ ________ ] FDAN #02 joined at Position One, performing for 8145 milliseconds
+JOIN: [ FDAN #01 FDAN #02 FDAN #03 FDAN #04 ] | FDAN #04 joined at Position Three, performing for 285775 microseconds
 
-[ FDAN #04 FDAN #02 FDAN #03 ________ ] FDAN #03 joined at Position Two, performing for 1368 milliseconds
+DONE: [ FDAN #01 ________ FDAN #03 FDAN #04 ] | FDAN #02 is done performing at Position One 
 
-[ FDAN #04 FDAN #02 FDAN #03 FDAN #01 ] FDAN #01 joined at Position Three, performing for 6643 milliseconds
+JOIN: [ FDAN #01 FDAN #05 FDAN #03 FDAN #04 ] | FDAN #05 joined at Position One, performing for 786480 microseconds
 
-DONE:  FDAN #04 is done performing at Position Zero 
+DONE: [ FDAN #01 FDAN #05 FDAN #03 ________ ] | FDAN #04 is done performing at Position Three 
 
-DONE:  FDAN #03 is done performing at Position Two 
+JOIN: [ FDAN #01 FDAN #05 FDAN #03 FDAN #06 ] | FDAN #06 joined at Position Three, performing for 957789 microseconds
 
-DONE:  FDAN #02 is done performing at Position One 
+DONE: [ ________ FDAN #05 FDAN #03 FDAN #06 ] | FDAN #01 is done performing at Position Zero 
 
-[ FDAN #05 ________ ________ FDAN #01 ] FDAN #05 joined at Position Zero, performing for 6059 milliseconds
+JOIN: [ FDAN #07 FDAN #05 FDAN #03 FDAN #06 ] | FDAN #07 joined at Position Zero, performing for 112762 microseconds
 
-[ FDAN #05 FDAN #06 ________ FDAN #01 ] FDAN #06 joined at Position One, performing for 7092 milliseconds
+DONE: [ ________ FDAN #05 FDAN #03 FDAN #06 ] | FDAN #07 is done performing at Position Zero 
 
-DONE:  FDAN #05 is done performing at Position Zero 
+JOIN: [ FDAN #08 FDAN #05 FDAN #03 FDAN #06 ] | FDAN #08 joined at Position Zero, performing for 790478 microseconds
 
-[ FDAN #07 FDAN #06 ________ FDAN #01 ] FDAN #07 joined at Position Zero, performing for 8845 milliseconds
+DONE: [ FDAN #08 FDAN #05 ________ FDAN #06 ] | FDAN #03 is done performing at Position Two 
 
-DONE:  FDAN #01 is done performing at Position Three 
+DONE: [ FDAN #08 ________ ________ FDAN #06 ] | FDAN #05 is done performing at Position One 
 
-[ FDAN #07 FDAN #06 FDAN #08 ________ ] FDAN #08 joined at Position Two, performing for 4315 milliseconds
+DONE: [ FDAN #08 ________ ________ ________ ] | FDAN #06 is done performing at Position Three 
 
-DONE:  FDAN #06 is done performing at Position One 
+DONE: [ ________ ________ ________ ________ ] | FDAN #08 is done performing at Position Zero 
 
-[ FDAN #07 FDAN #09 FDAN #08 ________ ] FDAN #09 joined at Position One, performing for 1922 milliseconds
+JOIN: [ SOLO #01 ________ ________ ________ ] | SOLO #01 joined at Position Zero, performing for 507950 microseconds
 
-DONE:  FDAN #09 is done performing at Position One 
+DONE: [ ________ ________ ________ ________ ] | SOLO #01 is done performing at Position Zero 
 
-DONE:  FDAN #08 is done performing at Position Two 
+JOIN: [ SOLO #02 ________ ________ ________ ] | SOLO #02 joined at Position Zero, performing for 628367 microseconds
 
-DONE:  FDAN #07 is done performing at Position Zero 
+DONE: [ ________ ________ ________ ________ ] | SOLO #02 is done performing at Position Zero 
 
-[ FDAN #11 ________ ________ ________ ] FDAN #11 joined at Position Zero, performing for 1419 milliseconds
+JOIN: [ JGLR #06 ________ ________ ________ ] | JGLR #06 joined at Position Zero, performing for 209197 microseconds
 
-[ FDAN #11 FDAN #10 ________ ________ ] FDAN #10 joined at Position One, performing for 4720 milliseconds
+DONE: [ ________ ________ ________ ________ ] | JGLR #06 is done performing at Position Zero 
 
-DONE:  FDAN #11 is done performing at Position Zero 
+JOIN: [ FDAN #09 ________ ________ ________ ] | FDAN #09 joined at Position Zero, performing for 427572 microseconds
 
-[ FDAN #12 FDAN #10 ________ ________ ] FDAN #12 joined at Position Zero, performing for 6053 milliseconds
+JOIN: [ FDAN #09 FDAN #10 ________ ________ ] | FDAN #10 joined at Position One, performing for 337701 microseconds
 
-DONE:  FDAN #10 is done performing at Position One 
+JOIN: [ FDAN #09 FDAN #10 FDAN #11 ________ ] | FDAN #11 joined at Position Two, performing for 661953 microseconds
 
-[ FDAN #12 FDAN #13 ________ ________ ] FDAN #13 joined at Position One, performing for 2779 milliseconds
+JOIN: [ FDAN #09 FDAN #10 FDAN #11 FDAN #12 ] | FDAN #12 joined at Position Three, performing for 424393 microseconds
 
-DONE:  FDAN #13 is done performing at Position One 
+DONE: [ FDAN #09 ________ FDAN #11 FDAN #12 ] | FDAN #10 is done performing at Position One 
 
-DONE:  FDAN #12 is done performing at Position Zero 
+JOIN: [ FDAN #09 FDAN #13 FDAN #11 FDAN #12 ] | FDAN #13 joined at Position One, performing for 671356 microseconds
 
-[ JGLR #04 ________ ________ ________ ] JGLR #04 joined at Position Zero, performing for 9936 milliseconds
+DONE: [ FDAN #09 FDAN #13 FDAN #11 ________ ] | FDAN #12 is done performing at Position Three 
 
-[ JGLR #04 JGLR #03 ________ ________ ] JGLR #03 joined at Position One, performing for 3281 milliseconds
+JOIN: [ FDAN #09 FDAN #13 FDAN #11 FDAN #14 ] | FDAN #14 joined at Position Three, performing for 810787 microseconds
 
-DONE:  JGLR #03 is done performing at Position One 
+DONE: [ ________ FDAN #13 FDAN #11 FDAN #14 ] | FDAN #09 is done performing at Position Zero 
 
-DONE:  JGLR #04 is done performing at Position Zero 
+JOIN: [ FDAN #15 FDAN #13 FDAN #11 FDAN #14 ] | FDAN #15 joined at Position Zero, performing for 248616 microseconds
 
-[ SOLO #02 ________ ________ ________ ] SOLO #02 joined at Position Zero, performing for 7716 milliseconds
+DONE: [ FDAN #15 FDAN #13 ________ FDAN #14 ] | FDAN #11 is done performing at Position Two 
 
-DONE:  SOLO #02 is done performing at Position Zero 
+DONE: [ ________ FDAN #13 ________ FDAN #14 ] | FDAN #15 is done performing at Position Zero 
 
-[ FDAN #15 ________ ________ ________ ] FDAN #15 joined at Position Zero, performing for 6390 milliseconds
+DONE: [ ________ ________ ________ FDAN #14 ] | FDAN #13 is done performing at Position One 
 
-[ FDAN #15 FDAN #14 ________ ________ ] FDAN #14 joined at Position One, performing for 5119 milliseconds
+DONE: [ ________ ________ ________ ________ ] | FDAN #14 is done performing at Position Three 
 
-DONE:  FDAN #15 is done performing at Position Zero 
+JOIN: [ JGLR #05 ________ ________ ________ ] | JGLR #05 joined at Position Zero, performing for 899198 microseconds
 
-DONE:  FDAN #14 is done performing at Position One 
+JOIN: [ JGLR #05 JGLR #04 ________ ________ ] | JGLR #04 joined at Position One, performing for 105336 microseconds
 
-[ JGLR #01 ________ ________ ________ ] JGLR #01 joined at Position Zero, performing for 8450 milliseconds
+JOIN: [ JGLR #05 JGLR #04 JGLR #03 ________ ] | JGLR #03 joined at Position Two, performing for 118197 microseconds
 
-[ JGLR #01 JGLR #02 ________ ________ ] JGLR #02 joined at Position One, performing for 3874 milliseconds
+JOIN: [ JGLR #05 JGLR #04 JGLR #03 JGLR #02 ] | JGLR #02 joined at Position Three, performing for 931158 microseconds
 
-DONE:  JGLR #02 is done performing at Position One 
+DONE: [ JGLR #05 ________ JGLR #03 JGLR #02 ] | JGLR #04 is done performing at Position One 
 
-DONE:  JGLR #01 is done performing at Position Zero 
+JOIN: [ JGLR #05 JGLR #01 JGLR #03 JGLR #02 ] | JGLR #01 joined at Position One, performing for 808875 microseconds
 
-[ SOLO #01 ________ ________ ________ ] SOLO #01 joined at Position Zero, performing for 7709 milliseconds
+DONE: [ JGLR #05 JGLR #01 ________ JGLR #02 ] | JGLR #03 is done performing at Position Two 
 
-DONE:  SOLO #01 is done performing at Position Zero 
+DONE: [ ________ JGLR #01 ________ JGLR #02 ] | JGLR #05 is done performing at Position Zero 
+
+DONE: [ ________ ________ ________ JGLR #02 ] | JGLR #01 is done performing at Position One 
+
+DONE: [ ________ ________ ________ ________ ] | JGLR #02 is done performing at Position Three 
+
+---------------------------------------------------------------
+woohoo its over yay
+---------------------------------------------------------------
+
+~~~~~~~RUN NUMBER 2~~~~~~~~
+
+Random seed is: 456412
+Seeding the randomizer...
+---------------------------------------------------------------
+Welcome one and all to the summer spectacular. Skrrrrrrrrrrtttt
+---------------------------------------------------------------
+
+Stage positions are as follows:
+JorL: [ __POS0__ __POS1__ __POS2__ __POS3__ ]
+
+---------------------------------------------------------------
+
+JOIN: [ JGLR #07 ________ ________ ________ ] | JGLR #07 joined at Position Zero, performing for 618394 microseconds
+
+JOIN: [ JGLR #07 JGLR #08 ________ ________ ] | JGLR #08 joined at Position One, performing for 693898 microseconds
+
+DONE: [ ________ JGLR #08 ________ ________ ] | JGLR #07 is done performing at Position Zero 
+
+DONE: [ ________ ________ ________ ________ ] | JGLR #08 is done performing at Position One 
+
+JOIN: [ FDAN #01 ________ ________ ________ ] | FDAN #01 joined at Position Zero, performing for 692232 microseconds
+
+JOIN: [ FDAN #01 FDAN #02 ________ ________ ] | FDAN #02 joined at Position One, performing for 295391 microseconds
+
+JOIN: [ FDAN #01 FDAN #02 FDAN #03 ________ ] | FDAN #03 joined at Position Two, performing for 327998 microseconds
+
+JOIN: [ FDAN #01 FDAN #02 FDAN #03 FDAN #04 ] | FDAN #04 joined at Position Three, performing for 574143 microseconds
+
+DONE: [ FDAN #01 ________ FDAN #03 FDAN #04 ] | FDAN #02 is done performing at Position One 
+
+JOIN: [ FDAN #01 FDAN #05 FDAN #03 FDAN #04 ] | FDAN #05 joined at Position One, performing for 881485 microseconds
+
+DONE: [ FDAN #01 FDAN #05 ________ FDAN #04 ] | FDAN #03 is done performing at Position Two 
+
+JOIN: [ FDAN #01 FDAN #05 FDAN #06 FDAN #04 ] | FDAN #06 joined at Position Two, performing for 262874 microseconds
+
+DONE: [ FDAN #01 FDAN #05 FDAN #06 ________ ] | FDAN #04 is done performing at Position Three 
+
+JOIN: [ FDAN #01 FDAN #05 FDAN #06 FDAN #07 ] | FDAN #07 joined at Position Three, performing for 347674 microseconds
+
+DONE: [ FDAN #01 FDAN #05 ________ FDAN #07 ] | FDAN #06 is done performing at Position Two 
+
+JOIN: [ FDAN #01 FDAN #05 FDAN #08 FDAN #07 ] | FDAN #08 joined at Position Two, performing for 561027 microseconds
+
+DONE: [ ________ FDAN #05 FDAN #08 FDAN #07 ] | FDAN #01 is done performing at Position Zero 
+
+DONE: [ ________ FDAN #05 FDAN #08 ________ ] | FDAN #07 is done performing at Position Three 
+
+DONE: [ ________ FDAN #05 ________ ________ ] | FDAN #08 is done performing at Position Two 
+
+DONE: [ ________ ________ ________ ________ ] | FDAN #05 is done performing at Position One 
+
+JOIN: [ SOLO #01 ________ ________ ________ ] | SOLO #01 joined at Position Zero, performing for 271162 microseconds
+
+DONE: [ ________ ________ ________ ________ ] | SOLO #01 is done performing at Position Zero 
+
+JOIN: [ SOLO #02 ________ ________ ________ ] | SOLO #02 joined at Position Zero, performing for 590532 microseconds
+
+DONE: [ ________ ________ ________ ________ ] | SOLO #02 is done performing at Position Zero 
+
+JOIN: [ JGLR #06 ________ ________ ________ ] | JGLR #06 joined at Position Zero, performing for 436913 microseconds
+
+DONE: [ ________ ________ ________ ________ ] | JGLR #06 is done performing at Position Zero 
+
+JOIN: [ FDAN #09 ________ ________ ________ ] | FDAN #09 joined at Position Zero, performing for 344321 microseconds
+
+JOIN: [ FDAN #09 FDAN #10 ________ ________ ] | FDAN #10 joined at Position One, performing for 643371 microseconds
+
+JOIN: [ FDAN #09 FDAN #10 FDAN #11 ________ ] | FDAN #11 joined at Position Two, performing for 188406 microseconds
+
+JOIN: [ FDAN #09 FDAN #10 FDAN #11 FDAN #12 ] | FDAN #12 joined at Position Three, performing for 721109 microseconds
+
+DONE: [ FDAN #09 FDAN #10 ________ FDAN #12 ] | FDAN #11 is done performing at Position Two 
+
+JOIN: [ FDAN #09 FDAN #10 FDAN #13 FDAN #12 ] | FDAN #13 joined at Position Two, performing for 819057 microseconds
+
+DONE: [ ________ FDAN #10 FDAN #13 FDAN #12 ] | FDAN #09 is done performing at Position Zero 
+
+JOIN: [ FDAN #14 FDAN #10 FDAN #13 FDAN #12 ] | FDAN #14 joined at Position Zero, performing for 940977 microseconds
+
+DONE: [ FDAN #14 ________ FDAN #13 FDAN #12 ] | FDAN #10 is done performing at Position One 
+
+JOIN: [ FDAN #14 FDAN #15 FDAN #13 FDAN #12 ] | FDAN #15 joined at Position One, performing for 408928 microseconds
+
+DONE: [ FDAN #14 FDAN #15 FDAN #13 ________ ] | FDAN #12 is done performing at Position Three 
+
+DONE: [ FDAN #14 FDAN #15 ________ ________ ] | FDAN #13 is done performing at Position Two 
+
+DONE: [ FDAN #14 ________ ________ ________ ] | FDAN #15 is done performing at Position One 
+
+DONE: [ ________ ________ ________ ________ ] | FDAN #14 is done performing at Position Zero 
+
+JOIN: [ JGLR #05 ________ ________ ________ ] | JGLR #05 joined at Position Zero, performing for 892707 microseconds
+
+JOIN: [ JGLR #05 JGLR #04 ________ ________ ] | JGLR #04 joined at Position One, performing for 801069 microseconds
+
+JOIN: [ JGLR #05 JGLR #04 JGLR #03 ________ ] | JGLR #03 joined at Position Two, performing for 129736 microseconds
+
+JOIN: [ JGLR #05 JGLR #04 JGLR #03 JGLR #02 ] | JGLR #02 joined at Position Three, performing for 641814 microseconds
+
+DONE: [ JGLR #05 JGLR #04 ________ JGLR #02 ] | JGLR #03 is done performing at Position Two 
+
+JOIN: [ JGLR #05 JGLR #04 JGLR #01 JGLR #02 ] | JGLR #01 joined at Position Two, performing for 984187 microseconds
+
+DONE: [ JGLR #05 JGLR #04 JGLR #01 ________ ] | JGLR #02 is done performing at Position Three 
+
+DONE: [ JGLR #05 ________ JGLR #01 ________ ] | JGLR #04 is done performing at Position One 
+
+DONE: [ ________ ________ JGLR #01 ________ ] | JGLR #05 is done performing at Position Zero 
+
+DONE: [ ________ ________ ________ ________ ] | JGLR #01 is done performing at Position Two 
 
 ---------------------------------------------------------------
 woohoo its over yay
 ---------------------------------------------------------------
 
 
-RUN NUMBER 2:
+~~~~~~~RUN NUMBER 3~~~~~~~~
 
-Random seed is: 2336236
+Random seed is: 65487
 Seeding the randomizer...
 ---------------------------------------------------------------
-Welcome to teh summer spectacular. take ur seats. bye
+Welcome one and all to the summer spectacular. Skrrrrrrrrrrtttt
 ---------------------------------------------------------------
 
-[ JGLR #07 ________ ________ ________ ] JGLR #07 joined at Position Zero, performing for 2712 milliseconds
-
-[ JGLR #07 JGLR #08 ________ ________ ] JGLR #08 joined at Position One, performing for 1689 milliseconds
-
-DONE:  JGLR #08 is done performing at Position One 
-
-DONE:  JGLR #07 is done performing at Position Zero 
-
-[ JGLR #06 ________ ________ ________ ] JGLR #06 joined at Position Zero, performing for 6523 milliseconds
-
-DONE:  JGLR #06 is done performing at Position Zero 
-
-[ FDAN #04 ________ ________ ________ ] FDAN #04 joined at Position Zero, performing for 8245 milliseconds
-
-[ FDAN #04 FDAN #01 ________ ________ ] FDAN #01 joined at Position One, performing for 1895 milliseconds
-
-[ FDAN #04 FDAN #01 FDAN #03 ________ ] FDAN #03 joined at Position Two, performing for 6295 milliseconds
-
-[ FDAN #04 FDAN #01 FDAN #03 FDAN #02 ] FDAN #02 joined at Position Three, performing for 7865 milliseconds
-
-DONE:  FDAN #01 is done performing at Position One 
-
-DONE:  FDAN #03 is done performing at Position Two 
-
-DONE:  FDAN #04 is done performing at Position Zero 
-
-[ FDAN #05 ________ ________ FDAN #02 ] FDAN #05 joined at Position Zero, performing for 9792 milliseconds
-
-[ FDAN #05 FDAN #06 ________ FDAN #02 ] FDAN #06 joined at Position One, performing for 5737 milliseconds
-
-DONE:  FDAN #05 is done performing at Position Zero 
-
-[ FDAN #07 FDAN #06 ________ FDAN #02 ] FDAN #07 joined at Position Zero, performing for 7950 milliseconds
-
-DONE:  FDAN #02 is done performing at Position Three 
-
-[ FDAN #07 FDAN #06 FDAN #08 ________ ] FDAN #08 joined at Position Two, performing for 5161 milliseconds
-
-DONE:  FDAN #08 is done performing at Position Two 
-
-DONE:  FDAN #06 is done performing at Position One 
-
-DONE:  FDAN #07 is done performing at Position Zero 
-
-[ JGLR #05 ________ ________ ________ ] JGLR #05 joined at Position Zero, performing for 8633 milliseconds
-
-[ JGLR #05 JGLR #04 ________ ________ ] JGLR #04 joined at Position One, performing for 3339 milliseconds
-
-DONE:  JGLR #04 is done performing at Position One 
-
-DONE:  JGLR #05 is done performing at Position Zero 
-
-[ FDAN #10 ________ ________ ________ ] FDAN #10 joined at Position Zero, performing for 8407 milliseconds
-
-[ FDAN #10 FDAN #12 ________ ________ ] FDAN #12 joined at Position One, performing for 2725 milliseconds
-
-[ FDAN #10 FDAN #12 FDAN #09 ________ ] FDAN #09 joined at Position Two, performing for 7847 milliseconds
-
-[ FDAN #10 FDAN #12 FDAN #09 FDAN #11 ] FDAN #11 joined at Position Three, performing for 4685 milliseconds
-
-DONE:  FDAN #12 is done performing at Position One 
-
-DONE:  FDAN #09 is done performing at Position Two 
-
-DONE:  FDAN #10 is done performing at Position Zero 
-
-[ FDAN #13 ________ ________ FDAN #11 ] FDAN #13 joined at Position Zero, performing for 7939 milliseconds
-
-[ FDAN #13 FDAN #14 ________ FDAN #11 ] FDAN #14 joined at Position One, performing for 2708 milliseconds
-
-[ FDAN #13 FDAN #14 FDAN #15 FDAN #11 ] FDAN #15 joined at Position Two, performing for 8986 milliseconds
-
-DONE:  FDAN #11 is done performing at Position Three 
-
-DONE:  FDAN #14 is done performing at Position One 
-
-DONE:  FDAN #13 is done performing at Position Zero 
-
-DONE:  FDAN #15 is done performing at Position Two 
-
-[ SOLO #01 ________ ________ ________ ] SOLO #01 joined at Position Zero, performing for 4623 milliseconds
-
-DONE:  SOLO #01 is done performing at Position Zero 
-
-[ JGLR #03 ________ ________ ________ ] JGLR #03 joined at Position Zero, performing for 9527 milliseconds
-
-[ JGLR #03 JGLR #01 ________ ________ ] JGLR #01 joined at Position One, performing for 5989 milliseconds
-
-[ JGLR #03 JGLR #01 JGLR #02 ________ ] JGLR #02 joined at Position Two, performing for 2804 milliseconds
-
-DONE:  JGLR #02 is done performing at Position Two 
-
-DONE:  JGLR #01 is done performing at Position One 
-
-DONE:  JGLR #03 is done performing at Position Zero 
-
-[ SOLO #02 ________ ________ ________ ] SOLO #02 joined at Position Zero, performing for 2546 milliseconds
-
-DONE:  SOLO #02 is done performing at Position Zero 
+Stage positions are as follows:
+JorL: [ __POS0__ __POS1__ __POS2__ __POS3__ ]
 
 ---------------------------------------------------------------
-woohoo its over yay
----------------------------------------------------------------
 
+JOIN: [ JGLR #07 ________ ________ ________ ] | JGLR #07 joined at Position Zero, performing for 582157 microseconds
 
-RUN NUMBER 3:
+JOIN: [ JGLR #07 JGLR #08 ________ ________ ] | JGLR #08 joined at Position One, performing for 896356 microseconds
 
-Random seed is: 378909
-Seeding the randomizer...
----------------------------------------------------------------
-Welcome to teh summer spectacular. take ur seats. bye
----------------------------------------------------------------
+DONE: [ ________ JGLR #08 ________ ________ ] | JGLR #07 is done performing at Position Zero 
 
-[ JGLR #07 ________ ________ ________ ] JGLR #07 joined at Position Zero, performing for 1427 milliseconds
+DONE: [ ________ ________ ________ ________ ] | JGLR #08 is done performing at Position One 
 
-[ JGLR #07 JGLR #08 ________ ________ ] JGLR #08 joined at Position One, performing for 1697 milliseconds
+JOIN: [ FDAN #01 ________ ________ ________ ] | FDAN #01 joined at Position Zero, performing for 500542 microseconds
 
-DONE:  JGLR #07 is done performing at Position Zero 
+JOIN: [ FDAN #01 FDAN #02 ________ ________ ] | FDAN #02 joined at Position One, performing for 854350 microseconds
 
-DONE:  JGLR #08 is done performing at Position One 
+JOIN: [ FDAN #01 FDAN #02 FDAN #03 ________ ] | FDAN #03 joined at Position Two, performing for 813994 microseconds
 
-[ JGLR #06 ________ ________ ________ ] JGLR #06 joined at Position Zero, performing for 2683 milliseconds
+JOIN: [ FDAN #01 FDAN #02 FDAN #03 FDAN #04 ] | FDAN #04 joined at Position Three, performing for 492833 microseconds
 
-DONE:  JGLR #06 is done performing at Position Zero 
+DONE: [ FDAN #01 FDAN #02 FDAN #03 ________ ] | FDAN #04 is done performing at Position Three 
 
-[ FDAN #04 ________ ________ ________ ] FDAN #04 joined at Position Zero, performing for 8325 milliseconds
+JOIN: [ FDAN #01 FDAN #02 FDAN #03 FDAN #05 ] | FDAN #05 joined at Position Three, performing for 971589 microseconds
 
-[ FDAN #04 FDAN #03 ________ ________ ] FDAN #03 joined at Position One, performing for 6151 milliseconds
+DONE: [ ________ FDAN #02 FDAN #03 FDAN #05 ] | FDAN #01 is done performing at Position Zero 
 
-[ FDAN #04 FDAN #03 FDAN #01 ________ ] FDAN #01 joined at Position Two, performing for 2828 milliseconds
+JOIN: [ FDAN #06 FDAN #02 FDAN #03 FDAN #05 ] | FDAN #06 joined at Position Zero, performing for 981903 microseconds
 
-[ FDAN #04 FDAN #03 FDAN #01 FDAN #02 ] FDAN #02 joined at Position Three, performing for 9201 milliseconds
+DONE: [ FDAN #06 FDAN #02 ________ FDAN #05 ] | FDAN #03 is done performing at Position Two 
 
-DONE:  FDAN #03 is done performing at Position One 
+DONE: [ FDAN #06 ________ ________ FDAN #05 ] | FDAN #02 is done performing at Position One 
 
-DONE:  FDAN #04 is done performing at Position Zero 
+DONE: [ FDAN #06 ________ ________ ________ ] | FDAN #05 is done performing at Position Three 
 
-DONE:  FDAN #01 is done performing at Position Two 
+DONE: [ ________ ________ ________ ________ ] | FDAN #06 is done performing at Position Zero 
 
-DONE:  FDAN #02 is done performing at Position Three 
+JOIN: [ SOLO #01 ________ ________ ________ ] | SOLO #01 joined at Position Zero, performing for 300507 microseconds
 
-[ FDAN #05 ________ ________ ________ ] FDAN #05 joined at Position Zero, performing for 8605 milliseconds
+DONE: [ ________ ________ ________ ________ ] | SOLO #01 is done performing at Position Zero 
 
-[ FDAN #05 FDAN #06 ________ ________ ] FDAN #06 joined at Position One, performing for 7901 milliseconds
+JOIN: [ SOLO #02 ________ ________ ________ ] | SOLO #02 joined at Position Zero, performing for 800808 microseconds
 
-[ FDAN #05 FDAN #06 FDAN #07 ________ ] FDAN #07 joined at Position Two, performing for 4806 milliseconds
+DONE: [ ________ ________ ________ ________ ] | SOLO #02 is done performing at Position Zero 
 
-DONE:  FDAN #07 is done performing at Position Two 
+JOIN: [ JGLR #06 ________ ________ ________ ] | JGLR #06 joined at Position Zero, performing for 258715 microseconds
 
-DONE:  FDAN #06 is done performing at Position One 
+DONE: [ ________ ________ ________ ________ ] | JGLR #06 is done performing at Position Zero 
 
-[ FDAN #05 FDAN #08 ________ ________ ] FDAN #08 joined at Position One, performing for 2082 milliseconds
+JOIN: [ FDAN #07 ________ ________ ________ ] | FDAN #07 joined at Position Zero, performing for 817870 microseconds
 
-DONE:  FDAN #05 is done performing at Position Zero 
+JOIN: [ FDAN #07 FDAN #08 ________ ________ ] | FDAN #08 joined at Position One, performing for 468739 microseconds
 
-[ FDAN #09 FDAN #08 ________ ________ ] FDAN #09 joined at Position Zero, performing for 2396 milliseconds
+JOIN: [ FDAN #07 FDAN #08 FDAN #09 ________ ] | FDAN #09 joined at Position Two, performing for 317501 microseconds
 
-DONE:  FDAN #08 is done performing at Position One 
+JOIN: [ FDAN #07 FDAN #08 FDAN #09 FDAN #10 ] | FDAN #10 joined at Position Three, performing for 100700 microseconds
 
-DONE:  FDAN #09 is done performing at Position Zero 
+DONE: [ FDAN #07 FDAN #08 FDAN #09 ________ ] | FDAN #10 is done performing at Position Three 
 
-[ JGLR #05 ________ ________ ________ ] JGLR #05 joined at Position Zero, performing for 9536 milliseconds
+JOIN: [ FDAN #07 FDAN #08 FDAN #09 FDAN #11 ] | FDAN #11 joined at Position Three, performing for 644046 microseconds
 
-[ JGLR #05 JGLR #04 ________ ________ ] JGLR #04 joined at Position One, performing for 6055 milliseconds
+DONE: [ FDAN #07 FDAN #08 ________ FDAN #11 ] | FDAN #09 is done performing at Position Two 
 
-DONE:  JGLR #04 is done performing at Position One 
+JOIN: [ FDAN #07 FDAN #08 FDAN #12 FDAN #11 ] | FDAN #12 joined at Position Two, performing for 660309 microseconds
 
-DONE:  JGLR #05 is done performing at Position Zero 
+DONE: [ FDAN #07 ________ FDAN #12 FDAN #11 ] | FDAN #08 is done performing at Position One 
 
-[ FDAN #13 ________ ________ ________ ] FDAN #13 joined at Position Zero, performing for 2491 milliseconds
+JOIN: [ FDAN #07 FDAN #13 FDAN #12 FDAN #11 ] | FDAN #13 joined at Position One, performing for 748825 microseconds
 
-[ FDAN #13 FDAN #11 ________ ________ ] FDAN #11 joined at Position One, performing for 7897 milliseconds
+DONE: [ FDAN #07 FDAN #13 FDAN #12 ________ ] | FDAN #11 is done performing at Position Three 
 
-[ FDAN #13 FDAN #11 FDAN #12 ________ ] FDAN #12 joined at Position Two, performing for 2179 milliseconds
+JOIN: [ FDAN #07 FDAN #13 FDAN #12 FDAN #14 ] | FDAN #14 joined at Position Three, performing for 654502 microseconds
 
-[ FDAN #13 FDAN #11 FDAN #12 FDAN #10 ] FDAN #10 joined at Position Three, performing for 8224 milliseconds
+DONE: [ ________ FDAN #13 FDAN #12 FDAN #14 ] | FDAN #07 is done performing at Position Zero 
 
-DONE:  FDAN #13 is done performing at Position Zero 
+JOIN: [ FDAN #15 FDAN #13 FDAN #12 FDAN #14 ] | FDAN #15 joined at Position Zero, performing for 218577 microseconds
 
-DONE:  FDAN #11 is done performing at Position One 
+DONE: [ FDAN #15 FDAN #13 ________ FDAN #14 ] | FDAN #12 is done performing at Position Two 
 
-[ FDAN #14 ________ FDAN #12 FDAN #10 ] FDAN #14 joined at Position Zero, performing for 8244 milliseconds
+DONE: [ ________ FDAN #13 ________ FDAN #14 ] | FDAN #15 is done performing at Position Zero 
 
-DONE:  FDAN #14 is done performing at Position Zero 
+DONE: [ ________ ________ ________ FDAN #14 ] | FDAN #13 is done performing at Position One 
 
-[ FDAN #15 ________ FDAN #12 FDAN #10 ] FDAN #15 joined at Position Zero, performing for 2114 milliseconds
+DONE: [ ________ ________ ________ ________ ] | FDAN #14 is done performing at Position Three 
 
-DONE:  FDAN #12 is done performing at Position Two 
+JOIN: [ JGLR #05 ________ ________ ________ ] | JGLR #05 joined at Position Zero, performing for 843365 microseconds
 
-DONE:  FDAN #15 is done performing at Position Zero 
+JOIN: [ JGLR #05 JGLR #04 ________ ________ ] | JGLR #04 joined at Position One, performing for 416387 microseconds
 
-DONE:  FDAN #10 is done performing at Position Three 
+JOIN: [ JGLR #05 JGLR #04 JGLR #03 ________ ] | JGLR #03 joined at Position Two, performing for 959031 microseconds
 
-[ SOLO #02 ________ ________ ________ ] SOLO #02 joined at Position Zero, performing for 6192 milliseconds
+JOIN: [ JGLR #05 JGLR #04 JGLR #03 JGLR #02 ] | JGLR #02 joined at Position Three, performing for 472081 microseconds
 
-DONE:  SOLO #02 is done performing at Position Zero 
+DONE: [ JGLR #05 ________ JGLR #03 JGLR #02 ] | JGLR #04 is done performing at Position One 
 
-[ JGLR #01 ________ ________ ________ ] JGLR #01 joined at Position Zero, performing for 3982 milliseconds
+JOIN: [ JGLR #05 JGLR #01 JGLR #03 JGLR #02 ] | JGLR #01 joined at Position One, performing for 981948 microseconds
 
-DONE:  JGLR #01 is done performing at Position Zero 
+DONE: [ JGLR #05 JGLR #01 JGLR #03 ________ ] | JGLR #02 is done performing at Position Three 
 
-[ JGLR #03 ________ ________ ________ ] JGLR #03 joined at Position Zero, performing for 6665 milliseconds
+DONE: [ ________ JGLR #01 JGLR #03 ________ ] | JGLR #05 is done performing at Position Zero 
 
-[ JGLR #03 JGLR #02 ________ ________ ] JGLR #02 joined at Position One, performing for 2301 milliseconds
+DONE: [ ________ JGLR #01 ________ ________ ] | JGLR #03 is done performing at Position Two 
 
-DONE:  JGLR #02 is done performing at Position One 
-
-DONE:  JGLR #03 is done performing at Position Zero 
-
-[ SOLO #01 ________ ________ ________ ] SOLO #01 joined at Position Zero, performing for 5628 milliseconds
-
-DONE:  SOLO #01 is done performing at Position Zero 
+DONE: [ ________ ________ ________ ________ ] | JGLR #01 is done performing at Position One 
 
 ---------------------------------------------------------------
 woohoo its over yay
